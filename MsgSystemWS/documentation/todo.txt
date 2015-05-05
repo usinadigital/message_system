@@ -1,0 +1,2 @@
+- quando parte tomcat non trova il file hibernate.properties
+- implement webservice autentication

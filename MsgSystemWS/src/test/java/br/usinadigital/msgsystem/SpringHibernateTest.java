@@ -1,13 +1,7 @@
 package br.usinadigital.msgsystem;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import br.usinadigital.msgsystem.dao.PersonDAO;
-import br.usinadigital.msgsystem.model.Person;
 
 public class SpringHibernateTest {
 
@@ -15,14 +9,15 @@ public class SpringHibernateTest {
 	
 	public static void main(String[] args) {
 
+		/*
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 				"application-config.xml");
 
-		PersonDAO personDAO = context.getBean(PersonDAO.class);
+		CategoryDAO personDAO = context.getBean(CategoryDAO.class);
 
-		Person person = new Person();
+		Category person = new Category();
 		person.setName("Pankaj");
-		person.setCountry("India");
+		person.setDescription(
 
 		personDAO.save(person);
 
@@ -35,5 +30,6 @@ public class SpringHibernateTest {
 		}
 		// close resources
 		context.close();
+		*/
 	}
 }

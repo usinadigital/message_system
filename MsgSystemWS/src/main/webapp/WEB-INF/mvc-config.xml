@@ -6,7 +6,7 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="br.usinadigital.msgsystem.controller"/>
+    <context:component-scan base-package="br.usinadigital.msgsystemws.controller"/>
 
     <mvc:annotation-driven />
 

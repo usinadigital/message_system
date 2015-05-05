@@ -1,4 +1,4 @@
-package br.usinadigital.msgsystem.model;
+package br.usinadigital.msgsystemws.model;
 
 public class Message {
 	

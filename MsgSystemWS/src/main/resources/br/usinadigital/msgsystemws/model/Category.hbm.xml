@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="br.usinadigital.msgsystemws.model">
+	<class name="Category" table="category">
+		<id name="id" column="id">
+			<generator class="native"/>
+		</id>
+		<property name="name" column="name" />
+		<property name="description" column="description" />
+		<property name="lastupdate" column="lastupdate" />
+		<set name="messages" table="message_category" inverse="false" lazy="true" fetch="select" cascade="all" >
+            <key>
+                <column name="category_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="br.usinadigital.msgsystemws.model.Category">
+				<column name="id" not-null="true" />
+        	</many-to-many>
+        </set>
+		
+	</class>	
+</hibernate-mapping>

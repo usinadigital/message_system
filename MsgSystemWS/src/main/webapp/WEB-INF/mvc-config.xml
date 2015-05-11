@@ -16,6 +16,7 @@
 	        <property name="suffix" value=".jsp"/>
 	</bean>
 
+	<!-- maps handler methods based on HTTP paths -->  
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="messageConverters">
             <list>

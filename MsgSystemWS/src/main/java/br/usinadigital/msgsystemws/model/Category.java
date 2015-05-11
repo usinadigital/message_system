@@ -1,26 +1,50 @@
 package br.usinadigital.msgsystemws.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
-@Entity
-@Table(name = "Category")
+import br.usinadigital.msgsystemws.util.CustomDateSerializer;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 public class Category {
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-
-	private String name;
-
-	private String description;
 	
+	private int id;
+	private String name;
+	private String description;
+	@JsonSerialize(using = CustomDateSerializer.class)
+	private Date lastupdate;
+	// Is possible to have the category in the database for the history/statistic but not anymore used
 	private int valid;
-
+	private Set<Message> messages = new HashSet<Message>(0);
+	
+	public Category(){
+		
+	}
+	
+	public Category(String name) {
+		this.name = name;
+	}
+	
+	public Category(String name, String description) {
+		this.name = name;
+		this.description = description;
+	}
+	
+	public Category(String name, String description, int valid) {
+		this.name = name;
+		this.description = description;
+		this.valid = valid;
+	}
+	
+	public Category(String name, String description, int valid, Set<Message> messages) {
+		this.name = name;
+		this.description = description;
+		this.valid = valid;
+		this.messages = messages;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -53,11 +77,27 @@ public class Category {
 		this.valid = valid;
 	}
 	
+	public Date getLastupdate() {
+		return lastupdate;
+	}
+
+	public void setLastupdate(Date lastupdate) {
+		this.lastupdate = lastupdate;
+	}
+
+	public Set<Message> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(Set<Message> categories) {
+		this.messages = categories;
+	}
+	
 	@Override
 	public String toString() {
 		return "id=" + id + 
 				", name=" + name + 
 				", description=" + description +
-				", enable=" + valid; 
+				", valid=" + valid; 
 	}
 }

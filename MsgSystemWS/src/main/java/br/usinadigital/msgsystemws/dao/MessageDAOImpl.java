@@ -1,5 +1,5 @@
 package br.usinadigital.msgsystemws.dao;
- 
+
 import java.util.List;
 
 import org.hibernate.Session;
@@ -7,11 +7,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import br.usinadigital.msgsystemws.model.Category;
+import br.usinadigital.msgsystemws.model.Message;
 
-public class CategoryDAOImpl implements CategoryDAO{
+public class MessageDAOImpl implements MessageDAO{
 	private SessionFactory sessionFactory;
-	
-	public CategoryDAOImpl(SessionFactory sessionFactory) {
+	 
+    public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
      
@@ -24,10 +25,14 @@ public class CategoryDAOImpl implements CategoryDAO{
     }
  
     @SuppressWarnings("unchecked")
-    public List<Category> list() {
+    public List<Message> list() {
         Session session = this.sessionFactory.openSession();
-        List<Category> categoryList = session.createQuery("from Category").list();
+        List<Message> messageList = session.createQuery("from Message").list();
         session.close();
-        return categoryList;
+        return messageList;
+    }
+    
+    public void send(Message msg){
+    	
     }
 }

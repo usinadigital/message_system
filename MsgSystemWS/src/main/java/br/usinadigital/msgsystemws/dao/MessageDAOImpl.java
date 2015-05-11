@@ -11,7 +11,10 @@ import br.usinadigital.msgsystemws.model.Message;
 
 public class MessageDAOImpl implements MessageDAO{
 	private SessionFactory sessionFactory;
-	 
+	
+	public MessageDAOImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
@@ -31,8 +34,5 @@ public class MessageDAOImpl implements MessageDAO{
         session.close();
         return messageList;
     }
-    
-    public void send(Message msg){
-    	
-    }
+
 }

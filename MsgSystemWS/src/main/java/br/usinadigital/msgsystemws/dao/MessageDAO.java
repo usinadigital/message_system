@@ -9,6 +9,4 @@ public interface MessageDAO {
 	public void save(Category c);
     
     public List<Message> list();
-    
-    public void send(Message msg);
 }

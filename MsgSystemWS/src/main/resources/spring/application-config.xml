@@ -33,4 +33,10 @@
 	    </constructor-arg>
 	</bean>    	
 		
+	<bean id="messageDao" class="br.usinadigital.msgsystemws.dao.MessageDAOImpl">
+	    <constructor-arg>
+	        <ref bean="hibernateSessionFactory" />
+	    </constructor-arg>
+	</bean>
+	
 </beans>

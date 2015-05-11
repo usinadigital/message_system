@@ -30,7 +30,7 @@ public class MessageDAOImpl implements MessageDAO{
     @SuppressWarnings("unchecked")
     public List<Message> list() {
         Session session = this.sessionFactory.openSession();
-        List<Message> messageList = session.createQuery("from Message").list();
+        List<Message> messageList = session.createCriteria(Message.class).list();  
         session.close();
         return messageList;
     }

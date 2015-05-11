@@ -6,6 +6,7 @@ import java.util.Set;
 
 import br.usinadigital.msgsystemws.util.CustomDateSerializer;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 public class Category {

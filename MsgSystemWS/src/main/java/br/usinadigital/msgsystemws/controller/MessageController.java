@@ -41,7 +41,7 @@ public class MessageController implements ServletContextAware {
 	@RequestMapping(value = Constants.GET_ALL_MESSAGE, method = RequestMethod.GET)
 	public @ResponseBody List<Message> getAllCategories() {
 		
-		logger.info("Requesting all categories");
+		logger.info("Requesting all messages");
 		
 		String urlValue = servletContext.getInitParameter("contextConfigLocation");		
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(urlValue);

@@ -1,0 +1,24 @@
+sendMessage(text,categories)
+-----------------------------
+Action:
+1.saveMessage
+2.getAndroidUserByCategories()
+3.send message to all the android user selected
+
+getLastMessagesByCategoriesFromDate(categories,Date)
+----------------------------------------------------
+To know if a androidUser as the news of the last N days. 
+Needed if android pool the web service
+Android have a DB of the last N days messages, compare the most recents of the 2 list
+
+
+getCategories()
+---------------
+Used by androidUsers to know if the categories are changed. 
+Needed if android pool the web service
+
+
+getMessageFromDateToDate
+------------------------
+For Statistics
+

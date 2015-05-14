@@ -12,16 +12,25 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 public class Category {
 	
 	private int id;
+	
 	private String name;
+	
 	private String description;
+	
 	@JsonSerialize(using = CustomDateSerializer.class)
 	private Date lastupdate;
+	
 	// Is possible to have the category in the database for the history/statistic but not anymore used
 	private int valid;
+	
 	private Set<Message> messages = new HashSet<Message>(0);
 	
 	public Category(){
 		
+	}
+	
+	public Category(int id) {
+		this.id = id;
 	}
 	
 	public Category(String name) {
@@ -99,6 +108,7 @@ public class Category {
 		return "id=" + id + 
 				", name=" + name + 
 				", description=" + description +
-				", valid=" + valid; 
+				", valid=" + valid +
+				", lastupdate=" + lastupdate;
 	}
 }

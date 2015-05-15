@@ -1,5 +1,7 @@
 package br.usinadigital.msgsystemwebapp.controller;
 
+import br.usinadigital.msgsystemwebapp.util.Constants;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -17,36 +19,12 @@ public class LoginController {
   
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
-	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
-	public ModelAndView defaultPage() {
- 
-	  ModelAndView model = new ModelAndView();
-	  model.addObject("title", "Spring Security Login Form - Database Authentication");
-	  model.addObject("message", "This is default page!");
-	  model.setViewName("hello");
-	  return model;
- 
-	}
- 
-	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
-	public ModelAndView adminPage() {
- 
-	  ModelAndView model = new ModelAndView();
-	  model.addObject("title", "Spring Security Login Form - Database Authentication");
-	  model.addObject("message", "This page is for ROLE_ADMIN only!");
-	  model.setViewName("admin");
-	  return model;
- 
-	}
- 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/" + Constants.GET_LOGIN, method = RequestMethod.GET)
 	public ModelAndView login(
 			@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout) {
  
 	  ModelAndView model = new ModelAndView();
-	  logger.info("error="+error);
-	  logger.info("logout="+logout);
 	  if (error != null) {
 		model.addObject("error", "Invalid username and password!");
 	  }
@@ -54,15 +32,13 @@ public class LoginController {
 	  if (logout != null) {
 		model.addObject("msg", "You've been logged out successfully.");
 	  }
-	  model.setViewName("login");
+	  model.setViewName(Constants.GET_LOGIN);
  
-	  logger.info("model="+model.toString());
 	  return model;
- 
 	}
  
 	//for 403 access denied page
-	@RequestMapping(value = "/403page", method = RequestMethod.GET)
+	@RequestMapping(value = "/" + Constants.GET_403PAGE, method = RequestMethod.GET)
 	public ModelAndView accesssDenied() {
  
 	  ModelAndView model = new ModelAndView();
@@ -74,8 +50,7 @@ public class LoginController {
 		model.addObject("username", userDetail.getUsername());
 	  }
  
-	  model.setViewName("403");
+	  model.setViewName(Constants.GET_403PAGE);
 	  return model;
- 
 	}
 }

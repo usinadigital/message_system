@@ -11,12 +11,13 @@
 		
 		<access-denied-handler error-page="/403page" />
 
-		<intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/administration**" access="hasRole('ROLE_ADMINISTRATOR')" />
+		<intercept-url pattern="/message**" access="hasRole('ROLE_MESSAGE_SENDER')" />
 
 		<form-login login-page='/login' 
 		    username-parameter="username"
 			password-parameter="password" 
-			default-target-url="/welcome"
+			default-target-url="/home"
 			authentication-failure-url="/login?error" />
 		
 		<logout logout-success-url="/login?logout" />

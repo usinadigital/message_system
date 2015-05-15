@@ -2,32 +2,28 @@ package br.usinadigital.msgsystemws.dao;
  
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import javax.sql.DataSource;
+
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import br.usinadigital.msgsystemws.model.Category;
 
 public class CategoryDAOImpl implements CategoryDAO{
-	private SessionFactory sessionFactory;
 	
-	public CategoryDAOImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-     
-    public void save(Category p) {
-        Session session = this.sessionFactory.openSession();
-        Transaction tx = session.beginTransaction();
-        session.persist(p);
-        tx.commit();
-        session.close();
+	private DataSource dataSource;
+	private JdbcTemplate jdbcTemplate;
+ 
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
+	
+	public void save(Category p) {
+       
     }
  
-    @SuppressWarnings("unchecked")
+    
     public List<Category> list() {
-        Session session = this.sessionFactory.openSession();
-        List<Category> categoryList = session.createQuery("from Category").list();
-        session.close();
-        return categoryList;
+        
+        return null;
     }
 }

@@ -24,7 +24,7 @@ public class CategoryController implements ServletContextAware {
 	private static final Logger logger = LoggerFactory.getLogger(CategoryController.class);
 	
 	private ServletContext servletContext;
-	
+		
 	@RequestMapping(value = Constants.GET_TEST_CATEGORY, method = RequestMethod.GET)
 	public @ResponseBody Category getTestCategorie() {
 		
@@ -46,10 +46,9 @@ public class CategoryController implements ServletContextAware {
 	public @ResponseBody List<Category> getAllCategories() {
 		
 		logger.info("Requesting all categories");
-		
-		String urlValue = servletContext.getInitParameter("contextConfigLocation");		
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(urlValue);
-		
+						
+		String urlValueAppContext = servletContext.getInitParameter("contextConfigLocation");
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(urlValueAppContext);
 		CategoryDAO categoryDAO = context.getBean(CategoryDAO.class);
 		List<Category> list = categoryDAO.list();
 

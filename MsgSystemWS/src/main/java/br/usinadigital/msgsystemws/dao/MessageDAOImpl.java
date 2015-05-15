@@ -1,38 +1,50 @@
 package br.usinadigital.msgsystemws.dao;
 
+import java.util.Date;
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import javax.sql.DataSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import br.usinadigital.msgsystemws.JdbcSpringTest;
 import br.usinadigital.msgsystemws.model.Category;
 import br.usinadigital.msgsystemws.model.Message;
+import br.usinadigital.msgsystemws.model.MessageRowMapper;
+import br.usinadigital.msgsystemws.util.Constants;
 
 public class MessageDAOImpl implements MessageDAO{
-	private SessionFactory sessionFactory;
 	
-	public MessageDAOImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+	private static final Logger logger = LoggerFactory.getLogger(MessageDAOImpl.class);
+	
+	private DataSource dataSource;
+	private JdbcTemplate jdbcTemplate;
+ 
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
+     
+    public void save(Message msg) {
+        
     }
      
-    public void save(Category p) {
-        Session session = this.sessionFactory.openSession();
-        Transaction tx = session.beginTransaction();
-        session.persist(p);
-        tx.commit();
-        session.close();
-    }
- 
-    @SuppressWarnings("unchecked")
     public List<Message> list() {
-        Session session = this.sessionFactory.openSession();
-        List<Message> messageList = session.createCriteria(Message.class).list();  
-        session.close();
-        return messageList;
+    	jdbcTemplate = new JdbcTemplate(dataSource);
+    	String sql = "SELECT * FROM " + Constants.TABLE_MESSAGE;
+    	List<Message> messageList = jdbcTemplate.query(sql,new MessageRowMapper());
+        
+    	return messageList;
     }
 
+    public List<Message> getMessagesFromDateByCategories(Date fromDate, List<Category> categories) {
+    	jdbcTemplate = new JdbcTemplate(dataSource);
+    	String sql = "SELECT * FROM " + Constants.TABLE_MESSAGE;
+    	sql += " INNER JOIN " + Constants.TABLE_CATEGORY;
+    	sql += " ON messages.id = categories.id WHERE creationdate >= ?";
+    	List<Message> messageList = jdbcTemplate.query(sql,new Object[] { fromDate },new MessageRowMapper());
+        
+    	return messageList;
+    }
 }

@@ -29,4 +29,7 @@
         </property>
     </bean>
     
+    <bean id="LoggedUser" class="br.usinadigital.msgsystemwebapp.model.LoggedUser">
+    </bean>
+    
 </beans>

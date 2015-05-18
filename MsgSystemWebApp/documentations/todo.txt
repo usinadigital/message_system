@@ -1,0 +1,10 @@
+-handling exception
+-log to files
+-interface
+
+
+
+
+TODO:
+-non va il css def in layout.jsp e utilizzato in menu.jsp e home.jsp
+

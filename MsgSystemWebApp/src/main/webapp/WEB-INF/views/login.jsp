@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <%@page session="true"%>
 <html>
 <head>
@@ -41,7 +43,7 @@
 
 	<div id="login-box">
 
-		<h2>Login with Username and Password</h2>
+		<h2><spring:message code="login.title"/></h2>
 
 		<c:if test="${not empty error}">
 			<div class="error">${error}</div>
@@ -55,11 +57,11 @@
 
 			<table>
 				<tr>
-					<td>User:</td>
+					<td><spring:message code="login.username"/></td>
 					<td><input type='text' name='username'></td>
 				</tr>
 				<tr>
-					<td>Password:</td>
+					<td><spring:message code="login.password"/></td>
 					<td><input type='password' name='password' /></td>
 				</tr>
 				<tr>

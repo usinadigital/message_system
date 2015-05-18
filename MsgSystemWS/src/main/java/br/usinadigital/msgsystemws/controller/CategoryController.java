@@ -53,9 +53,9 @@ public class CategoryController implements ServletContextAware {
 		List<Category> list = categoryDAO.list();
 
 		for (Category c : list) {
-			logger.info("****************************** Category List::" + c);
+			logger.info("Category List::" + c);
 			if ( c.getMessages().size() != 0){
-				logger.info("************* Category with messages");
+				logger.info("Category with messages");
 			}
 		}
 		

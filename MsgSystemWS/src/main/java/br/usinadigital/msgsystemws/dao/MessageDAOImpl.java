@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import br.usinadigital.msgsystemws.JdbcSpringTest;
 import br.usinadigital.msgsystemws.model.Category;
 import br.usinadigital.msgsystemws.model.Message;
 import br.usinadigital.msgsystemws.model.MessageRowMapper;

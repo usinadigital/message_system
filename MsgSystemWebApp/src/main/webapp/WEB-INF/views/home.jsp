@@ -7,7 +7,7 @@
 			<h1>
 				<spring:message code="home.title" />
 			</h1>
-			<div class="prova">XXXXXXXXXXXXXXXXXXXXXXxxxxx</div>
+			<div class="prova">Prova CSS</div>
 		</div>
 	</tiles:putAttribute>
 </tiles:insertDefinition>

@@ -1,26 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- configuration file for LogBack (slf4J implementation)
-See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-through-the-java-loggers/ -->
+<!-- configuration file for LogBack (slf4J implementation) See here for more 
+	details: http://gordondickens.com/wordpress/2013/03/27/sawing-through-the-java-loggers/ -->
 <configuration scan="true" scanPeriod="30 seconds">
 
-    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
-        <resetJUL>true</resetJUL>
-    </contextListener>
+	<property name="AUDIT_FILE_NAME" value="d:/log/MsgSystemWebapp.log" />
+	<property name="ERROR_FILE_NAME" value="d:/log/MsgSystemWebappERROR.log" />
 
-    <!-- To enable JMX Management -->
-    <jmxConfigurator/>
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+		<resetJUL>true</resetJUL>
+	</contextListener>
 
-    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>%-5level %logger{0} - %msg%n</pattern>
-        </encoder>
-    </appender>
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
 
-	<!--<logger name="org.hibernate" level="debug"/> -->
-   <!-- Uncomment and add your logger here:
-    <logger name="org.springframework.samples.service.service" level="debug"/> -->
-         
-    <root level="info">
-        <appender-ref ref="console"/>
-    </root>
+	<appender name="file_audit" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${AUDIT_FILE_NAME}</file>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>${AUDIT_FILE_NAME}.%i.log</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>3</maxIndex>
+		</rollingPolicy>
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>2KB</maxFileSize>
+		</triggeringPolicy>
+	</appender>
+	
+	<appender name="file_error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${ERROR_FILE_NAME}</file>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>${ERROR_FILE_NAME}.%i.log</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>3</maxIndex>
+		</rollingPolicy>
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>2KB</maxFileSize>
+		</triggeringPolicy>
+	</appender>
+
+	<logger name="org.springframework.samples.service.service" level="error" />
+		
+	<logger name="br.usinadigital.msgsystemwebapp" level="debug">
+		<appender-ref ref="file_audit" />
+		<appender-ref ref="console" />
+	</logger>
+	
+	<root level="error">
+		<appender-ref ref="file_error" />
+		<appender-ref ref="file" />
+	</root>
+
 </configuration>

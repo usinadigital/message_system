@@ -1,7 +1,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <div class="menu">
-	<div class="prova">Menu</div>
+	<div>Menu</div>
 	<spring:url value="/home" var="homeUrl" htmlEscape="true" />
 	<a href="${homeUrl}">Home</a>
 	<spring:url value="/message" var="messageUrl" htmlEscape="true" />

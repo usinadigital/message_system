@@ -12,8 +12,11 @@
     	 Is a spring security issue -->
     <mvc:resources mapping="/css/**" location="/WEB-INF/css/*" />
 	
+    <context:property-placeholder location="classpath:application.properties"/>
+    
 	<context:component-scan base-package="br.usinadigital.msgsystemwebapp.controller" />
-
+	<context:component-scan base-package="br.usinadigital.msgsystemwebapp.util" />
+	
 	<mvc:annotation-driven />
 
 	<bean id="localeResolver"
@@ -48,7 +51,11 @@
 			</list>
 		</property>
 	</bean>
-
+	
+	<bean id="ApplicationConfig" class="br.usinadigital.msgsystemwebapp.util.ApplicationConfig">
+		<property name="webserviceURL" value="${webservice.url}" />
+	</bean>
+	
 	<bean id="LoggedUser" class="br.usinadigital.msgsystemwebapp.model.LoggedUser">
 	</bean>
 

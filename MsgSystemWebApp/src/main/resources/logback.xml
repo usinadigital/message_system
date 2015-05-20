@@ -3,8 +3,8 @@
 	details: http://gordondickens.com/wordpress/2013/03/27/sawing-through-the-java-loggers/ -->
 <configuration scan="true" scanPeriod="30 seconds">
 
-	<property name="AUDIT_FILE_NAME" value="d:/log/MsgSystemWebapp.log" />
-	<property name="ERROR_FILE_NAME" value="d:/log/MsgSystemWebappERROR.log" />
+	<property name="AUDIT_FILE_NAME" value="c:/log/MsgSystemWebapp.log" />
+	<property name="ERROR_FILE_NAME" value="c:/log/MsgSystemWebapp_ERROR.log" />
 
 	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
 		<resetJUL>true</resetJUL>
@@ -12,15 +12,16 @@
 
 	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			<pattern>%d{dd-MMM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
 			</pattern>
 		</encoder>
 	</appender>
 
-	<appender name="file_audit" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="file_audit"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${AUDIT_FILE_NAME}</file>
 		<encoder>
-			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			<pattern>%d{dd-MMM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
 			</pattern>
 		</encoder>
 		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
@@ -29,14 +30,19 @@
 			<maxIndex>3</maxIndex>
 		</rollingPolicy>
 		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-			<maxFileSize>2KB</maxFileSize>
+			<maxFileSize>10MB</maxFileSize>
 		</triggeringPolicy>
 	</appender>
-	
-	<appender name="file_error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+	<appender name="file_error"	class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${ERROR_FILE_NAME}</file>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
 		<encoder>
-			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			<pattern>%d{dd-MMM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
 			</pattern>
 		</encoder>
 		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
@@ -45,20 +51,14 @@
 			<maxIndex>3</maxIndex>
 		</rollingPolicy>
 		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-			<maxFileSize>2KB</maxFileSize>
+			<maxFileSize>10MB</maxFileSize>
 		</triggeringPolicy>
 	</appender>
 
-	<logger name="org.springframework.samples.service.service" level="error" />
-		
-	<logger name="br.usinadigital.msgsystemwebapp" level="debug">
+	<root level="INFO">
 		<appender-ref ref="file_audit" />
-		<appender-ref ref="console" />
-	</logger>
-	
-	<root level="error">
 		<appender-ref ref="file_error" />
-		<appender-ref ref="file" />
+		<appender-ref ref="console" />
 	</root>
 
 </configuration>

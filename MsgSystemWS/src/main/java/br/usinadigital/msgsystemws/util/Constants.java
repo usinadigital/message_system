@@ -23,4 +23,6 @@ public class Constants {
 	public static final String TABLE_CATEGORY_FIELD_ID = "id";
 	public static final String TABLE_CATEGORY_FIELD_NAME = "name";
 	
+	public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+	
 }

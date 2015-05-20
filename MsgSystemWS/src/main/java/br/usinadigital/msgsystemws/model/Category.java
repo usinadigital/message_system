@@ -4,9 +4,10 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import br.usinadigital.msgsystemws.util.CustomDateDeserializer;
 import br.usinadigital.msgsystemws.util.CustomDateSerializer;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 public class Category {
@@ -18,6 +19,7 @@ public class Category {
 	private String description;
 	
 	@JsonSerialize(using = CustomDateSerializer.class)
+	@JsonDeserialize(using = CustomDateDeserializer.class)
 	private Date lastupdate;
 	
 	// Is possible to have the category in the database for the history/statistic but not anymore used

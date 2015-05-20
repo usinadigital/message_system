@@ -1,10 +1,10 @@
--handling exception
--log to files
--interface
-
-
+--- handling exception: modifico la CustomDateDeserializer, richiedo le categories aprendo la pagina dei messages.
+Mi da una pag di errore. Dovrei agganciare l´ex, loggarla, e visualizzare una pag di default mia
+xxx interface
+xxx log to files
+--- mi serve sapere il nome dell utente loggato
 
 
 TODO:
--non va il css def in layout.jsp e utilizzato in menu.jsp e home.jsp
-
+xxx non va il css def in layout.jsp e utilizzato in menu.jsp e home.jsp
+--- caricare il file di properties

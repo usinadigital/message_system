@@ -28,7 +28,7 @@ public class CategoryController implements ServletContextAware {
 	@RequestMapping(value = Constants.GET_TEST_CATEGORY, method = RequestMethod.GET)
 	public @ResponseBody Category getTestCategorie() {
 		
-		logger.info("Begin request test category");
+		logger.info("Start request: " + Constants.GET_TEST_CATEGORY);
 		
 		Category cat = new Category();
 		cat.setId(0);
@@ -37,7 +37,7 @@ public class CategoryController implements ServletContextAware {
 		cat.setValid(0);
 		cat.setLastupdate(new Date());
 		
-		logger.info("End request test category");
+		logger.info("End request: " + Constants.GET_TEST_CATEGORY);
 		
 		return cat;
 	}
@@ -45,7 +45,7 @@ public class CategoryController implements ServletContextAware {
 	@RequestMapping(value = Constants.GET_ALL_CATEGORY, method = RequestMethod.GET)
 	public @ResponseBody List<Category> getAllCategories() {
 		
-		logger.info("Requesting all categories");
+		logger.info("Start request: " + Constants.GET_ALL_CATEGORY);
 						
 		String urlValueAppContext = servletContext.getInitParameter("contextConfigLocation");
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(urlValueAppContext);
@@ -60,7 +60,7 @@ public class CategoryController implements ServletContextAware {
 		}
 		
 		context.close();
-		logger.info("Request closed.");
+		logger.info("End request: " + Constants.GET_ALL_CATEGORY);
 		
 		return list;
 	}

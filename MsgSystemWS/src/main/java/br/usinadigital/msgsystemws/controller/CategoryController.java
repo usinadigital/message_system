@@ -7,6 +7,8 @@ import javax.servlet.ServletContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,11 +21,12 @@ import br.usinadigital.msgsystemws.model.Category;
 import br.usinadigital.msgsystemws.util.Constants;
  
 @Controller
-public class CategoryController implements ServletContextAware {
+public class CategoryController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(CategoryController.class);
 	
-	private ServletContext servletContext;
+	@Autowired
+	private ApplicationContext appContext;
 		
 	@RequestMapping(value = Constants.GET_TEST_CATEGORY, method = RequestMethod.GET)
 	public @ResponseBody Category getTestCategorie() {
@@ -47,10 +50,8 @@ public class CategoryController implements ServletContextAware {
 		
 		logger.info("Start request: " + Constants.GET_ALL_CATEGORY);
 						
-		String urlValueAppContext = servletContext.getInitParameter("contextConfigLocation");
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(urlValueAppContext);
-		CategoryDAO categoryDAO = context.getBean(CategoryDAO.class);
-		List<Category> list = categoryDAO.list();
+		CategoryDAO categoryDAO = appContext.getBean(CategoryDAO.class);
+		List<Category> list = categoryDAO.getAll();
 
 		for (Category c : list) {
 			logger.info("Category List::" + c);
@@ -58,14 +59,8 @@ public class CategoryController implements ServletContextAware {
 				logger.info("Category with messages");
 			}
 		}
-		
-		context.close();
 		logger.info("End request: " + Constants.GET_ALL_CATEGORY);
 		
 		return list;
-	}
-
-	public void setServletContext(ServletContext servletContext) {
-		this.servletContext = servletContext;
 	}
 }

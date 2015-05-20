@@ -8,5 +8,5 @@ public interface CategoryDAO {
 	
 	public void save(Category c);
     
-    public List<Category> list();
+    public List<Category> getAll();
 }

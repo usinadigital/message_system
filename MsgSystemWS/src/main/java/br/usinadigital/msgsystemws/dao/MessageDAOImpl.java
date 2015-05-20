@@ -28,8 +28,13 @@ public class MessageDAOImpl implements MessageDAO{
     public void save(Message msg) {
         
     }
-     
-    public List<Message> list() {
+    
+    public void send(Message msg) {
+    	jdbcTemplate = new JdbcTemplate(dataSource);
+    	
+    }
+
+    public List<Message> getAll() {
     	jdbcTemplate = new JdbcTemplate(dataSource);
     	String sql = "SELECT * FROM " + Constants.TABLE_MESSAGE;
     	List<Message> messageList = jdbcTemplate.query(sql,new MessageRowMapper());

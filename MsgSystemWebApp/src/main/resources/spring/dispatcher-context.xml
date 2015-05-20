@@ -8,8 +8,7 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     
-    <!-- Whitout this line is impossible to access to the css file.
-    	 Is a spring security issue -->
+    <!-- Whitout this line is impossible to access to the css file. Is a spring security issue -->
     <mvc:resources mapping="/css/**" location="/WEB-INF/css/*" />
 	
     <context:property-placeholder location="classpath:application.properties"/>
@@ -55,6 +54,10 @@
 	<bean id="ApplicationConfig" class="br.usinadigital.msgsystemwebapp.util.ApplicationConfig">
 		<property name="webserviceURL" value="${webservice.url}" />
 	</bean>
+	
+	<bean id="WSManager" class="br.usinadigital.msgsystemwebapp.service.WSManagerImpl">
+	   <property name="applicationConfig" ref="ApplicationConfig" />
+	</bean> 
 	
 	<bean id="LoggedUser" class="br.usinadigital.msgsystemwebapp.model.LoggedUser">
 	</bean>

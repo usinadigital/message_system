@@ -5,9 +5,9 @@
 	<tiles:putAttribute name="body">
 		<div class="body">
 			<h1>
-				<spring:message code="view.home.title" />
+				<spring:message code="view.message.title" />
 			</h1>
-			<div class="prova">Prova CSS</div>
+			<div class="prova">Message sended</div>
 		</div>
 	</tiles:putAttribute>
 </tiles:insertDefinition>

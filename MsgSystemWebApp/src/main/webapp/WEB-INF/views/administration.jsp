@@ -4,7 +4,7 @@
 <tiles:insertDefinition name="defaultTemplate">
 	<tiles:putAttribute name="body">
 		<div class="body">
-			<h1><spring:message code="administration.title"/></h1>
+			<h1><spring:message code="view.administration.title"/></h1>
 		</div>
 	</tiles:putAttribute>
 </tiles:insertDefinition>

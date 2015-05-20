@@ -43,7 +43,7 @@
 
 	<div id="login-box">
 
-		<h2><spring:message code="login.title"/></h2>
+		<h2><spring:message code="view.login.title"/></h2>
 
 		<c:if test="${not empty error}">
 			<div class="error">${error}</div>
@@ -57,11 +57,11 @@
 
 			<table>
 				<tr>
-					<td><spring:message code="login.username"/></td>
+					<td><spring:message code="view.login.username"/></td>
 					<td><input type='text' name='username'></td>
 				</tr>
 				<tr>
-					<td><spring:message code="login.password"/></td>
+					<td><spring:message code="view.login.password"/></td>
 					<td><input type='password' name='password' /></td>
 				</tr>
 				<tr>

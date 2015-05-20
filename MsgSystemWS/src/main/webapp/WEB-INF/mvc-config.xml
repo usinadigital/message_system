@@ -16,7 +16,7 @@
 	        <property name="suffix" value=".jsp"/>
 	</bean>
 
-	<!-- maps handler methods based on HTTP paths -->  
+	<!-- In this way when a controller return an object spring convert it in a json -->  
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="messageConverters">
             <list>

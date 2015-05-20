@@ -5,6 +5,6 @@ DAO join di tabelle
 
 TODO
 --------------------------------
-- quando parte tomcat non trova il file hibernate.properties
 - implement webservice autentication
 - in caso di eccezione, devo agganciarle tutte, loggarle e se é un servizio ritornare un JSON di errore
+- servizio sendmessage deve ritornare un errore in json

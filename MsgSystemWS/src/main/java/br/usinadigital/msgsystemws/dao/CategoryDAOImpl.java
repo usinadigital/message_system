@@ -24,7 +24,7 @@ public class CategoryDAOImpl implements CategoryDAO{
     }
  
     
-    public List<Category> list() {
+    public List<Category> getAll() {
         
     	jdbcTemplate = new JdbcTemplate(dataSource);
     	String sql = "SELECT * FROM " + Constants.TABLE_CATEGORY;

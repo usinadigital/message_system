@@ -1,7 +1,8 @@
 package br.usinadigital.msgsystemwebapp.controller;
 
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +30,8 @@ public class MessageController {
 	private ApplicationContext appContext;
 
 	Category[] categories;
+	Map<String, Integer> categoriesMap = new HashMap<String, Integer>();;
+	String[] caregoriesArray;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String messageForm(Model model) {
@@ -36,8 +39,8 @@ public class MessageController {
 		WSManager wsManager = (WSManager) appContext.getBean(WSManager.class);
 		categories = wsManager.getAllCategories();
 		initValues(model);
+		printTodo(model);
 		logger.info("Stop GET Request: " + Constants.GET_MESSAGE);
-
 		return Constants.GET_MESSAGE;
 	}
 
@@ -47,27 +50,68 @@ public class MessageController {
 		logger.info("Start POST Request: " + Constants.GET_MESSAGE);
 		if ( hasErrors(model,message) ) {
 			logger.info("Fields validated with errors");
-			logger.debug("Message="+message);
-			logger.debug("Categories="+model);
-			logger.info("Stop POST Request: " + Constants.GET_MESSAGE);
+			printMessage("Message=",message);
+			printTodo(model);
 			//initValues(model);
+			logger.info("Stop POST Request: " + Constants.GET_MESSAGE);
 			return Constants.GET_MESSAGE;
 		} else {
 			logger.info("Fields validated with success");
 //			moveNameToId(message);
 			WSManager wsManager = (WSManager) appContext.getBean(WSManager.class);
-			logger.debug("Message="+message);
+			printMessage("Message=",message);
+			printTodo(model);
 //			wsManager.sendMessageByCategories(message);
 			logger.info("Stop POST Request: " + Constants.GET_MESSAGE);
 			return "messageResult";
 		}
 	}
 
+	private void printTodo(Model model){
+		printMessage("Model.Message=",(Message)model.asMap().get("message"));
+		logger.debug("Model.cats="+model.asMap().get("cats"));
+		logger.debug("Model.categories="+model.asMap().get("categories"));
+	}
+	
+	private String printCats(Map<String, Integer> cats){
+		String c="";
+		if (cats != null){
+			for(String item : cats.keySet()){
+				c = c + item + " | ";
+			}
+		}else{
+			c="NULL";
+		}
+		return c;
+	}
+	
+	private void printMessage(String str,Message message){
+		logger.debug(str);
+		logger.debug("Message.Text="+message.getText());
+		if ( message.getCategories() != null && message.getCategories().size() != 0){
+			for(Category item : message.getCategories()){
+				logger.debug("Message.Categories.Category["+item+"]");
+			}
+		} else {
+			if ( message.getCategories() == null){
+				logger.debug("Message.Categories.Size = NULL");
+			}else{
+				logger.debug("Message.Categories = 0");
+			}
+		}
+		logger.debug("Message.cats=",printCats(message.getCats()));
+	}
+	
 	private void initValues(Model model){
 		Message message = new Message();
-		message.setCategories(new HashSet<Category>(0));
-		message.setCategories(new HashSet<Category>(Arrays.asList(categories)));
-		model.addAttribute("allCategories", categories);
+		
+		for (Category item : categories){
+			categoriesMap.put(item.getName(), item.getId());
+		}
+		
+		TODO devo usare o solo la mappa o la mappa e una lista 
+		model.addAttribute("cats", categoriesMap.keySet());
+		model.addAttribute("categories", categories);
 		model.addAttribute("message", message);
 		model.addAttribute("textError","");
 		model.addAttribute("categoriesError","");

@@ -1,15 +1,27 @@
 package br.usinadigital.msgsystemwebapp.model;
 
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
 
 public class Message {
 
 	private String text;
 	
 	private Set<Category> categories = new HashSet<Category>(0);
+
+	private Map<String, Integer> cats;  
+	
+	public Map<String, Integer> getCats() {
+		return cats;
+	}
+
+	public void setCats(Map<String, Integer> cats) {
+		this.cats = cats;
+	}
 
 	public Message() {
 
@@ -42,6 +54,6 @@ public class Message {
 
 	@Override
 	public String toString(){
-	        return ToStringBuilder.reflectionToString(this);
+	        return ToStringBuilder.reflectionToString(this,ToStringStyle.MULTI_LINE_STYLE);
 	}
 }

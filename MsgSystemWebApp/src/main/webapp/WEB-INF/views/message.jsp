@@ -17,7 +17,7 @@
 							<td>${textError}</td>
 						</tr>
 						<tr>
-							<td><form:checkboxes path="categories" items="${allCategories}" itemLabel="name" element="div"/></td>
+							<td><form:checkboxes path="categories" items="${cats.keySet()}" element="div"/></td>
 							<td>${categoriesError}</td>	
 						</tr>
 						<tr>

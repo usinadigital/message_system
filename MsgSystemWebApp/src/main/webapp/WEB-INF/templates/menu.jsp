@@ -12,5 +12,5 @@
 	<spring:url value="/login?logout" var="logoutUrl" htmlEscape="true" />
 	<a href="${logoutUrl}">Logout</a>
 	<p></p>
-	<a href="?language=en_UK">English</a>|<a href="?language=pt_BR">Portuguese</a>
+	<a href="?language=en">English</a>|<a href="?language=pt">Portuguese</a>
 </div>

@@ -28,7 +28,7 @@ public class MessageController {
 	private ApplicationContext appContext;
 	
 	@RequestMapping(value = Constants.GET_TEST_MESSAGE, method = RequestMethod.GET)
-	public @ResponseBody Message getTestCategorie() {
+	public @ResponseBody Message getTestMessage() {
 		
 		logger.info("Begin request test Message");
 		
@@ -42,7 +42,7 @@ public class MessageController {
 	}
 	
 	@RequestMapping(value = Constants.GET_ALL_MESSAGE, method = RequestMethod.GET)
-	public @ResponseBody List<Message> getAllCategories() {
+	public @ResponseBody List<Message> getAllMessages() {
 		
 		logger.info("Requesting all messages");
 		
@@ -60,10 +60,10 @@ public class MessageController {
 		return list;
 	}
 
-	@RequestMapping(value = Constants.CREATE_MESSAGE, method = RequestMethod.POST)
+	@RequestMapping(value = Constants.SAVE_MESSAGE, method = RequestMethod.POST)
 	public @ResponseBody Message save(@RequestBody String msg) {
 		
-		logger.info("Requesting save message");
+		logger.info("Start request: " + Constants.SAVE_MESSAGE);
 		MessageDAO messageDAO = appContext.getBean(MessageDAO.class);
 		
 		Message msgx = new Message();
@@ -76,8 +76,21 @@ public class MessageController {
 		msgx.setCategories(categories);
 				
 		messageDAO.save(msgx);
-		logger.info("Request closed.");
+		logger.info("Stop request: " + Constants.SAVE_MESSAGE);
 		
 		return msgx;
 	}
+	
+	@RequestMapping(value = Constants.SEND_MESSAGE_BY_CATEGORIES, method = RequestMethod.POST)
+	public @ResponseBody Message sendMessageByCategories(@RequestBody String msg) {
+		
+		logger.info("Start request: " + Constants.SEND_MESSAGE_BY_CATEGORIES);
+		
+		MessageDAO messageDAO = appContext.getBean(MessageDAO.class);
+		
+		logger.info("Stop request: " + Constants.SEND_MESSAGE_BY_CATEGORIES);
+		
+		return null;
+	}
+	
 }

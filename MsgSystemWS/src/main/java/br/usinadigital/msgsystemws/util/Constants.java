@@ -10,7 +10,8 @@ public class Constants {
 	
 	public static final String GET_TEST_MESSAGE = "/rest/message/test";
 	public static final String GET_ALL_MESSAGE = "/rest/message/all";
-	public static final String CREATE_MESSAGE = "/rest/message/create";
+	public static final String SAVE_MESSAGE = "/rest/message/save";
+	public static final String SEND_MESSAGE_BY_CATEGORIES = "/rest/message/sendByCategories";
 	
 	public static final String TABLE_MESSAGE = "messages";
 	public static final String TABLE_FIELD_ID = "id";

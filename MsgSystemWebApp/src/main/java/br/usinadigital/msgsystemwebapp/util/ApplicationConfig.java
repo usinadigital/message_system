@@ -3,33 +3,27 @@ package br.usinadigital.msgsystemwebapp.util;
 /* map the file application.properties */
 public class ApplicationConfig {
 
-	private String webserviceURL;
-	private String getAllCategories;
-	private String sendMessageToUsersByCategories;
-
-	public String getWebserviceURL() {
-		return webserviceURL;
+	private String wsURL;
+	private String wsGetAllCategories;
+	private String wsSendMessageByCategories;
+	
+	public String getWsURL() {
+		return wsURL;
 	}
-
-	public void setWebserviceURL(String webserviceURL) {
-		this.webserviceURL = webserviceURL;
+	public void setWsURL(String wsURL) {
+		this.wsURL = wsURL;
 	}
-
-	public String getGetAllCategories() {
-		return getAllCategories;
+	public String getWsGetAllCategories() {
+		return wsGetAllCategories;
 	}
-
-	public void setGetAllCategories(String getAllCategories) {
-		this.getAllCategories = getAllCategories;
+	public void setWsGetAllCategories(String wsGetAllCategories) {
+		this.wsGetAllCategories = wsGetAllCategories;
 	}
-
-	public String getSendMessageToUsersByCategories() {
-		return sendMessageToUsersByCategories;
+	public String getWsSendMessageByCategories() {
+		return wsSendMessageByCategories;
 	}
-
-	public void setSendMessageToUsersByCategories(
-			String sendMessageToUsersByCategories) {
-		this.sendMessageToUsersByCategories = sendMessageToUsersByCategories;
+	public void setWsSendMessageByCategories(String wsSendMessageByCategories) {
+		this.wsSendMessageByCategories = wsSendMessageByCategories;
 	}
 	
 }

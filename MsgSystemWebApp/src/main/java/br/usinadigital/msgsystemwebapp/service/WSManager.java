@@ -5,7 +5,11 @@ import br.usinadigital.msgsystemwebapp.model.Message;
 
 public interface WSManager {
 	
-	public void sendMessageToUsersByCategories(Message message);
+	// Se utente deve fare il pooling al servizio
+	public void save(Message message);
+	
+	// se faccio il push del msg all utente
+	public void sendMessageByCategories(Message message);
 	
 	public Category[] getAllCategories();
 }

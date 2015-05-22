@@ -18,6 +18,6 @@ public class PropertiesFileTest {
 
 		logger.info("Prova Test");
 		
-		logger.info("config="+config.getWebserviceURL());
+		logger.info("config="+config.getWsURL());
 	}
 }

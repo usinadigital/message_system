@@ -15,12 +15,12 @@
     
 	<context:component-scan base-package="br.usinadigital.msgsystemwebapp.controller" />
 	<context:component-scan base-package="br.usinadigital.msgsystemwebapp.util" />
+	<context:component-scan base-package="br.usinadigital.msgsystemwebapp.validator" />
 	
 	<mvc:annotation-driven />
 
-	<bean id="localeResolver"
-		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
-		<property name="defaultLocale" value="en_UK" />
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="en" />
 	</bean>
 
 	<mvc:interceptors>
@@ -52,7 +52,9 @@
 	</bean>
 	
 	<bean id="ApplicationConfig" class="br.usinadigital.msgsystemwebapp.util.ApplicationConfig">
-		<property name="webserviceURL" value="${webservice.url}" />
+		<property name="wsURL" value="${webservice.url}" />
+		<property name="wsGetAllCategories" value="${webservice.getAllCategories}" />
+		<property name="wsSendMessageByCategories" value="${webservice.sendMessageByCategories}" />
 	</bean>
 	
 	<bean id="WSManager" class="br.usinadigital.msgsystemwebapp.service.WSManagerImpl">

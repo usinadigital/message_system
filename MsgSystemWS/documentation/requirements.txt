@@ -5,20 +5,19 @@ Action:
 2.getAndroidUserByCategories()
 3.send message to all the android user selected
 
-getLastMessagesByCategoriesFromDate(categories,Date)
-----------------------------------------------------
-To know if a androidUser as the news of the last N days. 
-Needed if android pool the web service
-Android have a DB of the last N days messages, compare the most recents of the 2 list
-
-
-getCategories()
----------------
-Used by androidUsers to know if the categories are changed. 
-Needed if android pool the web service
-
-
 getMessageFromDateToDate
 ------------------------
 For Statistics
 
+
+*******************
+If GCM work:
+*******************
+--- Update categories: once a day check if the list is changed. Check the lastUpdate. Check new,deleted,updated(only if the name is different)
+
+
+*******************
+if GCM doesn´t work
+********************
+---getCategories(): used by the users to check if the categories list is changed
+---getLastMessagesByCategoriesFromDate(categories,Date) To know if a androidUser has the news of the last N days. Android have a DB of the last N days messages, compare the most recents of the 2 list 

@@ -14,11 +14,11 @@
 						<tr>
 							<td><form:label path="text"><spring:message code="view.message.label.message" /></form:label></td>
 							<td><form:input path="text" /></td>
-							<td><form:label path="textError"/>${textError}</td>
+							<td>${textError}</td>
 						</tr>
 						<tr>
-							<td><td><form:checkboxes path="categories" items="${categories}" itemLabel="name" element="div"/></td></td>
-							<td><form:label path="categoriesError" />${categoriesError}</td>	
+							<td><form:checkboxes path="categories" items="${allCategories}" itemLabel="name" element="div"/></td>
+							<td>${categoriesError}</td>	
 						</tr>
 						<tr>
 							<td colspan="2"><input type="submit" value="Submit" /></td>

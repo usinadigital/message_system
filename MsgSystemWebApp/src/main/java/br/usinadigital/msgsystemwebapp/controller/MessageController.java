@@ -1,5 +1,6 @@
 package br.usinadigital.msgsystemwebapp.controller;
 
+import java.util.Arrays;
 import java.util.HashSet;
 
 import org.slf4j.Logger;
@@ -47,12 +48,13 @@ public class MessageController {
 		if ( hasErrors(model,message) ) {
 			logger.info("Fields validated with errors");
 			logger.debug("Message="+message);
+			logger.debug("Categories="+model);
 			logger.info("Stop POST Request: " + Constants.GET_MESSAGE);
 			//initValues(model);
 			return Constants.GET_MESSAGE;
 		} else {
 			logger.info("Fields validated with success");
-			moveNameToId(message);
+//			moveNameToId(message);
 			WSManager wsManager = (WSManager) appContext.getBean(WSManager.class);
 			logger.debug("Message="+message);
 //			wsManager.sendMessageByCategories(message);
@@ -64,7 +66,8 @@ public class MessageController {
 	private void initValues(Model model){
 		Message message = new Message();
 		message.setCategories(new HashSet<Category>(0));
-		model.addAttribute("categories", categories);
+		message.setCategories(new HashSet<Category>(Arrays.asList(categories)));
+		model.addAttribute("allCategories", categories);
 		model.addAttribute("message", message);
 		model.addAttribute("textError","");
 		model.addAttribute("categoriesError","");

@@ -10,15 +10,15 @@
 					<spring:message code="view.message.title" />
 				</h1>
 				<form:form method="POST" action="message" commandName="message">
-					<table>
+					<table border="0">
 						<tr>
-							<td><form:label path="text"><spring:message code="view.message.label.message" /></form:label></td>
-							<td><form:input path="text" /></td>
-							<td>${textError}</td>
+							<td valign="top"><form:label path="text"><spring:message code="view.message.label.message" /></form:label></td>
+							<td><form:textarea path="text" rows="5" cols="30" /></td>
+							<td valign="top"><div class="formError">${textError}</div></td>
 						</tr>
 						<tr>
-							<td><form:checkboxes path="categories" items="${cats.keySet()}" element="div"/></td>
-							<td>${categoriesError}</td>	
+							<td><td><form:checkboxes path="categories" items="${categories}" itemLabel="name" itemValue="id" element="div"/></td></td>
+							<td><div class="formError">${categoriesError}</div></td>	
 						</tr>
 						<tr>
 							<td colspan="2"><input type="submit" value="Submit" /></td>

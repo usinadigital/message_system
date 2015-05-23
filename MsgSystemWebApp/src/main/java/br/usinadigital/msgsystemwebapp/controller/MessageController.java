@@ -1,7 +1,7 @@
 package br.usinadigital.msgsystemwebapp.controller;
 
 import java.util.HashMap;
-import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -28,10 +28,10 @@ public class MessageController {
 
 	@Autowired
 	private ApplicationContext appContext;
-
+	
+	Message message;
 	Category[] categories;
-	Map<String, Integer> categoriesMap = new HashMap<String, Integer>();;
-	String[] caregoriesArray;
+	Map<Integer, String> categoriesMap = new HashMap<Integer, String>();;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String messageForm(Model model) {
@@ -39,7 +39,6 @@ public class MessageController {
 		WSManager wsManager = (WSManager) appContext.getBean(WSManager.class);
 		categories = wsManager.getAllCategories();
 		initValues(model);
-		printTodo(model);
 		logger.info("Stop GET Request: " + Constants.GET_MESSAGE);
 		return Constants.GET_MESSAGE;
 	}
@@ -50,39 +49,25 @@ public class MessageController {
 		logger.info("Start POST Request: " + Constants.GET_MESSAGE);
 		if ( hasErrors(model,message) ) {
 			logger.info("Fields validated with errors");
-			printMessage("Message=",message);
-			printTodo(model);
-			//initValues(model);
+			//TODO doesn´t keep memorized the categories selected
+			moveNameToId(message);
+			model.addAttribute("categories", categories);
 			logger.info("Stop POST Request: " + Constants.GET_MESSAGE);
 			return Constants.GET_MESSAGE;
 		} else {
 			logger.info("Fields validated with success");
-//			moveNameToId(message);
+			moveNameToId(message);
 			WSManager wsManager = (WSManager) appContext.getBean(WSManager.class);
-			printMessage("Message=",message);
-			printTodo(model);
 //			wsManager.sendMessageByCategories(message);
 			logger.info("Stop POST Request: " + Constants.GET_MESSAGE);
 			return "messageResult";
 		}
 	}
 
-	private void printTodo(Model model){
+	/*private void printTodo(Model model){
 		printMessage("Model.Message=",(Message)model.asMap().get("message"));
 		logger.debug("Model.cats="+model.asMap().get("cats"));
 		logger.debug("Model.categories="+model.asMap().get("categories"));
-	}
-	
-	private String printCats(Map<String, Integer> cats){
-		String c="";
-		if (cats != null){
-			for(String item : cats.keySet()){
-				c = c + item + " | ";
-			}
-		}else{
-			c="NULL";
-		}
-		return c;
 	}
 	
 	private void printMessage(String str,Message message){
@@ -99,18 +84,14 @@ public class MessageController {
 				logger.debug("Message.Categories = 0");
 			}
 		}
-		logger.debug("Message.cats=",printCats(message.getCats()));
-	}
+	}*/
 	
 	private void initValues(Model model){
-		Message message = new Message();
-		
 		for (Category item : categories){
-			categoriesMap.put(item.getName(), item.getId());
+			categoriesMap.put(item.getId(),item.getName());
 		}
-		
-		TODO devo usare o solo la mappa o la mappa e una lista 
-		model.addAttribute("cats", categoriesMap.keySet());
+		message = new Message();
+		message.getCategories().add(new Category(10,"catname1"));
 		model.addAttribute("categories", categories);
 		model.addAttribute("message", message);
 		model.addAttribute("textError","");
@@ -118,26 +99,28 @@ public class MessageController {
 	}
 	
 	private boolean hasErrors(Model model, Message message){
+		boolean error = false;
+		
 		if (message.getText().length() == 0){
-			model.addAttribute("textError","eeee");
-			return true;
+			model.addAttribute("textError",appContext.getMessage("view.message.error.textNotEmpty", null,Locale.getDefault()));
+			error = true;
 		}
 		if (message.getCategories() == null){
-			model.addAttribute("categoriesError","xxxx");
-			return true;
+			model.addAttribute("categoriesError",appContext.getMessage("view.message.error.atLeastOneCategory", null,Locale.getDefault()));
+			error = true;
 		}
 		
-		return false;
+		return error;
 	}
 	/*
 	 * The message returned from the form put the category "Id" in the field
-	 * "name"
+	 * "name", because the field "id" is an integer
 	 */
 	private void moveNameToId(Message message) {
 		if (message.getCategories() != null){
 			for (Category item : message.getCategories()) {
 					item.setId(Integer.parseInt(item.getName()));
-					item.setName("");
+					item.setName(categoriesMap.get(item.getId()));
 			}
 		}
 	}

@@ -13,16 +13,6 @@ public class Message {
 	
 	private Set<Category> categories = new HashSet<Category>(0);
 
-	private Map<String, Integer> cats;  
-	
-	public Map<String, Integer> getCats() {
-		return cats;
-	}
-
-	public void setCats(Map<String, Integer> cats) {
-		this.cats = cats;
-	}
-
 	public Message() {
 
 	}

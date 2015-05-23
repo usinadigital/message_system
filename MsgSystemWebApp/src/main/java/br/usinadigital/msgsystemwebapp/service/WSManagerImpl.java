@@ -2,6 +2,7 @@ package br.usinadigital.msgsystemwebapp.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
 
 import br.usinadigital.msgsystemwebapp.model.Category;
@@ -12,14 +13,10 @@ public class WSManagerImpl implements WSManager {
 	
 	private static final Logger logger = LoggerFactory.getLogger(WSManagerImpl.class);
 	
+	@Autowired
 	private ApplicationConfig applicationConfig;
 	
-	public void setApplicationConfig(ApplicationConfig applicationConfig) {
-		this.applicationConfig = applicationConfig;
-	}
-	
 	public void save(Message message){
-		
 	}
 	
 	public void sendMessageByCategories(Message message) {

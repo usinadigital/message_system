@@ -58,7 +58,6 @@
 	</bean>
 	
 	<bean id="WSManager" class="br.usinadigital.msgsystemwebapp.service.WSManagerImpl">
-	   <property name="applicationConfig" ref="ApplicationConfig" />
 	</bean> 
 	
 	<bean id="LoggedUser" class="br.usinadigital.msgsystemwebapp.model.LoggedUser">

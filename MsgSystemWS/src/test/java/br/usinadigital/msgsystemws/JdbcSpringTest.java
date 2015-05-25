@@ -4,7 +4,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +20,7 @@ public class JdbcSpringTest {
 
 	private static final Logger logger = LoggerFactory.getLogger(JdbcSpringTest.class);
 
-	public static void main(String[] args) throws ParseException {
-
+	public static void prova()throws ParseException {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/application-config.xml");
         MessageDAO messageDAO = context.getBean(MessageDAO.class);
         
@@ -44,5 +45,26 @@ public class JdbcSpringTest {
         context.close();
         
 		logger.info("Done");
+	}
+	
+	public static void updateTest(){
+		Message msg = new Message();
+		Category cat1 = new Category(10);
+        Category cat2 = new Category(11);
+        Category cat3 = new Category(12);
+        Set<Category> cats = new HashSet<Category>();
+        cats.add(cat1);
+        cats.add(cat2);
+        cats.add(cat3);
+        msg.setCategories(cats);
+		msg.setText("pippotesto");
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/application-config.xml");
+        MessageDAO messageDAO = context.getBean(MessageDAO.class);
+        messageDAO.save(msg);
+        
+	}
+	
+	public static void main(String[] args) throws ParseException {
+		updateTest();
 	}
 }

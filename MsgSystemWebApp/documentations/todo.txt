@@ -2,13 +2,15 @@ TODO:
 xxx handling exception: modifico la CustomDateDeserializer, richiedo le categories aprendo la pagina dei messages. Mi da una pag di errore. Dovrei agganciare l´ex, loggarla, e visualizzare una pag di default mia
 xxx interface
 xxx log to files
---- mi serve sapere il nome dell utente loggato. Per fare due menu distinti
+--- menu distinto per utente mi serve sapere il nome dell utente loggato
 --- layout pagina di errore
 --- layout login page
 --- interface design
---- validazione campi sendmessage
+xxx validazione campi sendmessage
 --- c´é un warning sul file tiles e la localizzazione... tiles_en.xml
+--- nella form non tiene memorizzate le categorie qunado la form da errore
 
 ONWORKING:
 xxx non va il css def in layout.jsp e utilizzato in menu.jsp e home.jsp
 xxx caricare il file di properties
+--- ho messo un commento sui tiles nel dispatcher-context.xml

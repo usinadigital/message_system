@@ -32,7 +32,6 @@
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="messages" />
-		<property name="defaultEncoding" value="UTF-8" />
 	</bean>
 
 	<bean id="viewResolver"
@@ -42,8 +41,7 @@
 	</bean>
 
 	<!-- Tiles configuration -->
-	<bean id="tilesConfigurer"
-		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions">
 			<list>
 				<value>classpath:tiles.xml</value>
@@ -57,7 +55,7 @@
 		<property name="wsSendMessageByCategories" value="${webservice.sendMessageByCategories}" />
 	</bean>
 	
-	<bean id="WSManager" class="br.usinadigital.msgsystemwebapp.service.WSManagerImpl">
+	<bean id="wsManager" class="br.usinadigital.msgsystemwebapp.service.WSManagerImpl">
 	</bean> 
 	
 	<bean id="LoggedUser" class="br.usinadigital.msgsystemwebapp.model.LoggedUser">

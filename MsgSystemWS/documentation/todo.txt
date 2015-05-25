@@ -1,10 +1,3 @@
-WHERE I AM
---------------------------------
-DAO join di tabelle
-
-
-TODO
---------------------------------
-- implement webservice autentication
-- in caso di eccezione, devo agganciarle tutte, loggarle e se é un servizio ritornare un JSON di errore
-- servizio sendmessage deve ritornare un errore in json
+TODO:
+--- implement webservice autentication
+--- in caso di eccezione, devo agganciarle tutte, loggarle e se é un servizio ritornare un JSON di errore

@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 
 <%@page session="true"%>
 <html>
@@ -39,42 +40,45 @@
 </head>
 <body onload='document.loginForm.username.focus();'>
 
-	<h1>Spring Security Login Form (Database Authentication)</h1>
+	<tiles:insertDefinition name="defaultTemplate">
+		<tiles:putAttribute name="body">
+			<div class="body">
+				<h1>
+					<spring:message code="view.login.title" />
+				</h1>
+				
+					<c:if test="${not empty error}">
+						<div class="error">${error}</div>
+					</c:if>
+					<c:if test="${not empty msg}">
+						<div class="msg">${msg}</div>
+					</c:if>
 
-	<div id="login-box">
+					<form name='loginForm'
+						action="<c:url value='/j_spring_security_check' />" method='POST'>
 
-		<h2><spring:message code="view.login.title"/></h2>
+						<table>
+							<tr>
+								<td><spring:message code="view.login.username" /></td>
+								<td><input type='text' name='username'></td>
+							</tr>
+							<tr>
+								<td><spring:message code="view.login.password" /></td>
+								<td><input type='password' name='password' /></td>
+							</tr>
+							<tr>
+								<td colspan='2'><input name="submit" type="submit"
+									value="submit" /></td>
+							</tr>
+						</table>
 
-		<c:if test="${not empty error}">
-			<div class="error">${error}</div>
-		</c:if>
-		<c:if test="${not empty msg}">
-			<div class="msg">${msg}</div>
-		</c:if>
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
 
-		<form name='loginForm'
-			action="<c:url value='/j_spring_security_check' />" method='POST'>
-
-			<table>
-				<tr>
-					<td><spring:message code="view.login.username"/></td>
-					<td><input type='text' name='username'></td>
-				</tr>
-				<tr>
-					<td><spring:message code="view.login.password"/></td>
-					<td><input type='password' name='password' /></td>
-				</tr>
-				<tr>
-					<td colspan='2'><input name="submit" type="submit"
-						value="submit" /></td>
-				</tr>
-			</table>
-
-			<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" />
-
-		</form>
-	</div>
+					</form>	
+			</div>
+		</tiles:putAttribute>
+	</tiles:insertDefinition>
 
 </body>
 </html>

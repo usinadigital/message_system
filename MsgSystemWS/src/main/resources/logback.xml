@@ -55,6 +55,8 @@
 		</triggeringPolicy>
 	</appender>
 
+	<logger name="br.usinadigital.msgsystemws" level="DEBUG"/>
+	
 	<root level="INFO">
 		<appender-ref ref="file_audit" />
 		<appender-ref ref="file_error" />

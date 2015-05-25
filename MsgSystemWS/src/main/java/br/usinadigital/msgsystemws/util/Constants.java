@@ -26,4 +26,7 @@ public class Constants {
 	
 	public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 	
+	public static final String GENERIC_SERVICE_ERROR = "E000";
+	public static final int HTTP_INTERNAL_SERVER_ERROR = 500;
+	
 }

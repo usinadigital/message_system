@@ -27,6 +27,9 @@ public class CategoryController {
 	public @ResponseBody Category getTestCategorie() {
 		
 		logger.info("Start request: " + Constants.GET_TEST_CATEGORY);
+		
+		int ris = 100 / 0;
+		
 		Category cat = new Category();
 		cat.setId(0);
 		cat.setName("test_name");

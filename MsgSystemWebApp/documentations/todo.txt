@@ -1,5 +1,5 @@
 TODO:
-xxx handling exception: modifico la CustomDateDeserializer, richiedo le categories aprendo la pagina dei messages. Mi da una pag di errore. Dovrei agganciare l´ex, loggarla, e visualizzare una pag di default mia
+xxx handling exception: modifico la CustomDateDeserializer, richiedo le categories aprendo la pagina dei messages. Mi da una pag di errore. Dovrei agganciare lï¿½ex, loggarla, e visualizzare una pag di default mia
 xxx interface
 xxx log to files
 --- menu distinto per utente mi serve sapere il nome dell utente loggato
@@ -7,10 +7,11 @@ xxx log to files
 --- layout login page
 --- interface design
 xxx validazione campi sendmessage
---- c´é un warning sul file tiles e la localizzazione... tiles_en.xml
+--- cï¿½ï¿½ un warning sul file tiles e la localizzazione... tiles_en.xml
 --- nella form non tiene memorizzate le categorie qunado la form da errore
-
+--- nella login se il DBMS Ã© giÃº mi dice user pass errati. Dovrebbe dirmi db giÃº o fatal error
+ 
 ONWORKING:
 xxx non va il css def in layout.jsp e utilizzato in menu.jsp e home.jsp
 xxx caricare il file di properties
---- ho messo un commento sui tiles nel dispatcher-context.xml
+xxx ho messo un commento sui tiles nel dispatcher-context.xml

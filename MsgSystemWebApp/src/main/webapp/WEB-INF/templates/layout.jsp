@@ -4,21 +4,29 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link type="text/css" rel="stylesheet" href="<tiles:getAsString name="layoutstyle"/>"/>
 	<link type="text/css" rel="stylesheet" href="<tiles:getAsString name="mystyle"/>"/>
 	<title>Default tiles template</title>
 </head>
+
 <body>
-	<div class="prova">
-		<p>CIAO</p>
+<div id="header">
+	<div class="shell">
+		<tiles:insertAttribute name="top" />
+		<tiles:insertAttribute name="navigation" />
 	</div>
-	<div class="page">
-		<tiles:insertAttribute name="header" />
-		<div class="content">
-			<tiles:insertAttribute name="menu" />
-			<tiles:insertAttribute name="body" />
+</div>
+
+<div id="container">
+	<div class="shell">
+		<tiles:insertAttribute name="messages" />
+		<br />
+		<div id="main">
+			<div class="cl">&nbsp;</div>
+			<tiles:insertAttribute name="content" />
+			<div class="cl">&nbsp;</div>			
 		</div>
-		<tiles:insertAttribute name="footer" />
 	</div>
+</div>
+<tiles:insertAttribute name="footer" />
 </body>
 </html>

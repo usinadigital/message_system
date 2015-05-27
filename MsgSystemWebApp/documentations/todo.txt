@@ -2,14 +2,18 @@ TODO:
 xxx handling exception: modifico la CustomDateDeserializer, richiedo le categories aprendo la pagina dei messages. Mi da una pag di errore. Dovrei agganciare l�ex, loggarla, e visualizzare una pag di default mia
 xxx interface
 xxx log to files
---- menu distinto per utente mi serve sapere il nome dell utente loggato
---- layout pagina di errore
---- layout login page
---- interface design
+xxx menu distinto per utente mi serve sapere il nome dell utente loggato
+xxx layout pagina di errore
+xxx layout login page
+xxx interface design
 xxx validazione campi sendmessage
 --- c�� un warning sul file tiles e la localizzazione... tiles_en.xml
 --- nella form non tiene memorizzate le categorie qunado la form da errore
 --- nella login se il DBMS é giú mi dice user pass errati. Dovrebbe dirmi db giú o fatal error
+--- tomcat da questo errore 
+--- se apro il link senza home non mi mostra la login
+--- quando clikko su logout in realta non mi slogga
+---- quando clicco sul menu non mi fa l�active in automatico
  
 ONWORKING:
 xxx non va il css def in layout.jsp e utilizzato in menu.jsp e home.jsp

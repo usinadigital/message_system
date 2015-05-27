@@ -10,6 +10,7 @@
     
     <!-- Whitout this line is impossible to access to the css file. Is a spring security issue -->
     <mvc:resources mapping="/css/**" location="/WEB-INF/css/*" />
+    <mvc:resources mapping="/images/**" location="/WEB-INF/images/*" />
 	
     <context:property-placeholder location="classpath:application.properties"/>
     

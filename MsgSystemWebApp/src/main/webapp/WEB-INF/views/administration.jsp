@@ -1,10 +1,14 @@
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <tiles:insertDefinition name="defaultTemplate">
-	<tiles:putAttribute name="body">
-		<div class="body">
-			<h1><spring:message code="view.administration.title"/></h1>
+	<tiles:putAttribute name="content">
+		<div class="box">
+			<div class="box-head">
+				<h2>
+					<spring:message code="view.administration.title" />
+				</h2>
+			</div>
 		</div>
 	</tiles:putAttribute>
 </tiles:insertDefinition>

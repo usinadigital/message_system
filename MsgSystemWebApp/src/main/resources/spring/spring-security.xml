@@ -13,7 +13,8 @@
 
 		<intercept-url pattern="/administration**" access="hasRole('ROLE_ADMINISTRATOR')" />
 		<intercept-url pattern="/message**" access="hasRole('ROLE_MESSAGE_SENDER')" />
-
+		<intercept-url pattern="/home" access="hasRole('ROLE_MESSAGE_SENDER')" />
+		
 		<form-login login-page='/login' 
 		    username-parameter="username"
 			password-parameter="password" 

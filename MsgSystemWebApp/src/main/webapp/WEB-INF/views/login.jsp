@@ -6,79 +6,46 @@
 <html>
 <head>
 <title>Login Page</title>
-<style>
-.error {
-	padding: 15px;
-	margin-bottom: 20px;
-	border: 1px solid transparent;
-	border-radius: 4px;
-	color: #a94442;
-	background-color: #f2dede;
-	border-color: #ebccd1;
-}
-
-.msg {
-	padding: 15px;
-	margin-bottom: 20px;
-	border: 1px solid transparent;
-	border-radius: 4px;
-	color: #31708f;
-	background-color: #d9edf7;
-	border-color: #bce8f1;
-}
-
-#login-box {
-	width: 300px;
-	padding: 20px;
-	margin: 100px auto;
-	background: #fff;
-	-webkit-border-radius: 2px;
-	-moz-border-radius: 2px;
-	border: 1px solid #000;
-}
-</style>
 </head>
 <body onload='document.loginForm.username.focus();'>
 
 	<tiles:insertDefinition name="defaultTemplate">
-		<tiles:putAttribute name="body">
-			<div class="body">
-				<h1>
-					<spring:message code="view.login.title" />
-				</h1>
-				
-					<c:if test="${not empty error}">
-						<div class="error">${error}</div>
-					</c:if>
-					<c:if test="${not empty msg}">
-						<div class="msg">${msg}</div>
-					</c:if>
+		<tiles:putAttribute name="content">
+			<div class="box">
+				<div class="box-head">
+					<h1><spring:message code="view.login.title" /></h1>
+				</div>
+				<c:if test="${not empty error}">
+					<div>${error}</div>
+				</c:if>
+				<c:if test="${not empty msg}">
+					<div>${msg}</div>
+				</c:if>
 
-					<form name='loginForm'
-						action="<c:url value='/j_spring_security_check' />" method='POST'>
+				<form name='loginForm'
+					action="<c:url value='/j_spring_security_check' />" method='POST'>
 
-						<table>
-							<tr>
-								<td><spring:message code="view.login.username" /></td>
-								<td><input type='text' name='username'></td>
-							</tr>
-							<tr>
-								<td><spring:message code="view.login.password" /></td>
-								<td><input type='password' name='password' /></td>
-							</tr>
-							<tr>
-								<td colspan='2'><input name="submit" type="submit"
-									value="submit" /></td>
-							</tr>
-						</table>
+					<table>
+						<tr>
+							<td><spring:message code="view.login.username" /></td>
+							<td><input type='text' name='username'></td>
+						</tr>
+						<tr>
+							<td><spring:message code="view.login.password" /></td>
+							<td><input type='password' name='password' /></td>
+						</tr>
+						<tr>
+							<td colspan='2'><input name="submit" type="submit"
+								value="submit" /></td>
+						</tr>
+					</table>
 
-						<input type="hidden" name="${_csrf.parameterName}"
-							value="${_csrf.token}" />
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
 
-					</form>	
+				</form>
 			</div>
 		</tiles:putAttribute>
 	</tiles:insertDefinition>
-
 </body>
 </html>

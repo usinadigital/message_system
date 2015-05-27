@@ -30,5 +30,6 @@ public class WSManagerTest {
 		Message msg = new Message();
 		messageBuilder(msg);
 		manager.sendMessageByCategories(msg);
+		context.close();
 	}
 }

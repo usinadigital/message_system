@@ -1,6 +1,9 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:set var="messageActive" value="active" scope="request"/>
 
 <body>
 	<tiles:insertDefinition name="defaultTemplate">
@@ -10,20 +13,17 @@
 					<h2><spring:message code="view.message.title" /></h2>
 				</div>
 				<form:form method="POST" action="message" commandName="message">
-					<table border="0">
+					<table>
 						<tr>
 							<td><form:label path="text">
 									<spring:message code="view.message.label.message" />
 								</form:label></td>
 							<td><form:textarea path="text" rows="5" cols="30" /></td>
-							<td valign="top"><div class="formError">${textError}</div></td>
 						</tr>
 						<tr>
-							<td>
+							<td></td>
 							<td><form:checkboxes path="categories" items="${categories}"
 									itemLabel="name" itemValue="id" element="div" /></td>
-							</td>
-							<td><div class="formError">${categoriesError}</div></td>
 						</tr>
 						<tr>
 							<td colspan="2"><input type="submit" value="Submit" /></td>

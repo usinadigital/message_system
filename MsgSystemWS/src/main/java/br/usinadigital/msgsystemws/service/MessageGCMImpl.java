@@ -3,10 +3,7 @@ package br.usinadigital.msgsystemws.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import br.usinadigital.msgsystemws.dao.MessageDAO;
-import br.usinadigital.msgsystemws.dao.MessageDAOImpl;
 import br.usinadigital.msgsystemws.model.Message;
-import br.usinadigital.msgsystemws.util.Constants;
 
 public class MessageGCMImpl implements MessageGCM{
 

@@ -50,7 +50,7 @@ public class MessageController {
 		logger.info("Start POST Request: " + Constants.GET_MESSAGE);
 		if (hasErrors(model, message)) {
 			logger.info("Fields validated with errors");
-			// TODO doesn´t keep memorized the categories selected
+			// TODO doesnï¿½t keep memorized the categories selected
 			moveNameToId(message);
 			model.addAttribute("categories", categories);
 			logger.info("Stop POST Request: " + Constants.GET_MESSAGE);
@@ -96,11 +96,11 @@ public class MessageController {
 		boolean error = false;
 
 		if (message.getText().length() == 0) {
-			model.addAttribute("textError", appContext.getMessage("view.message.error.textNotEmpty", null, Locale.getDefault()));
+			model.addAttribute("messageERROR", appContext.getMessage("view.message.error.textNotEmpty", null, Locale.getDefault()));
 			error = true;
 		}
 		if (message.getCategories() == null) {
-			model.addAttribute("categoriesError", appContext.getMessage("view.message.error.atLeastOneCategory", null, Locale.getDefault()));
+			model.addAttribute("messageERROR2", appContext.getMessage("view.message.error.atLeastOneCategory", null, Locale.getDefault()));
 			error = true;
 		}
 

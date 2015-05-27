@@ -11,32 +11,32 @@
 
 	<tiles:insertDefinition name="defaultTemplate">
 		<tiles:putAttribute name="content">
-			<div class="box">
+			<div class="box-login">
 				<div class="box-head">
-					<h1><spring:message code="view.login.title" /></h1>
+					<h2>
+						<spring:message code="view.login.title" />
+					</h2>
 				</div>
-				<c:if test="${not empty error}">
-					<div>${error}</div>
-				</c:if>
-				<c:if test="${not empty msg}">
-					<div>${msg}</div>
-				</c:if>
+				
+				<form name='loginForm'  class="form" action="<c:url value='/j_spring_security_check' />" method="POST">
 
-				<form name='loginForm'
-					action="<c:url value='/j_spring_security_check' />" method='POST'>
-
-					<table>
+					<table align="center" border="0">
 						<tr>
-							<td><spring:message code="view.login.username" /></td>
-							<td><input type='text' name='username'></td>
+							<td><label><spring:message code="view.login.username" /></label></td>
+							<td><input type="username" class="field size3" name="username"></td>
 						</tr>
 						<tr>
-							<td><spring:message code="view.login.password" /></td>
-							<td><input type='password' name='password' /></td>
+							<td><label><spring:message code="view.login.password" /></label></td>
+							<td><input type="password" class="field size3" name="password" /></td>
 						</tr>
+						<tr><td></td></tr>
+						<tr><td></td></tr>
 						<tr>
-							<td colspan='2'><input name="submit" type="submit"
-								value="submit" /></td>
+							<td><p></p></td>
+							<td><div align="right">
+							<input name="submit" class="button" type="submit" value="submit" />
+							</div>
+							</td>
 						</tr>
 					</table>
 
@@ -44,6 +44,14 @@
 						value="${_csrf.token}" />
 
 				</form>
+				
+				<c:if test="${not empty error}">
+					<c:set var="messageERROR" value="${error}" scope="request"/>
+				</c:if>
+				<c:if test="${not empty msg}">
+					<c:set var="messageOK" value="${msg}" scope="request"/>
+				</c:if>
+				
 			</div>
 		</tiles:putAttribute>
 	</tiles:insertDefinition>

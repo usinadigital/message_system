@@ -61,7 +61,7 @@ public class JdbcSpringTest {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/application-config.xml");
         MessageDAO messageDAO = context.getBean(MessageDAO.class);
         messageDAO.save(msg);
-        
+        context.close();
 	}
 	
 	public static void main(String[] args) throws ParseException {

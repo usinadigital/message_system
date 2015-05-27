@@ -16,8 +16,15 @@ public class MenuController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MenuController.class);
 	
-	@RequestMapping(value = { "/", "/" + Constants.GET_HOME }, method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+    public String homea(Locale locale, Model model) {
+		logger.info("Request /");
+		return Constants.GET_HOME;
+    }
+	
+	@RequestMapping(value = "/" + Constants.GET_HOME, method = RequestMethod.GET)
     public String home(Locale locale, Model model) {
+		logger.info("Request /home");
 		return Constants.GET_HOME;
     }
 	
@@ -30,4 +37,6 @@ public class MenuController {
     public String logout() {
         return Constants.GET_LOGOUT;
     }
+	
+	
 }

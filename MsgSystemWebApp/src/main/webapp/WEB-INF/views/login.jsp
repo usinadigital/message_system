@@ -17,26 +17,20 @@
 						<spring:message code="view.login.title" />
 					</h2>
 				</div>
-				
+				<br>
 				<form name='loginForm'  class="form" action="<c:url value='/j_spring_security_check' />" method="POST">
 
-					<table align="center" border="0">
+					<table align="center" width="100%" border="0">
 						<tr>
-							<td><label><spring:message code="view.login.username" /></label></td>
-							<td><input type="username" class="field size3" name="username"></td>
+							<td><input type="username" class="field size100" name="username" placeholder="<spring:message code="view.login.username"/>" /></td>
 						</tr>
 						<tr>
-							<td><label><spring:message code="view.login.password" /></label></td>
-							<td><input type="password" class="field size3" name="password" /></td>
+							<td><input type="password" class="field size100" name="password" placeholder="<spring:message code="view.login.password"/>" /></td>
 						</tr>
 						<tr><td></td></tr>
 						<tr><td></td></tr>
 						<tr>
-							<td><p></p></td>
-							<td><div align="right">
-							<input name="submit" class="button" type="submit" value="submit" />
-							</div>
-							</td>
+							<td><input name="submit"  class="button size100" type="submit" value="<spring:message code="view.login.button.submit"/>" /></td>
 						</tr>
 					</table>
 

@@ -6,11 +6,14 @@
 
 <tiles:insertDefinition name="defaultTemplate">
 	<tiles:putAttribute name="content">
-		<div class="box">
+		<div class="box-message">
 			<div class="box-head">
 				<h2>
 					<spring:message code="view.administration.title" />
 				</h2>
+			</div>
+			<div class="form">
+			<font size="4" >Under construction</font>
 			</div>
 		</div>
 	</tiles:putAttribute>

@@ -16,8 +16,9 @@ xxx implementare i messagi di errori/conferma come fa la interfaccia grafica?
 xxx quando clicco sul menu non mi fa lï¿½active in automatico
 --- sarebbe meglio se il ws ritorna errore generico e001 e io lo visualizzo tradotto
 --- tutte le scritte dellÂ´interfaccia in portoghese
---- manca il bilingue
-
+xxx manca il bilingue
+--- non mi mette in default il pt
+--- quando i box sono piccoli l´header viene troppo su, non sta bene
 
 ONWORKING:
 xxx non va il css def in layout.jsp e utilizzato in menu.jsp e home.jsp

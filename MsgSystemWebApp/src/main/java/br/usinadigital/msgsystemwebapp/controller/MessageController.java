@@ -59,6 +59,7 @@ public class MessageController {
 			logger.info("Fields validated with success");
 			moveNameToId(message);
 			wsManager.sendMessageByCategories(message);
+			
 			logger.info("Stop POST Request: " + Constants.GET_MESSAGE);
 			return "messageResult";
 		}

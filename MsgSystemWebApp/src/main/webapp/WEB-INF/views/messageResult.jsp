@@ -1,13 +1,16 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <tiles:insertDefinition name="defaultTemplate">
-	<tiles:putAttribute name="body">
-		<div class="body">
-			<h1>
-				<spring:message code="view.message.title" />
-			</h1>
-			<div class="prova">Message sended</div>
+	<tiles:putAttribute name="content">
+		
+		<div>
+		<c:set var="messageOK" scope="request">
+			<spring:message code="view.message.info.messageSended"/>
+		</c:set>
 		</div>
+		
 	</tiles:putAttribute>
 </tiles:insertDefinition>

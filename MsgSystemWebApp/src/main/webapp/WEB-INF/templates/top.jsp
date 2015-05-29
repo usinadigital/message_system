@@ -8,10 +8,14 @@
 	</h1>
 	<sec:authorize access="isAuthenticated()">
 	<div id="top-navigation">
+		
 		Welcome
 		<strong><sec:authentication property="name"/></strong>
 		<span>|</span>
 		<a href="javascript:formSubmit()">Logout</a>
+		
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<a href="?language=en">EN</a><span>|</span><a href="?language=pt">PT</a>
 	</div>
 	
 	<form action="${pageContext.servletContext.contextPath}/j_spring_security_logout" method="post" id="logoutForm">

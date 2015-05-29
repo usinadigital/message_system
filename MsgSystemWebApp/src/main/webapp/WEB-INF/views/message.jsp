@@ -8,27 +8,25 @@
 <body>
 	<tiles:insertDefinition name="defaultTemplate">
 		<tiles:putAttribute name="content">
-			<div class="box">
+			<div class="box-message">
 				<div class="box-head">
 					<h2><spring:message code="view.message.title" /></h2>
 				</div>
 				<form:form method="POST" action="message" commandName="message">
-					<table>
-						<tr>
-							<td><form:label path="text">
-									<spring:message code="view.message.label.message" />
-								</form:label></td>
-							<td><form:textarea path="text" rows="5" cols="30" /></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td><form:checkboxes path="categories" items="${categories}"
-									itemLabel="name" itemValue="id" element="div" /></td>
-						</tr>
-						<tr>
-							<td colspan="2"><input type="submit" value="Submit" /></td>
-						</tr>
-					</table>
+				<div class="mydiv">
+				<p>
+					<label class="mylabel"><spring:message code="view.message.label.message" /></label>
+				</p>
+				<p>
+					<form:textarea path="text" rows="5" cols="30" />
+				</p>
+				<br>
+				<p>
+					<form:checkboxes element="div class='mycheckboxes' " path="categories" items="${categories}" itemLabel="name" itemValue="id" />
+				</p>	
+				<br>
+				<input type="submit" class="button" value="<spring:message code="view.message.button.submit" />" />
+				</div>
 				</form:form>
 			</div>
 		</tiles:putAttribute>

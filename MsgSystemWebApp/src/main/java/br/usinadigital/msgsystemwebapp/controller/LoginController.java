@@ -1,9 +1,13 @@
 package br.usinadigital.msgsystemwebapp.controller;
 
+import java.util.Locale;
+
 import br.usinadigital.msgsystemwebapp.util.Constants;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,6 +23,9 @@ public class LoginController {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
+	@Autowired
+	ApplicationContext appContext;
+	
 	@RequestMapping(value = "/" + Constants.GET_LOGIN, method = RequestMethod.GET)
 	public ModelAndView login(	@RequestParam(value = "error", required = false) String error, 
 								@RequestParam(value = "logout", required = false) String logout) {
@@ -26,10 +33,10 @@ public class LoginController {
 		logger.info("Start Request: " + Constants.GET_LOGIN);
 		ModelAndView model = new ModelAndView();
 		if (error != null) {
-			model.addObject("error", "Invalid username and password!");
+			model.addObject("error", appContext.getMessage("view.message.error.loginNotValid", null, Locale.getDefault()));
 		}
 		if (logout != null) {
-			model.addObject("msg", "You've been logged out successfully.");
+			model.addObject("msg", appContext.getMessage("view.message.info.logout", null, Locale.getDefault()));
 		}
 		model.setViewName(Constants.GET_LOGIN);
 		logger.info("Stop Request: " + Constants.GET_LOGIN);

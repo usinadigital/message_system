@@ -13,16 +13,16 @@
 					<h2><spring:message code="view.message.title" /></h2>
 				</div>
 				<form:form method="POST" action="message" commandName="message">
-				<div class="mydiv">
+				<div class="myForm">
 				<p>
-					<label class="mylabel"><spring:message code="view.message.label.message" /></label>
+					<label class="myLabel"><spring:message code="view.message.label.message" /></label>
 				</p>
 				<p>
 					<form:textarea path="text" rows="5" cols="30" />
 				</p>
 				<br>
 				<p>
-					<form:checkboxes element="div class='mycheckboxes' " path="categories" items="${categories}" itemLabel="name" itemValue="id" />
+					<form:checkboxes element="div class='myCheckboxes' " path="categories" items="${categories}" itemLabel="name" itemValue="id" />
 				</p>	
 				<br>
 				<input type="submit" class="button" value="<spring:message code="view.message.button.submit" />" />

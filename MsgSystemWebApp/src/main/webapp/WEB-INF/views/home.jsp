@@ -6,12 +6,7 @@
 
 <tiles:insertDefinition name="defaultTemplate">
 	<tiles:putAttribute name="content">
-		<div class="box">
-			<div class="box-head">
-				<h2>
-					<spring:message code="view.home.title" />
-				</h2>
-			</div>
+		<div>	
 		</div>
 	</tiles:putAttribute>
 </tiles:insertDefinition>

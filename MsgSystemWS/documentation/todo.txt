@@ -1,3 +1,3 @@
 TODO:
---- implement webservice autentication CASINO!
+--- implement webservice autentication
 xxx in caso di eccezione, devo agganciarle tutte, loggarle e se é un servizio ritornare un JSON di errore

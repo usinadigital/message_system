@@ -9,7 +9,7 @@
 	<sec:authorize access="isAuthenticated()">
 	<div id="top-navigation">
 		
-		Welcome
+		<spring:message code="view.header.welcome" />
 		<strong><sec:authentication property="name"/></strong>
 		<span>|</span>
 		<a href="javascript:formSubmit()">Logout</a>

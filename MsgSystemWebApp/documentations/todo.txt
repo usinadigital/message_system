@@ -7,21 +7,16 @@ xxx layout pagina di errore
 xxx layout login page
 xxx interface design
 xxx validazione campi sendmessage
---- c�� un warning sul file tiles e la localizzazione... tiles_en.xml
+--- Warning sul file tiles e la localizzazione... tiles_en.xml
 --- nella form non tiene memorizzate le categorie qunado la form da errore
 --- nella login se il DBMS é giú mi dice user pass errati. Dovrebbe dirmi db giú o fatal error
 xxx se apro il link senza home non mi mostra la login
 xxx quando clikko su logout in realta non mi slogga
 xxx implementare i messagi di errori/conferma come fa la interfaccia grafica?
 xxx quando clicco sul menu non mi fa l�active in automatico
---- sarebbe meglio se il ws ritorna errore generico e001 e io lo visualizzo tradotto
+--- sarebbe meglio se il ws ritorna errore generico e001 e io lo visualizzo in lingua
 --- tutte le scritte dell´interfaccia in portoghese
 xxx manca il bilingue
---- non mi mette in default il pt
---- quando i box sono piccoli l�header viene troppo su, non sta bene
-
-ONWORKING:
-xxx non va il css def in layout.jsp e utilizzato in menu.jsp e home.jsp
-xxx caricare il file di properties
-xxx ho messo un commento sui tiles nel dispatcher-context.xml
--
+xxx non mi mette in default il pt
+--- Il footer é molto in baaso
+--- da fare layout pagina di accesso non consentito: 403page.jsp

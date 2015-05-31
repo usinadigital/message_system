@@ -1917,12 +1917,12 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f09003d;
         public static final int action_mode_bar_stub=0x7f09003c;
         public static final int action_mode_close_button=0x7f090025;
-        public static final int action_settings=0x7f090051;
         public static final int activity_chooser_view_content=0x7f090026;
         public static final int alertTitle=0x7f090030;
         public static final int always=0x7f090019;
         public static final int beginning=0x7f090020;
         public static final int buttonPanel=0x7f090036;
+        public static final int category=0x7f090050;
         public static final int checkbox=0x7f090038;
         public static final int collapseActionView=0x7f09001a;
         public static final int contentPanel=0x7f090031;
@@ -1935,7 +1935,6 @@ containing a value of this type.
         public static final int dropdown=0x7f09001f;
         public static final int edit_query=0x7f090042;
         public static final int end=0x7f090021;
-        public static final int etResponse=0x7f090050;
         public static final int expand_activities_button=0x7f090027;
         public static final int expanded_menu=0x7f090037;
         public static final int home=0x7f090000;
@@ -1950,10 +1949,12 @@ containing a value of this type.
         public static final int never=0x7f09001c;
         public static final int none=0x7f09000f;
         public static final int normal=0x7f09000b;
+        public static final int output=0x7f09004f;
         public static final int parentPanel=0x7f09002d;
         public static final int progress_circular=0x7f090007;
         public static final int progress_horizontal=0x7f090008;
         public static final int radio=0x7f09003a;
+        public static final int save=0x7f090051;
         public static final int screen=0x7f090015;
         public static final int scrollView=0x7f090032;
         public static final int search_badge=0x7f090044;
@@ -1981,7 +1982,6 @@ containing a value of this type.
         public static final int title=0x7f09002c;
         public static final int title_template=0x7f09002f;
         public static final int topPanel=0x7f09002e;
-        public static final int tvIsConnected=0x7f09004f;
         public static final int up=0x7f090001;
         public static final int useLogo=0x7f090013;
         public static final int withText=0x7f09001d;
@@ -2042,14 +2042,15 @@ containing a value of this type.
         public static final int abc_search_view=0x7f030016;
         public static final int abc_select_dialog_material=0x7f030017;
         public static final int abc_simple_dropdown_hint=0x7f030018;
-        public static final int main=0x7f030019;
-        public static final int select_dialog_item_material=0x7f03001a;
-        public static final int select_dialog_multichoice_material=0x7f03001b;
-        public static final int select_dialog_singlechoice_material=0x7f03001c;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001d;
+        public static final int categories=0x7f030019;
+        public static final int main=0x7f03001a;
+        public static final int select_dialog_item_material=0x7f03001b;
+        public static final int select_dialog_multichoice_material=0x7f03001c;
+        public static final int select_dialog_singlechoice_material=0x7f03001d;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001e;
     }
     public static final class menu {
-        public static final int main=0x7f0c0000;
+        public static final int mymenu=0x7f0c0000;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 

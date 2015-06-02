@@ -1,0 +1,1 @@
+support V7 app compact: add the compatibility with android version under  v2.2. I can use the 

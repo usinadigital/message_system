@@ -10,5 +10,16 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Output : Click on button to get server data." />
+
+   <Button
+        android:paddingTop="10px"
+        android:id="@+id/cat"
+        android:text="ciao"
+        android:cursorVisible="true"
+        android:clickable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_gravity="center_horizontal"
+    /> 
     
 </LinearLayout>

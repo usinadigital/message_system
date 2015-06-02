@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MsgSystemAndroid</string>
+    
+    <string name="welcome">PTwelcome</string>
+    <string name="menu.optionMenu">PTMenu</string>
+    <string name="menu.categories">PTCategories</string>
+    <string name="menu.updates">PTUdpates</string>
+    
+    <string name="alertTitleDialog">PTAlert</string>
+    <string name="serviceNotAvailable">PTService not available</string>
+    
+    <string name="getAllCategoriesURL">http://192.168.0.3:8080/MsgSystemWS-0.0.1/rest/category/all</string>
+	<string name="getMessageURL">http://192.168.0.3:8080/MsgSystemWS-0.0.1/rest/category/all</string>
+</resources>

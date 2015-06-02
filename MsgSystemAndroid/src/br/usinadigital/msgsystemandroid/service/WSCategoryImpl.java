@@ -1,7 +1,6 @@
 package br.usinadigital.msgsystemandroid.service;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.InputStream;
 
 import org.apache.http.HttpEntity;
@@ -9,17 +8,16 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import br.usinadigital.msgsystemandroid.model.Category;
 import br.usinadigital.msgsystemandroid.util.Constants;
 
+@SuppressWarnings( "deprecation" )
 public abstract class WSCategoryImpl extends AsyncTask<String, Void, Void> implements WSCategory{
 
+	private String serviceURL;
+	
 	private String response;
 	
 	private String error = null;
@@ -28,10 +26,13 @@ public abstract class WSCategoryImpl extends AsyncTask<String, Void, Void> imple
 	
 	public abstract void onPostWSRequest();
 	
+	public WSCategoryImpl(String uri){
+		this.serviceURL = uri;
+	}
+	
 	public void getAllCategories(){
-		String serviceCategories = "http://192.168.0.3:8080/MsgSystemWS-0.0.1/rest/category/all";
-		Log.d(Constants.TAG,"Request service: " + serviceCategories);
-		execute(serviceCategories);
+		Log.d(Constants.TAG,"Request service: " + serviceURL);
+		execute(serviceURL);
 	}
 	
 	protected void onPreExecute() {
@@ -49,14 +50,14 @@ public abstract class WSCategoryImpl extends AsyncTask<String, Void, Void> imple
 	
 	protected Void doInBackground(String... urls) {
 
-		BufferedReader reader = null;
 		HttpClient httpClient = new DefaultHttpClient();
 		try {
+			
 			HttpGet httpGetRequest = new HttpGet(urls[0]);
 			HttpResponse httpResponse = httpClient.execute(httpGetRequest);
 			HttpEntity entity = httpResponse.getEntity();
 
-			byte[] buffer = new byte[8192];
+			byte[] buffer = new byte[4096];
 			if (entity != null) {
 				InputStream inputStream = entity.getContent();
 				try {
@@ -74,6 +75,7 @@ public abstract class WSCategoryImpl extends AsyncTask<String, Void, Void> imple
 					try {
 						inputStream.close();
 					} catch (Exception ignore) {
+						
 					}
 				}
 			}

@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">MsgSystemAndroid</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-
+    
+    <string name="welcome">welcome</string>
+    <string name="menu.optionMenu">Menu</string>
+    <string name="menu.categories">Categories</string>
+    <string name="menu.updates">Udpates</string>
+    
+    <string name="alertTitleDialog">Alert</string>
+    <string name="serviceNotAvailable">Service not available</string>
+    
+    <string name="getAllCategoriesURL">http://192.168.0.3:8080/MsgSystemWS-0.0.1/rest/category/all</string>
+	<string name="getMessageURL">http://192.168.0.3:8080/MsgSystemWS-0.0.1/rest/category/all</string>
 </resources>

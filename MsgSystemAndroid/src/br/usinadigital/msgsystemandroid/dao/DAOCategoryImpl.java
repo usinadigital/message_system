@@ -1,5 +1,6 @@
 package br.usinadigital.msgsystemandroid.dao;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import android.content.SharedPreferences;
@@ -9,17 +10,17 @@ import br.usinadigital.msgsystemandroid.util.Constants;
 
 public class DAOCategoryImpl implements DAOCategory{
 	
-	SharedPreferences prefName;
-	SharedPreferences prefCheck;
+	SharedPreferences categories;
+	SharedPreferences categoriesCheck;
 	
 	public DAOCategoryImpl(SharedPreferences prefName, SharedPreferences prefCheck) {
 		super();
-		this.prefName = prefName;
-		this.prefCheck = prefCheck;
+		this.categories = prefName;
+		this.categoriesCheck = prefCheck;
 	}
 
-	public void saveState(String id, boolean checked){
-		Editor edCheck = prefCheck.edit();
+	public void saveCheckById(String id, boolean checked){
+		Editor edCheck = categoriesCheck.edit();
 		if ( checked ){
 			edCheck.putString(id, Constants.CHECKED_STATE);
 		}else{
@@ -28,10 +29,54 @@ public class DAOCategoryImpl implements DAOCategory{
 		edCheck.commit();
 	}
 	
-	public void printData(){
-		Map<String, ?> allEntries = prefCheck.getAll();
-		for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
-		    Log.d(Constants.TAG, "prefCheck= " + entry.getKey() + ": " + entry.getValue().toString());
-		} 
+	public void deleteAllCategories(){
+		Editor editor =  categories.edit();
+		editor.clear();
+		editor.commit();
 	}
+	
+	public void saveCategories(Map<String,String> categoriesMap){
+		Editor editor =  categories.edit();
+		for (Map.Entry<String, ?> entry : categoriesMap.entrySet()) {
+			String key = String.valueOf(entry.getKey());
+			String name = entry.getValue().toString();
+			editor.putString(key, name);
+		}
+		editor.commit();
+	}
+	
+	public Map<String,String> loadAllCategories(){
+		Map<String,String> res = new HashMap<String,String>();
+		res = (Map<String,String>)categories.getAll();
+		
+		return res;
+	}
+	
+	public Map<String,String> loadAllCheck(){
+		Map<String,String> res = new HashMap<String,String>();
+		res = (Map<String,String>)categoriesCheck.getAll();
+		
+		return res;
+	}
+	
+	@Override
+	public String toString(){
+		StringBuilder str = new StringBuilder();
+		
+		Map<String, ?> allEntries = categories.getAll();
+		for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
+			String key = entry.getKey();
+			String name = entry.getValue().toString();
+			str.append("Category: ").append(key).append(", ")
+				.append(name).append(", checked=");
+			if (categoriesCheck.contains(key)){
+				str.append(Constants.CHECKED_STATE);
+			}else {
+				str.append(Constants.UNCHECKED_STATE);
+			}
+			str.append("\n");
+		}
+		return str.toString();
+	}
+	
 }

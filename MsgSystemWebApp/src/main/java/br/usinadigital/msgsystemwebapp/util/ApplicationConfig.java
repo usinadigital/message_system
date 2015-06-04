@@ -5,7 +5,7 @@ public class ApplicationConfig {
 
 	private String wsURL;
 	private String wsGetAllCategories;
-	private String wsSendMessageByCategories;
+	private String wsSaveMessage;
 	
 	public String getWsURL() {
 		return wsURL;
@@ -19,11 +19,11 @@ public class ApplicationConfig {
 	public void setWsGetAllCategories(String wsGetAllCategories) {
 		this.wsGetAllCategories = wsGetAllCategories;
 	}
-	public String getWsSendMessageByCategories() {
-		return wsSendMessageByCategories;
+	public String getWsSaveMessage() {
+		return wsSaveMessage;
 	}
-	public void setWsSendMessageByCategories(String wsSendMessageByCategories) {
-		this.wsSendMessageByCategories = wsSendMessageByCategories;
+	public void setWsSaveMessage(String wsSaveMessage) {
+		this.wsSaveMessage = wsSaveMessage;
 	}
 	
 }

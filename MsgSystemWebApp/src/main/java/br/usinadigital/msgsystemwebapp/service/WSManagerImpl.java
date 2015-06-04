@@ -17,7 +17,7 @@ public class WSManagerImpl implements WSManager {
 	private ApplicationConfig applicationConfig;
 	
 	public void save(Message message) {
-		String service = applicationConfig.getWsURL() + applicationConfig.getWsSendMessageByCategories();
+		String service = applicationConfig.getWsURL() + applicationConfig.getWsSaveMessage();
 		logger.info("Start Service " + service);
 		RestTemplate restTemplate = new RestTemplate();
         Message response = restTemplate.postForObject(service, message, Message.class);

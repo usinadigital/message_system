@@ -21,3 +21,4 @@ xxx non mi mette in default il pt
 --- Il footer é molto in baaso
 --- da fare layout pagina di accesso non consentito: 403page.jsp
 --- autenticazione con chiave criptata e/o https
+--- controllo lunghezza campi della form messages

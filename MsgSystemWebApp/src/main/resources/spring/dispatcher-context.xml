@@ -54,7 +54,7 @@
 	<bean id="ApplicationConfig" class="br.usinadigital.msgsystemwebapp.util.ApplicationConfig">
 		<property name="wsURL" value="${webservice.url}" />
 		<property name="wsGetAllCategories" value="${webservice.getAllCategories}" />
-		<property name="wsSendMessageByCategories" value="${webservice.sendMessageByCategories}" />
+		<property name="wsSaveMessage" value="${webservice.saveMessage}" />
 	</bean>
 	
 	<bean id="wsManager" class="br.usinadigital.msgsystemwebapp.service.WSManagerImpl">

@@ -4,7 +4,6 @@ public class Constants {
 
 	public static final String GET_HOME = "home";
 	public static final String GET_MESSAGE = "message";
-	public static final String SEND_MESSAGE = "sendMessage";
 	public static final String GET_ADMINISTRATION = "administration";
 	public static final String GET_403PAGE = "403page";
 	public static final String GENERIC_ERROR_PAGE = "errors/genericErrorPage";

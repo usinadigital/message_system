@@ -18,6 +18,13 @@
 					<label class="myLabel"><spring:message code="view.message.label.message" /></label>
 				</p>
 				<p>
+					<form:input path="title" />
+				</p>
+				<br>
+				<p>
+					<label class="myLabel"><spring:message code="view.message.label.message" /></label>
+				</p>
+				<p>
 					<form:textarea path="text" rows="5" cols="30" />
 				</p>
 				<br>

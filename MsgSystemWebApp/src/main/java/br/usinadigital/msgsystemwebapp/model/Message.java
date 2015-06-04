@@ -8,21 +8,18 @@ import org.apache.commons.lang.builder.ToStringStyle;
 
 public class Message {
 
+	private String title;
+	
 	private String text;
 	
 	private Set<Category> categories = new HashSet<Category>(0);
 
-	public Message() {
-
+	public String getTitle() {
+		return title;
 	}
 
-	public Message(String text) {
-		this.text = text;
-	}
-	
-	public Message(String text, Set<Category> categories) {
-		this.text = text;
-		this.categories = categories;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getText() {

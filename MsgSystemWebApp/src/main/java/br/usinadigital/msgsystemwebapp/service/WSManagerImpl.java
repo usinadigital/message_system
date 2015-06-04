@@ -16,15 +16,12 @@ public class WSManagerImpl implements WSManager {
 	@Autowired
 	private ApplicationConfig applicationConfig;
 	
-	public void save(Message message){
-	}
-	
-	public void sendMessageByCategories(Message message) {
+	public void save(Message message) {
 		String service = applicationConfig.getWsURL() + applicationConfig.getWsSendMessageByCategories();
 		logger.info("Start Service " + service);
 		RestTemplate restTemplate = new RestTemplate();
         Message response = restTemplate.postForObject(service, message, Message.class);
-        //TODO devo controllare se é un json di errore e gestire l´errore
+        // gestione del json di errore
         logger.info("End Service: " + service);
 	}
 

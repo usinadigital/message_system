@@ -11,5 +11,5 @@ public class Constants {
 	public static final String GET_LOGIN = "login";
 	public static final String GET_LOGOUT = "logout";
 	
-	public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+	public static final String DATE_FORMAT = "dd-MM-yyyy HH:mm:ss";
 }

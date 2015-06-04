@@ -21,7 +21,8 @@ public class WSManagerTest {
         cats.add(cat2);
         cats.add(cat3);
         msg.setCategories(cats);
-		msg.setText("pippotesto");
+        msg.setTitle("Titolo");
+		msg.setText("testo");
 	}
 	public static void main(String[] args) throws ParseException {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/dispatcher-context.xml");
@@ -29,7 +30,7 @@ public class WSManagerTest {
         
 		Message msg = new Message();
 		messageBuilder(msg);
-		manager.sendMessageByCategories(msg);
+		manager.save(msg);
 		context.close();
 	}
 }

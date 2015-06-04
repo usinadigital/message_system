@@ -50,7 +50,7 @@ public class MessageController {
 		logger.info("Start POST Request: " + Constants.GET_MESSAGE);
 		if (hasErrors(model, message)) {
 			logger.info("Fields validated with errors");
-			// TODO doesn�t keep memorized the categories selected
+			// TODO doesn t keep memorized the categories selected
 			moveNameToId(message);
 			model.addAttribute("categories", categories);
 			logger.info("Stop POST Request: " + Constants.GET_MESSAGE);
@@ -58,7 +58,7 @@ public class MessageController {
 		} else {
 			logger.info("Fields validated with success");
 			moveNameToId(message);
-			wsManager.sendMessageByCategories(message);
+			wsManager.save(message);
 			
 			logger.info("Stop POST Request: " + Constants.GET_MESSAGE);
 			return "messageResult";

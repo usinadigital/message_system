@@ -10,5 +10,8 @@ public class Constants {
 	public static final String GET_LOGIN = "login";
 	public static final String GET_LOGOUT = "logout";
 	
+	public static final int FIELD_TITLE_MAX_LENGTH = 100;
+	public static final int FIELD_TEXT_MAX_LENGTH = 500;
+	
 	public static final String DATE_FORMAT = "dd-MM-yyyy HH:mm:ss";
 }

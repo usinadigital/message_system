@@ -10,10 +10,10 @@
 </div>
 </c:if>
 
-<c:if test="${not empty messageERROR}">
+<c:if test="${not empty messageERROR1}">
 <div class="msg msg-error">
 	<p>
-		<strong>${messageERROR}</strong>
+		<strong>${messageERROR1}</strong>
 	</p>
 </div>
 </c:if>
@@ -22,6 +22,14 @@
 <div class="msg msg-error">
 	<p>
 		<strong>${messageERROR2}</strong>
+	</p>
+</div>
+</c:if>
+
+<c:if test="${not empty messageERROR3}">
+<div class="msg msg-error">
+	<p>
+		<strong>${messageERROR3}</strong>
 	</p>
 </div>
 </c:if>

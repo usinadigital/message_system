@@ -65,22 +65,6 @@ public class MessageController {
 		}
 	}
 
-	/*
-	 * private void printTodo(Model model){
-	 * printMessage("Model.Message=",(Message)model.asMap().get("message"));
-	 * logger.debug("Model.cats="+model.asMap().get("cats"));
-	 * logger.debug("Model.categories="+model.asMap().get("categories")); }
-	 * 
-	 * private void printMessage(String str,Message message){ logger.debug(str);
-	 * logger.debug("Message.Text="+message.getText()); if (
-	 * message.getCategories() != null && message.getCategories().size() != 0){
-	 * for(Category item : message.getCategories()){
-	 * logger.debug("Message.Categories.Category["+item+"]"); } } else { if (
-	 * message.getCategories() == null){
-	 * logger.debug("Message.Categories.Size = NULL"); }else{
-	 * logger.debug("Message.Categories = 0"); } } }
-	 */
-
 	private void initValues(Model model) {
 		for (Category item : categories) {
 			categoriesMap.put(item.getId(), item.getName());
@@ -88,7 +72,9 @@ public class MessageController {
 		message = new Message();
 		message.getCategories().add(new Category(10, "catname1"));
 		model.addAttribute("categories", categories);
+		model.addAttribute("title", message);
 		model.addAttribute("message", message);
+		model.addAttribute("titleError", "");
 		model.addAttribute("textError", "");
 		model.addAttribute("categoriesError", "");
 	}
@@ -96,12 +82,16 @@ public class MessageController {
 	private boolean hasErrors(Model model, Message message) {
 		boolean error = false;
 
-		if (message.getText().length() == 0) {
-			model.addAttribute("messageERROR", appContext.getMessage("view.message.error.textNotEmpty", null, Locale.getDefault()));
+		if (message.getTitle().length() == 0 || message.getTitle().length() > Constants.FIELD_TITLE_MAX_LENGTH) {
+			model.addAttribute("messageERROR1", appContext.getMessage("view.message.error.title", null, Locale.getDefault()));
+			error = true;
+		}
+		if (message.getText().length() == 0 || message.getText().length() > Constants.FIELD_TEXT_MAX_LENGTH) {
+			model.addAttribute("messageERROR2", appContext.getMessage("view.message.error.text", null, Locale.getDefault()));
 			error = true;
 		}
 		if (message.getCategories() == null) {
-			model.addAttribute("messageERROR2", appContext.getMessage("view.message.error.atLeastOneCategory", null, Locale.getDefault()));
+			model.addAttribute("messageERROR3", appContext.getMessage("view.message.error.atLeastOneCategory", null, Locale.getDefault()));
 			error = true;
 		}
 

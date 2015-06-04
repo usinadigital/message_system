@@ -18,7 +18,7 @@
 					<label class="myLabel"><spring:message code="view.message.label.message" /></label>
 				</p>
 				<p>
-					<form:input path="title" />
+					<form:input path="title" autocomplete="off"/>
 				</p>
 				<br>
 				<p>

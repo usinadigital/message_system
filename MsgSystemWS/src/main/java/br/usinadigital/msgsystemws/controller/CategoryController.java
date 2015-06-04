@@ -27,13 +27,10 @@ public class CategoryController {
 	public @ResponseBody Category getTestCategorie() {
 		
 		logger.info("Start request: " + Constants.GET_TEST_CATEGORY);
-		
-		int ris = 100 / 0;
-		
 		Category cat = new Category();
 		cat.setId(0);
-		cat.setName("test_name");
-		cat.setDescription("test_desc");
+		cat.setName("this is th name");
+		cat.setDescription("this is a long description");
 		cat.setValid(0);
 		cat.setLastupdate(new Date());
 		logger.info("End request: " + Constants.GET_TEST_CATEGORY);
@@ -46,15 +43,10 @@ public class CategoryController {
 		
 		logger.info("Start request: " + Constants.GET_ALL_CATEGORY);
 		List<Category> list = categoryDAO.getAll();
-
-		for (Category c : list) {
-			logger.info("Category List::" + c);
-			if ( c.getMessages().size() != 0){
-				logger.info("Category with messages");
-			}
-		}
+		for (Category c : list) logger.info("Categories Requested: " + c);
 		logger.info("End request: " + Constants.GET_ALL_CATEGORY);
 		
 		return list;
 	}
+	
 }

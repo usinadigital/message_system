@@ -8,12 +8,10 @@ import br.usinadigital.msgsystemws.model.Message;
 
 public interface MessageDAO {
 	
-	// Maybe not necessary
-	public void save(Message msg);
-	
-	public void send(Message msg);
+	// return the number of categories saved
+	public int save(Message msg);
     
     public List<Message> getAll();
     
-    public List<Message> getMessagesFromDateByCategories(Date fromDate, List<Category> categories);
+    public List<Message> getMessagesFromDateByCategories(Date fromDate, int[] categoriesId);
 }

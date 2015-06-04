@@ -20,51 +20,42 @@ public class JdbcSpringTest {
 
 	private static final Logger logger = LoggerFactory.getLogger(JdbcSpringTest.class);
 
-	public static void prova()throws ParseException {
+	public static void getMessagesFromDateByCategoriesTest() throws ParseException {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/application-config.xml");
-        MessageDAO messageDAO = context.getBean(MessageDAO.class);
-        
-        Category cat1 = new Category(10);
-        Category cat2 = new Category(11);
-        Category cat3 = new Category(12);
-        List<Category> cats = new ArrayList<Category>();
-        cats.add(cat1);
-        cats.add(cat2);
-        cats.add(cat3);
-        
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date data = sdf.parse("01/05/2015");
-        List<Message> msgs = messageDAO.getMessagesFromDateByCategories(data, cats);
-//      List<Message> msgs = messageDAO.list();
-        for (Message msg : msgs) {
-        	logger.info(msg.toString());
-//        	if ( msg.getCategories().size() != 0){
-//				logger.info("************* Message with categories");
-//			}
-        }
-        context.close();
-        
+		MessageDAO messageDAO = context.getBean(MessageDAO.class);
+		int[] cats = new int[] { 10, 11, 12 };
+
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date data = sdf.parse("03/06/2015 15:50:00");
+		List<Message> msgs = messageDAO.getMessagesFromDateByCategories(data, cats);
+
+		for (Message msg : msgs) {
+			logger.info(msg.toString());
+		}
+		context.close();
+
 		logger.info("Done");
 	}
-	
-	public static void updateTest(){
+
+	public static void saveTest() {
 		Message msg = new Message();
+		msg.setTitle("titolo");
+		msg.setText("testo");
 		Category cat1 = new Category(10);
-        Category cat2 = new Category(11);
-        Category cat3 = new Category(12);
-        Set<Category> cats = new HashSet<Category>();
-        cats.add(cat1);
-        cats.add(cat2);
-        cats.add(cat3);
-        msg.setCategories(cats);
-		msg.setText("pippotesto");
+		Category cat2 = new Category(11);
+		Category cat3 = new Category(12);
+		Set<Category> cats = new HashSet<Category>();
+		cats.add(cat1);
+		cats.add(cat2);
+		cats.add(cat3);
+		msg.setCategories(cats);
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/application-config.xml");
-        MessageDAO messageDAO = context.getBean(MessageDAO.class);
-        messageDAO.save(msg);
-        context.close();
+		MessageDAO messageDAO = context.getBean(MessageDAO.class);
+		messageDAO.save(msg);
+		context.close();
 	}
-	
+
 	public static void main(String[] args) throws ParseException {
-		updateTest();
+		getMessagesFromDateByCategoriesTest();
 	}
 }

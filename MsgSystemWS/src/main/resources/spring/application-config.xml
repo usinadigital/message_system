@@ -27,7 +27,4 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<bean id="messageGCM" class="br.usinadigital.msgsystemws.service.MessageGCMImpl">
-	</bean>
-	
 </beans>

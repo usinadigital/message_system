@@ -16,8 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.usinadigital.msgsystemws.model.Category;
 import br.usinadigital.msgsystemws.model.Message;
-import br.usinadigital.msgsystemws.model.MessageRowMapper;
-import br.usinadigital.msgsystemws.util.Constants;
+import br.usinadigital.msgsystemws.util.MessageRowMapper;
+import br.usinadigital.msgsystemws.util.Util;
 
 public class MessageDAOImpl implements MessageDAO {
 
@@ -31,17 +31,17 @@ public class MessageDAOImpl implements MessageDAO {
 	}
 
 	@Transactional
-	public void save(Message msg) {
+	public int save(Message msg) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
-		String query = "INSERT INTO messages(text) VALUES (?)";
+		String query = "INSERT INTO messages(title,text) VALUES (?,?)";
 		logger.debug("Execute query: " + query);
-		jdbcTemplate.update(query, new Object[] { msg.getText() });
+		jdbcTemplate.update(query, new Object[] { msg.getTitle(), msg.getText() });
 		Integer idInsertedMessage = jdbcTemplate.queryForObject("SELECT LAST_INSERT_ID()", Integer.class);
 		logger.debug("ID value inserted=" + idInsertedMessage);
-		categoriesBatchUpdate(idInsertedMessage, new ArrayList<Category>(msg.getCategories()));
+		return categoriesBatchUpdate(idInsertedMessage, new ArrayList<Category>(msg.getCategories()));
 	}
 
-	public int[] categoriesBatchUpdate(final int idMessage, final List<Category> categories) {
+	private int categoriesBatchUpdate(final int idMessage, final List<Category> categories) {
 		String sql = "INSERT INTO messages_categories(message_id,category_id) VALUES (?,?)";
 		logger.debug("Execute batch insert: " + sql);
 		int[] updateCnt = jdbcTemplate.batchUpdate(sql, new BatchPreparedStatementSetter() {
@@ -57,30 +57,33 @@ public class MessageDAOImpl implements MessageDAO {
 				return categories.size();
 			}
 		});
-		return updateCnt;
-	}
-
-	public void send(Message msg) {
-		save(msg);
-		// TODO get all users subscribed at the categories of the message to
-		// send and send the messages to the users
+		
+		return Util.sumIntArray(updateCnt);
 	}
 
 	public List<Message> getAll() {
 		jdbcTemplate = new JdbcTemplate(dataSource);
-		String sql = "SELECT * FROM " + Constants.TABLE_MESSAGE;
+		String sql = "SELECT * FROM messages";
 		List<Message> messageList = jdbcTemplate.query(sql, new MessageRowMapper());
 
 		return messageList;
 	}
 
-	public List<Message> getMessagesFromDateByCategories(Date fromDate, List<Category> categories) {
+	public List<Message> getMessagesFromDateByCategories(Date fromDate, int[] categoriesId) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
-		String sql = "SELECT * FROM " + Constants.TABLE_MESSAGE;
-		sql += " INNER JOIN " + Constants.TABLE_CATEGORY;
-		sql += " ON messages.id = categories.id WHERE creationdate >= ?";
-		List<Message> messageList = jdbcTemplate.query(sql, new Object[] { fromDate }, new MessageRowMapper());
+		
+		String sql0 = String.format("select id FROM categories WHERE categories.id IN (%s)",Util.intArrayToString(categoriesId));
+		StringBuffer sql = new StringBuffer();
+		sql.append("SELECT message_id, title, text, creationdate, lastupdate ");
+		sql.append("FROM messages_categories ");
+		sql.append("INNER JOIN messages ON message_id = messages.id ");
+		sql.append("INNER JOIN (" ).append(sql0).append( ") AS categories ON category_id = categories.id ");
+		sql.append("WHERE messages.creationdate >= ? ");
+		sql.append("GROUP BY message_id ORDER BY creationdate ");
+		
+		List<Message> messageList = jdbcTemplate.query(sql.toString(), new Object[] { fromDate }, new MessageRowMapper());
 
 		return messageList;
 	}
+
 }

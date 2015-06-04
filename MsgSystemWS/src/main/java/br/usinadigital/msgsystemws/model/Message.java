@@ -14,6 +14,8 @@ public class Message {
 
 	private int id;
 	
+	private String title;
+	
 	private String text;
 	
 	// get the messages of the last 7 days
@@ -24,25 +26,20 @@ public class Message {
 	
 	private Set<Category> categories = new HashSet<Category>(0);
 
-	public Message() {
-
-	}
-
-	public Message(String text) {
-		this.text = text;
-	}
-	
-	public Message(String text, Set<Category> categories) {
-		this.text = text;
-		this.categories = categories;
-	}
-
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getText() {

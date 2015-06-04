@@ -10,7 +10,7 @@ public class Constants {
 	public static final String GET_MESSAGE_FROM_DATE_BY_CATEGORIES = "/rest/message/getFromDateByCategories";
 	public static final String SAVE_MESSAGE = "/rest/message/save";
 	
-	public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+	public static final String DATE_FORMAT = "dd-MM-yyyy HH:mm:ss";
 	
 	public static final String GENERIC_SERVICE_ERROR = "E000";
 	public static final int HTTP_INTERNAL_SERVER_ERROR = 500;

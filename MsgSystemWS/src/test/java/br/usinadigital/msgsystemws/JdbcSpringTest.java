@@ -15,6 +15,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import br.usinadigital.msgsystemws.dao.MessageDAO;
 import br.usinadigital.msgsystemws.model.Category;
 import br.usinadigital.msgsystemws.model.Message;
+import br.usinadigital.msgsystemws.util.Utils;
 
 public class JdbcSpringTest {
 
@@ -25,8 +26,7 @@ public class JdbcSpringTest {
 		MessageDAO messageDAO = context.getBean(MessageDAO.class);
 		int[] cats = new int[] { 10, 11, 12 };
 
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		Date data = sdf.parse("03/06/2015 15:50:00");
+		Date data = Utils.fromStringToDate("03-06-2015 15:50:00");
 		List<Message> msgs = messageDAO.getMessagesFromDateByCategories(data, cats);
 
 		for (Message msg : msgs) {

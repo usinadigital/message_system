@@ -8,7 +8,6 @@ import br.usinadigital.msgsystemws.model.Message;
 
 public interface MessageDAO {
 	
-	// return the number of categories saved
 	public int save(Message msg);
     
     public List<Message> getAll();

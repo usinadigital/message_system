@@ -18,7 +18,7 @@ public class Message {
 	
 	private String text;
 	
-	// get the messages of the last 7 days
+	@JsonSerialize(using = CustomDateSerializer.class)
 	private Date creationdate;
 	
 	@JsonSerialize(using = CustomDateSerializer.class)

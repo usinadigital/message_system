@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.usinadigital.msgsystemws.model.Category;
 import br.usinadigital.msgsystemws.model.Message;
 import br.usinadigital.msgsystemws.util.MessageRowMapper;
-import br.usinadigital.msgsystemws.util.Util;
+import br.usinadigital.msgsystemws.util.Utils;
 
 public class MessageDAOImpl implements MessageDAO {
 
@@ -35,10 +35,11 @@ public class MessageDAOImpl implements MessageDAO {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 		String query = "INSERT INTO messages(title,text) VALUES (?,?)";
 		logger.debug("Execute query: " + query);
-		jdbcTemplate.update(query, new Object[] { msg.getTitle(), msg.getText() });
+		int n = jdbcTemplate.update(query, new Object[] { msg.getTitle(), msg.getText() });
 		Integer idInsertedMessage = jdbcTemplate.queryForObject("SELECT LAST_INSERT_ID()", Integer.class);
 		logger.debug("ID value inserted=" + idInsertedMessage);
-		return categoriesBatchUpdate(idInsertedMessage, new ArrayList<Category>(msg.getCategories()));
+		categoriesBatchUpdate(idInsertedMessage, new ArrayList<Category>(msg.getCategories()));
+		return n;
 	}
 
 	private int categoriesBatchUpdate(final int idMessage, final List<Category> categories) {
@@ -58,7 +59,7 @@ public class MessageDAOImpl implements MessageDAO {
 			}
 		});
 		
-		return Util.sumIntArray(updateCnt);
+		return Utils.sumIntArray(updateCnt);
 	}
 
 	public List<Message> getAll() {
@@ -72,7 +73,7 @@ public class MessageDAOImpl implements MessageDAO {
 	public List<Message> getMessagesFromDateByCategories(Date fromDate, int[] categoriesId) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 		
-		String sql0 = String.format("select id FROM categories WHERE categories.id IN (%s)",Util.intArrayToString(categoriesId));
+		String sql0 = String.format("select id FROM categories WHERE categories.id IN (%s)",Utils.intArrayToString(categoriesId));
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT message_id, title, text, creationdate, lastupdate ");
 		sql.append("FROM messages_categories ");

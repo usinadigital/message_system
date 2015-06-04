@@ -54,6 +54,7 @@ public class MessageController {
 		logger.info("Start request: " + Constants.SAVE_MESSAGE);
 		logger.info("Message to send: " + message);
 		int savedCategories = messageDAO.save(message);
+		logger.info("Saved categories: " + savedCategories);
 		logger.info("Stop request: " + Constants.SAVE_MESSAGE);
 		
 		return null;

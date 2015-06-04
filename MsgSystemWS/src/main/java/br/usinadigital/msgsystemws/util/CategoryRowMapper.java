@@ -15,7 +15,7 @@ public class CategoryRowMapper implements RowMapper<Category>
 		Category.setName(rs.getString("name"));
 		Category.setDescription(rs.getString("description"));
 		Category.setValid(rs.getInt("valid"));
-		Category.setLastupdate(rs.getDate("lastupdate"));
+		Category.setLastupdate(rs.getTimestamp("lastupdate"));
 		return Category;
 	}
 }

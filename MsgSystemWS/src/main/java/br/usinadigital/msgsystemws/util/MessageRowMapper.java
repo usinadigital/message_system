@@ -13,8 +13,8 @@ public class MessageRowMapper implements RowMapper<Message>
 		Message message = new Message();
 		message.setTitle(rs.getString("title"));
 		message.setText(rs.getString("text"));
-		message.setCreationdate(rs.getDate("creationdate"));
-		message.setLastupdate(rs.getDate("lastupdate"));
+		message.setCreationdate(rs.getTimestamp("creationdate"));
+		message.setLastupdate(rs.getTimestamp("lastupdate"));
 		message.setCategories(null);
 		return message;
 	}

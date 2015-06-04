@@ -3,9 +3,17 @@
     <string name="app_name">MsgSystemAndroid</string>
     
     <string name="welcome">welcome</string>
+    
     <string name="menu.optionMenu">Menu</string>
-    <string name="menu.categories">Categories</string>
-    <string name="menu.updates">Udpates</string>
+    <string name="menu.configurations">Configurations</string>
+    <string name="menu.messages">Messages</string>
+    
+    <string name="categories.update">Udpate Categories</string>
+    <string name="messages.update">Udpate Messages</string>
+    
+    <string name="configurations.categories">Categories List</string>
+    <string name="configurations.history">Hystory</string>
+    <string name="configurations.frequency">Which frequency</string>
     
     <string name="alertTitleDialog">Alert</string>
     <string name="serviceNotAvailable">Service not available</string>

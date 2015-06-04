@@ -2,10 +2,18 @@
 <resources>
     <string name="app_name">MsgSystemAndroid</string>
     
-    <string name="welcome">PTwelcome</string>
+    <string name="welcome">Bem-vindo</string>
+    
     <string name="menu.optionMenu">PTMenu</string>
-    <string name="menu.categories">PTCategories</string>
-    <string name="menu.updates">PTUdpates</string>
+    <string name="menu.configurations">PTConfigurations</string>
+    <string name="menu.messages">PTMessages</string>
+    
+    <string name="categories.update">PTUdpate Categories</string>
+    <string name="messages.update">PTUdpate Messages</string>
+    
+    <string name="configurations.categories">PTCategories List</string>
+    <string name="configurations.history">PTHystory</string>
+    <string name="configurations.frequency">PTWhich frequency</string>
     
     <string name="alertTitleDialog">PTAlert</string>
     <string name="serviceNotAvailable">PTService not available</string>

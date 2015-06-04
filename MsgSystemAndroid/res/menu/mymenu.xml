@@ -5,11 +5,11 @@
     <item
         android:id="@+id/categories"
         android:icon="@drawable/ic_launcher"
-        android:title="@string/menu.categories"/>
+        android:title="@string/menu.messages"/>
     <item
         android:id="@+id/updates"
         android:icon="@drawable/ic_launcher"
-        android:title="@string/menu.updates"/>
+        android:title="@string/menu.configurations"/>
 
     
 </menu>

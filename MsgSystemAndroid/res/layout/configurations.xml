@@ -4,21 +4,32 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
  
-   <Button
+    <Button
         android:paddingTop="10px"
-        android:id="@+id/menu.messages"
-        android:text="ciao"
+        android:id="@+id/cat"
+        android:text="@string/configurations.categories"
         android:cursorVisible="true"
         android:clickable="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" 
         android:layout_gravity="center_horizontal"
-    /> 
+    />
     
+    <Button
+        android:paddingTop="10px"
+        android:id="@+id/cat"
+        android:text="@string/configurations.history"
+        android:cursorVisible="true"
+        android:clickable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_gravity="center_horizontal"
+    />
+   
    <Button
         android:paddingTop="10px"
-        android:id="@+id/menu.configurations"
-        android:text="ciao"
+        android:id="@+id/cat"
+        android:text="@string/configurations.frequency"
         android:cursorVisible="true"
         android:clickable="true"
         android:layout_width="wrap_content"

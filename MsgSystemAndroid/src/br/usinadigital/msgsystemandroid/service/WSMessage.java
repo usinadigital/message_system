@@ -1,6 +1,8 @@
 package br.usinadigital.msgsystemandroid.service;
 
+import java.util.Date;
+
 public interface WSMessage {
 
-	public void getMessagesFromDate();
+	public void getMessagesFromDateByCategories(Date fromDate, int[] categoriesId);
 }

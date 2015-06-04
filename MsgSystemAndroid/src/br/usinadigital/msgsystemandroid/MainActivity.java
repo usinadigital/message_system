@@ -25,10 +25,7 @@ public class MainActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		uiOutput = (TextView) findViewById(R.id.output);
-		uiOutput.setText(getString(R.string.welcome));
-		
-		
+				
 		final Button cat = (Button) findViewById(R.id.cat);
 		cat.setOnClickListener(new OnClickListener() {
 			@Override

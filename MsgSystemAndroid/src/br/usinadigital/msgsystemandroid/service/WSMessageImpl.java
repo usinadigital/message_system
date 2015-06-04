@@ -1,24 +1,36 @@
 package br.usinadigital.msgsystemandroid.service;
 
-import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Date;
 
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicHeader;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.protocol.HTTP;
 
 import android.os.AsyncTask;
 import android.util.Log;
 import br.usinadigital.msgsystemandroid.util.Constants;
+import br.usinadigital.msgsystemandroid.util.JsonUtils;
 
 @SuppressWarnings("deprecation")
 public abstract class WSMessageImpl extends AsyncTask<String, Void, Void> implements WSMessage {
 
 	private String serviceURL;
-
-	private String response;
+	
+	private Date fromDate;
+	
+	int[] categoriesId;
+	
+	private String response = null;
 
 	private String error = null;
 
@@ -30,8 +42,10 @@ public abstract class WSMessageImpl extends AsyncTask<String, Void, Void> implem
 		this.serviceURL = uri;
 	}
 
-	public void getAllCategories() {
+	public void getMessagesFromDateByCategories(Date fromDate, int[] categoriesId) {
 		Log.d(Constants.TAG, "Request service: " + serviceURL);
+		this.fromDate = fromDate;
+		this.categoriesId = categoriesId;
 		execute(serviceURL);
 	}
 
@@ -40,39 +54,47 @@ public abstract class WSMessageImpl extends AsyncTask<String, Void, Void> implem
 	}
 
 	protected void onPostExecute(Void unused) {
-		if (error == null) {
-
-		} else {
-
-		}
 		onPostWSRequest();
 	}
 
 	protected Void doInBackground(String... urls) {
 
-		HttpClient httpClient = new DefaultHttpClient();
+		HttpParams myParams = new BasicHttpParams();
+		HttpConnectionParams.setConnectionTimeout(myParams, Constants.HTTP_TIMEOUT_MILLISEC); //Timeout Limit
+        HttpConnectionParams.setSoTimeout(myParams, Constants.HTTP_TIMEOUT_MILLISEC);
+        HttpClient httpclient = new DefaultHttpClient(myParams);
+        HttpResponse httpresponse;
+        
 		try {
+			String jsonParam = JsonUtils.createJsonWSRequest(fromDate, categoriesId);
+			Log.d(Constants.TAG, "Request param: " + jsonParam);
+			
+			HttpPost httppost = new HttpPost(urls[0]);
+			httppost.setHeader("Content-type", "application/json");
+			
+            StringEntity entity = new StringEntity(jsonParam);  
+            entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+            httppost.setEntity(entity);
+            
+            httpresponse = httpclient.execute(httppost);
 
-			HttpGet httpGetRequest = new HttpGet(urls[0]);
-			HttpResponse httpResponse = httpClient.execute(httpGetRequest);
-			HttpEntity entity = httpResponse.getEntity();
-
-			byte[] buffer = new byte[4096];
 			if (entity != null) {
-				InputStream inputStream = entity.getContent();
+				InputStream is = httpresponse.getEntity().getContent();
 				try {
-					int bytesRead = 0;
-					BufferedInputStream bis = new BufferedInputStream(inputStream);
-					while ((bytesRead = bis.read(buffer)) != -1) {
-						response = new String(buffer, 0, bytesRead);
-					}
+					StringBuilder sb = new StringBuilder();
+					BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+	                String line = null;
+	                while((line = reader.readLine()) != null){
+	                   sb.append(line);
+	                }	
+	                response = sb.toString();
 				} catch (Exception e) {
 					Log.e(Constants.TAG, e.toString());
 					e.printStackTrace();
 					error = e.getMessage();
 				} finally {
 					try {
-						inputStream.close();
+						is.close();
 					} catch (Exception ignore) {
 
 					}
@@ -83,7 +105,7 @@ public abstract class WSMessageImpl extends AsyncTask<String, Void, Void> implem
 			e.printStackTrace();
 			error = e.getMessage();
 		} finally {
-			httpClient.getConnectionManager().shutdown();
+			httpclient.getConnectionManager().shutdown();
 		}
 		return null;
 	}

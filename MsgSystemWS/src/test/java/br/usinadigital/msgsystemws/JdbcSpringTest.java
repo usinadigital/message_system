@@ -24,7 +24,7 @@ public class JdbcSpringTest {
 	public static void getMessagesFromDateByCategoriesTest() throws ParseException {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/application-config.xml");
 		MessageDAO messageDAO = context.getBean(MessageDAO.class);
-		int[] cats = new int[] { 10, 11, 12 };
+		int[] cats = new int[] { 12};
 
 		Date data = Utils.fromStringToDate("01-01-2015 15:50:00");
 		List<Message> msgs = messageDAO.getMessagesFromDateByCategories(data, cats);

@@ -73,7 +73,10 @@ public class MessageDAOImpl implements MessageDAO {
 	public List<Message> getMessagesFromDateByCategories(Date fromDate, int[] categoriesId) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 		
-		String sql0 = String.format("select id FROM categories WHERE categories.id IN (%s)",Utils.intArrayToString(categoriesId));
+		String arrayStr = "-1";
+		if (categoriesId.length != 0) arrayStr = Utils.intArrayToString(categoriesId);
+		
+		String sql0 = String.format("select id FROM categories WHERE categories.id IN (%s)", arrayStr);
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT messages.id AS id, title, text, creationdate, lastupdate ");
 		sql.append("FROM messages_categories ");

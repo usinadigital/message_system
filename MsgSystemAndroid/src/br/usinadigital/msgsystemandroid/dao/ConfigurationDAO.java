@@ -4,6 +4,10 @@ import java.util.Date;
 
 public interface ConfigurationDAO {
 
+	public boolean isFirstApplicationExecution();
+	
+	public void unsetFirstApplicationExecution();
+	
 	public Date getCategoriesLastUpdate();
 	
 	public void setCategoriesLastUpdate(Date date);

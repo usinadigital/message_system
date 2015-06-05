@@ -62,4 +62,15 @@ public class ConfigurationDAOImpl implements ConfigurationDAO{
 		editor.putInt(Constants.CONFIGURATION_FREQUENCY, freq);
 		editor.commit();
 	}
+
+	public boolean isFirstApplicationExecution() {
+		boolean value = configuration.getBoolean(Constants.CONFIGURATION_FIRST_EXECUTION,true);
+		return value;
+	}
+
+	public void unsetFirstApplicationExecution() {
+		Editor editor = configuration.edit();
+		editor.putBoolean(Constants.CONFIGURATION_FIRST_EXECUTION, false);
+		editor.commit();
+	}
 }

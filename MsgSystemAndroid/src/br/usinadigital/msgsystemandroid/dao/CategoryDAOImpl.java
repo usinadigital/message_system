@@ -35,6 +35,10 @@ public class CategoryDAOImpl implements CategoryDAO{
 		editor.commit();
 	}
 	
+	public int categoriesCount(){
+		return categories.getAll().size();
+	}
+	
 	public void saveCategories(Map<String,String> categoriesMap){
 		Editor editor =  categories.edit();
 		for (Map.Entry<String, ?> entry : categoriesMap.entrySet()) {

@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class Utils {
 	
@@ -22,11 +23,13 @@ public class Utils {
 	
 	public static String fromDateToString(Date date){
 		DateFormat df = new SimpleDateFormat(Constants.DATE_FORMAT);
+		df.setTimeZone(TimeZone.getTimeZone("UTC"));
 		return df.format(date);
 	}
 	
 	public static Date fromStringToDate(String date) throws ParseException{
 		DateFormat df = new SimpleDateFormat(Constants.DATE_FORMAT);
+		df.setTimeZone(TimeZone.getTimeZone("UTC"));
 		return df.parse(date);
 	}
 	

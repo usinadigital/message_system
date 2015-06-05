@@ -18,4 +18,6 @@
     <string name="alertTitleDialog">PTAlert</string>
     <string name="serviceNotAvailable">PTService not available</string>
     
+    <string name="loading">PTLoading...</string>
+    
 </resources>

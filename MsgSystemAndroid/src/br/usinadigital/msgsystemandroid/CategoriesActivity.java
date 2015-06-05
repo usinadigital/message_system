@@ -40,8 +40,8 @@ public class CategoriesActivity extends Activity {
 		daoCategory = new CategoryDAOImpl(prefName,prefCheck);
 		Log.d(Constants.TAG, "Stored values:\n" + daoCategory.toString());
 		
-		// The first time that I open the categories list it´s empty. It´s after the installation
-		if (prefName.getAll().size() == 0) {
+		// if there was some problem connection the list is empty
+		if (daoCategory.categoriesCount() == 0) {
 			WSCategory wsCategory = new WSCategoryImpl(getString(R.string.getAllCategoriesURL)) {
 				public void onPreWSRequest() {
 					Log.d(Constants.TAG, "Start HTTP Request" + getString(R.string.getAllCategoriesURL));

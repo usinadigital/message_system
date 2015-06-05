@@ -1,0 +1,1 @@
+--- NB: occhio al fuso orario. Sul server e android possono avere fusi orari diversi, quindi le request dei messaggi non vanno bene

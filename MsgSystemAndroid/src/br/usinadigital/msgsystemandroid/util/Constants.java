@@ -15,6 +15,10 @@ public interface Constants {
 	public static final String CONFIGURATION_FREQUENCY = "frequency";
 	public static final String CONFIGURATION_FIRST_EXECUTION = "firstExecution";
 	
+	public static final int DEFAULT_CONFIGURATION_HISTORY = 7;
+	public static final int DEFAULT_CONFIGURATION_FREQUENCY = 1;
+	
+	
 	public static final String CHECKED_STATE = "1";
 	public static final String UNCHECKED_STATE = "0";
 	

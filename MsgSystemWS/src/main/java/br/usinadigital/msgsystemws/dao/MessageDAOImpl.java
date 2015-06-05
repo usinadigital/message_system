@@ -75,7 +75,7 @@ public class MessageDAOImpl implements MessageDAO {
 		
 		String sql0 = String.format("select id FROM categories WHERE categories.id IN (%s)",Utils.intArrayToString(categoriesId));
 		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT message_id, title, text, creationdate, lastupdate ");
+		sql.append("SELECT messages.id AS id, title, text, creationdate, lastupdate ");
 		sql.append("FROM messages_categories ");
 		sql.append("INNER JOIN messages ON message_id = messages.id ");
 		sql.append("INNER JOIN (" ).append(sql0).append( ") AS categories ON category_id = categories.id ");

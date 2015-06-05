@@ -1,9 +1,0 @@
---- layout iniziale: pulsante UPDATE con la scritta last update: tira giu messaggi e categorie
---- menu non va per le versioni nuove, non hanno il tasto menu??????
-xxx se va in timeout la request va lancia una eccezione che non viene catturata
---- chiedo la frequenza di aggiornamento dei messaggi che é anche delle categorie
---- quando prendo i messaggi dal ws prendo quelli dopo la data dell ultimo ggiornamento memorizzato in android 
---- OKKIO: quando ruoto il dispositivo! Se tutto rimane ok
---- Quando fa la richiesta al WS sarebbe meglio che comparisse il messaggio "In connessione"
-xxx Quando ruoto mi cancella tutte le categorie selezionate
---- alrtdialog di mssags catgoris di srvic not availabl non va

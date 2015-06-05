@@ -31,7 +31,6 @@ public abstract class WSCategoryImpl extends AsyncTask<String, Void, Void> imple
 	}
 	
 	public void getAllCategories(){
-		Log.d(Constants.TAG,"Request service: " + serviceURL);
 		execute(serviceURL);
 	}
 	
@@ -40,11 +39,6 @@ public abstract class WSCategoryImpl extends AsyncTask<String, Void, Void> imple
 	}
 
 	protected void onPostExecute(Void unused) {
-		if ( error == null ){
-			
-		}else{
-			
-		}
 		onPostWSRequest();
 	}
 	

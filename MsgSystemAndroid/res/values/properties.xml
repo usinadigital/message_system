@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="getAllCategoriesURL2">http://192.168.0.3:8080/MsgSystemWS-0.0.1/rest/category/all</string>
-	<string name="getMessageURL2">http://192.168.0.3:8080/MsgSystemWS-0.0.1/rest/category/all</string>
+    <string name="getAllCategoriesURL">http://192.168.0.3:8080/MsgSystemWS-0.0.1/rest/category/all</string>
+	<string name="getMessageURL">http://192.168.0.3:8080/MsgSystemWS-0.0.1/rest/message/getFromDateByCategories</string>
 </resources>

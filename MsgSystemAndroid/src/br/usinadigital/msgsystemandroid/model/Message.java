@@ -1,35 +1,28 @@
 package br.usinadigital.msgsystemandroid.model;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-
 public class Message {
 
-	private int id;
+	private String id;
 	
 	private String title;
 	
 	private String text;
 	
-	private Date creationdate;
+	private String creationdate;
 	
-	private Date lastupdate;
-	
-	public Message() {
-
-	}
-	
-	public Message(String title, String text) {
+	public Message(String id, String title, String text, String creationdate) {
+		super();
+		this.id = id;
 		this.title = title;
 		this.text = text;
+		this.creationdate = creationdate;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -50,24 +43,22 @@ public class Message {
 		this.text = text;
 	}
 
-	public Date getCreationdate() {
+	public String getCreationdate() {
 		return creationdate;
 	}
 
-	public void setCreationdate(Date creationdate) {
+	public void setCreationdate(String creationdate) {
 		this.creationdate = creationdate;
-	}
-
-	public Date getLastupdate() {
-		return lastupdate;
-	}
-
-	public void setLastupdate(Date lastupdate) {
-		this.lastupdate = lastupdate;
 	}
 
 	@Override
 	public String toString(){
-	        return this.toString();
+		StringBuilder sb = new StringBuilder();
+		sb.append("Message(id=").append(id)
+		.append(", title=").append(title)
+		.append(", text=").append(text)
+		.append(", creationdate=").append(creationdate).append(")");
+	        
+		return sb.toString();
 	}
 }

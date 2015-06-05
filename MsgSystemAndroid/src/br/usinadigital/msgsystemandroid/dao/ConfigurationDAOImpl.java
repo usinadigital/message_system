@@ -17,7 +17,7 @@ public class ConfigurationDAOImpl implements ConfigurationDAO{
 		this.configuration = configuration;
 	}
 	
-	public Date getCategoriesLastUpdate() throws ParseException{
+	public Date getCategoriesLastUpdate(){
 		String value = configuration.getString(Constants.CONFIGURATION_LAST_UPDATE_CATEGORIES, null);
 		return Utils.stringToDate(value);
 	}
@@ -29,7 +29,7 @@ public class ConfigurationDAOImpl implements ConfigurationDAO{
 		editor.commit();
 	}
 	
-	public Date getMessagesLastUpdate() throws ParseException{
+	public Date getMessagesLastUpdate(){
 		String value = configuration.getString(Constants.CONFIGURATION_LAST_UPDATE_MESSAGES, null);
 		return Utils.stringToDate(value);
 	}
@@ -41,18 +41,18 @@ public class ConfigurationDAOImpl implements ConfigurationDAO{
 		editor.commit();
 	}
 	
-	public int getHistoryLength() throws ParseException{
+	public int getHistoryLength(){
 		int value = configuration.getInt(Constants.CONFIGURATION_HISTORY, -1);
 		return value;
 	}
 	
-	public void setgetHistoryLength(int length){
+	public void setHistoryLength(int length){
 		Editor editor = configuration.edit();
 		editor.putInt(Constants.CONFIGURATION_HISTORY, length);
 		editor.commit();
 	}
 	
-	public int getUpdateFrequency() throws ParseException{
+	public int getUpdateFrequency(){
 		int value = configuration.getInt(Constants.CONFIGURATION_FREQUENCY, -1);
 		return value;
 	}

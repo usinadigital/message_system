@@ -19,17 +19,20 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name">
-            
+            android:label="@string/app_name">   
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".CategoriesActivity"
-            android:label="Categories Available"
+            android:label="Categories List"
+            android:configChanges="orientation|keyboardHidden|screenSize">
+        </activity>
+        <activity
+            android:name=".MessagesActivity"
+            android:label="Messages List"
             android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
     </application>

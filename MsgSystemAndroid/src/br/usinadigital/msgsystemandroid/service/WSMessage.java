@@ -4,5 +4,5 @@ import java.util.Date;
 
 public interface WSMessage {
 
-	public void getMessagesFromDateByCategories(Date fromDate, int[] categoriesId);
+	public void getMessagesFromDateByCategories(Date fromDate, Integer[] categoriesId);
 }

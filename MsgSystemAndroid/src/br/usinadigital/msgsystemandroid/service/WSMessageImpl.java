@@ -3,6 +3,7 @@ package br.usinadigital.msgsystemandroid.service;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.Date;
 
 import org.apache.http.HttpResponse;
@@ -28,7 +29,7 @@ public abstract class WSMessageImpl extends AsyncTask<String, Void, Void> implem
 	
 	private Date fromDate;
 	
-	int[] categoriesId;
+	Integer[] categoriesId;
 	
 	private String response = null;
 
@@ -42,8 +43,7 @@ public abstract class WSMessageImpl extends AsyncTask<String, Void, Void> implem
 		this.serviceURL = uri;
 	}
 
-	public void getMessagesFromDateByCategories(Date fromDate, int[] categoriesId) {
-		Log.d(Constants.TAG, "Request service: " + serviceURL);
+	public void getMessagesFromDateByCategories(Date fromDate, Integer[] categoriesId) {
 		this.fromDate = fromDate;
 		this.categoriesId = categoriesId;
 		execute(serviceURL);
@@ -60,14 +60,16 @@ public abstract class WSMessageImpl extends AsyncTask<String, Void, Void> implem
 	protected Void doInBackground(String... urls) {
 
 		HttpParams myParams = new BasicHttpParams();
-		HttpConnectionParams.setConnectionTimeout(myParams, Constants.HTTP_TIMEOUT_MILLISEC); //Timeout Limit
+		HttpConnectionParams.setConnectionTimeout(myParams, Constants.HTTP_TIMEOUT_MILLISEC);
         HttpConnectionParams.setSoTimeout(myParams, Constants.HTTP_TIMEOUT_MILLISEC);
         HttpClient httpclient = new DefaultHttpClient(myParams);
         HttpResponse httpresponse;
         
 		try {
+			Log.d(Constants.TAG, "fromDate: " + fromDate);
+			Log.d(Constants.TAG, "categoriesId: " + Arrays.toString(categoriesId));
 			String jsonParam = JsonUtils.createJsonWSRequest(fromDate, categoriesId);
-			Log.d(Constants.TAG, "Request param: " + jsonParam);
+			Log.d(Constants.TAG, "Request Json param: " + jsonParam);
 			
 			HttpPost httppost = new HttpPost(urls[0]);
 			httppost.setHeader("Content-type", "application/json");

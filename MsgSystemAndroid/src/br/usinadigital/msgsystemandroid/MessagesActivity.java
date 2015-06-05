@@ -1,15 +1,14 @@
 package br.usinadigital.msgsystemandroid;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import br.usinadigital.msgsystemandroid.dao.DAOCategory;
-import br.usinadigital.msgsystemandroid.dao.DAOCategoryImpl;
-import br.usinadigital.msgsystemandroid.service.WSCategory;
-import br.usinadigital.msgsystemandroid.service.WSCategoryImpl;
-import br.usinadigital.msgsystemandroid.util.Constants;
-import br.usinadigital.msgsystemandroid.util.JsonUtils;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -22,54 +21,68 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import br.usinadigital.msgsystemandroid.dao.CategoryDAO;
+import br.usinadigital.msgsystemandroid.dao.CategoryDAOImpl;
+import br.usinadigital.msgsystemandroid.dao.ConfigurationDAO;
+import br.usinadigital.msgsystemandroid.dao.ConfigurationDAOImpl;
+import br.usinadigital.msgsystemandroid.dao.MessageDAO;
+import br.usinadigital.msgsystemandroid.dao.MessageDAOImpl;
+import br.usinadigital.msgsystemandroid.model.Message;
+import br.usinadigital.msgsystemandroid.service.WSMessage;
+import br.usinadigital.msgsystemandroid.service.WSMessageImpl;
+import br.usinadigital.msgsystemandroid.util.Constants;
+import br.usinadigital.msgsystemandroid.util.JsonUtils;
+import br.usinadigital.msgsystemandroid.util.Utils;
 
 public class MessagesActivity extends Activity{
-	LinearLayout linearCategories;
-	DAOCategory daoCategory;
-
+	
+	LinearLayout linearMessages;
+	MessageDAO messageDAO;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.messages);
-		linearCategories = (LinearLayout) findViewById(R.id.linearCategories);
+		linearMessages = (LinearLayout) findViewById(R.id.linearMessages);
 
-		SharedPreferences prefName = getSharedPreferences(Constants.CATEGORY_NAME, Context.MODE_PRIVATE);
-		SharedPreferences prefCheck = getSharedPreferences(Constants.CATEGORY_CHECK, Context.MODE_PRIVATE);
-		daoCategory = new DAOCategoryImpl(prefName, prefCheck);
-		Log.d(Constants.TAG, "Stored values:\n" + daoCategory.toString());
-
-		// The first time that I open the categories list it´s empty. It´s after
-		// the installation
-		if (prefName.getAll().size() == 0) {
-			WSCategory wsCategory = new WSCategoryImpl(getString(R.string.getAllCategoriesURL)) {
-				public void onPreWSRequest() {
-					Log.d(Constants.TAG, "Pre HTTP Request");
-				}
-
-				public void onPostWSRequest() {
-					String response = getResponse();
-					Log.d(Constants.TAG, "Post HgetResponse()TTP Request");
-					if (response == null) {
-						showDialog(getString(R.string.serviceNotAvailable), getString(R.string.alertTitleDialog));
+		SharedPreferences messages = getSharedPreferences(Constants.FILE_MESSAGES, Context.MODE_PRIVATE);
+		SharedPreferences configurations = getSharedPreferences(Constants.FILE_CONFIGURATIONS, Context.MODE_PRIVATE);
+		SharedPreferences prefName = getSharedPreferences(Constants.FILE_CATEGORY_NAME, Context.MODE_PRIVATE);
+		SharedPreferences prefCheck = getSharedPreferences(Constants.FILE_CATEGORY_CHECK, Context.MODE_PRIVATE);
+		
+		messageDAO = new MessageDAOImpl(messages);
+		ConfigurationDAO configDAO = new ConfigurationDAOImpl(configurations);
+		CategoryDAO categoryDAO = new CategoryDAOImpl(prefName,prefCheck);
+		
+		int historyLength = 7; //configDAO.getHistoryLength();
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.DATE, -historyLength);
+		Map<String,String> checks = categoryDAO.loadAllCheck();
+		Date fromDate = cal.getTime();
+		Integer[] categoriesId = Utils.toStringArray(checks.keySet());
+		WSMessage wsMessage = new WSMessageImpl(getString(R.string.getMessageURL)) {
+			public void onPreWSRequest() {
+				Log.d(Constants.TAG, "Start Request HTTP" + getString(R.string.getMessageURL));
+			}
+			public void onPostWSRequest() {
+				String response = getResponse();
+				Log.d(Constants.TAG, "Stop Response HTTP");
+				if (response == null) {
+					Log.d(Constants.TAG, getString(R.string.serviceNotAvailable));
+					//showDialog(getString(R.string.serviceNotAvailable), getString(R.string.alertTitleDialog));
+				} else {
+					Message[] messages = JsonUtils.fromJsonToMessages(response);
+					if (messages == null) {
+						Log.d(Constants.TAG, "Error parsing Json");
+						//showDialog(getString(R.string.serviceNotAvailable), getString(R.string.alertTitleDialog));
 					} else {
-						Map<String, String> fromWSCat = JsonUtils.fromJsonToCategoryMap(response);
-						if (fromWSCat == null) {
-							showDialog(getString(R.string.serviceNotAvailable), getString(R.string.alertTitleDialog));
-						} else {
-							Log.d(Constants.TAG, "Response Mapped: " + fromWSCat);
-							daoCategory.saveCategories(fromWSCat);
-							addCheckboxesList(fromWSCat, null);
-						}
+						Log.d(Constants.TAG, "Response: " + Arrays.toString(messages));
+						//addCheckboxesList(messages, null);
 					}
 				}
-			};
-			wsCategory.getAllCategories();
-		} else { // The categories were before loaded
-			Map<String, String> storedCategories = daoCategory.loadAllCategories();
-			Map<String, String> storedCheck = daoCategory.loadAllCheck();
-			addCheckboxesList(storedCategories, storedCheck);
-		}
+			}
+		};
+		wsMessage.getMessagesFromDateByCategories(fromDate,categoriesId);
 	}
 
 	private static String[] objectToString(Object[] src) {
@@ -95,7 +108,7 @@ public class MessagesActivity extends Activity{
 				checked = check.containsKey(id) ? true : false;
 			}
 			setCheckBox(checkBox, id, text, checked);
-			linearCategories.addView(checkBox);
+			linearMessages.addView(checkBox);
 		}
 	}
 
@@ -104,7 +117,7 @@ public class MessagesActivity extends Activity{
 			public void onClick(View v) {
 				CheckBox checkBox = (CheckBox) v;
 				String id = String.valueOf(button.getId());
-				daoCategory.saveCheckById(id, checkBox.isChecked());
+				showToast(id);
 			}
 		};
 	}
@@ -122,7 +135,7 @@ public class MessagesActivity extends Activity{
 		alertDialog.setMessage(message);
 		alertDialog.setIcon(R.drawable.ic_launcher);
 
-		alertDialog.setButton(1, "OK", new DialogInterface.OnClickListener() {
+		alertDialog.setButton(1,"OK", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 			}
 		});

@@ -3,8 +3,10 @@ package br.usinadigital.msgsystemandroid.util;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -24,6 +26,13 @@ public class Utils {
 		return newChecked;
 	}
 
+	public static Integer[] toStringArray(Set ids){
+		List<Integer> list = new ArrayList<Integer>();
+		for (Object id : ids) list.add(Integer.valueOf(id.toString()));
+		return list.toArray(new Integer[list.size()]);
+	}
+	
+	
 	public static String dateToString(Date date) {
 		DateFormat df = new SimpleDateFormat(Constants.DATE_FORMAT);
 		return df.format(date);

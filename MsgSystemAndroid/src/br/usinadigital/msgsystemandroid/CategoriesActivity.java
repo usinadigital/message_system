@@ -16,8 +16,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-import br.usinadigital.msgsystemandroid.dao.DAOCategory;
-import br.usinadigital.msgsystemandroid.dao.DAOCategoryImpl;
+import br.usinadigital.msgsystemandroid.dao.CategoryDAO;
+import br.usinadigital.msgsystemandroid.dao.CategoryDAOImpl;
 import br.usinadigital.msgsystemandroid.service.WSCategory;
 import br.usinadigital.msgsystemandroid.service.WSCategoryImpl;
 import br.usinadigital.msgsystemandroid.util.Constants;
@@ -26,7 +26,7 @@ import br.usinadigital.msgsystemandroid.util.JsonUtils;
 public class CategoriesActivity extends Activity {
 
 	LinearLayout linearCategories;
-	DAOCategory daoCategory;
+	CategoryDAO daoCategory;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -35,20 +35,20 @@ public class CategoriesActivity extends Activity {
 		setContentView(R.layout.categories);
 		linearCategories = (LinearLayout) findViewById(R.id.linearCategories);
 		
-		SharedPreferences prefName = getSharedPreferences(Constants.CATEGORY_NAME, Context.MODE_PRIVATE);
-		SharedPreferences prefCheck = getSharedPreferences(Constants.CATEGORY_CHECK, Context.MODE_PRIVATE);
-		daoCategory = new DAOCategoryImpl(prefName,prefCheck);
+		SharedPreferences prefName = getSharedPreferences(Constants.FILE_CATEGORY_NAME, Context.MODE_PRIVATE);
+		SharedPreferences prefCheck = getSharedPreferences(Constants.FILE_CATEGORY_CHECK, Context.MODE_PRIVATE);
+		daoCategory = new CategoryDAOImpl(prefName,prefCheck);
 		Log.d(Constants.TAG, "Stored values:\n" + daoCategory.toString());
 		
 		// The first time that I open the categories list it´s empty. It´s after the installation
 		if (prefName.getAll().size() == 0) {
 			WSCategory wsCategory = new WSCategoryImpl(getString(R.string.getAllCategoriesURL)) {
 				public void onPreWSRequest() {
-					Log.d(Constants.TAG, "Pre HTTP Request");
+					Log.d(Constants.TAG, "Start HTTP Request" + getString(R.string.getAllCategoriesURL));
 				}
 				public void onPostWSRequest() {
 					String response = getResponse();
-					Log.d(Constants.TAG, "Post HgetResponse()TTP Request");
+					Log.d(Constants.TAG, "Stop Http Request");
 					if (response == null) {
 						showDialog(getString(R.string.serviceNotAvailable), getString(R.string.alertTitleDialog));
 					} else {

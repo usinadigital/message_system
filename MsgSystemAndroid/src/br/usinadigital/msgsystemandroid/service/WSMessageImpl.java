@@ -106,7 +106,7 @@ public abstract class WSMessageImpl extends AsyncTask<String, Void, Void> implem
 				}
 			}
 		} catch (Exception e) {
-			Log.e(Constants.TAG, "ex2");
+			Log.e(Constants.TAG, "ex2");.....
 			Log.e(Constants.TAG, e.toString());
 			e.printStackTrace();
 			error = e.getMessage();

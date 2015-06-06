@@ -21,7 +21,7 @@ public class CategoryDAOImpl implements CategoryDAO{
 	
 	public List<Category> getAll() {
         jdbcTemplate = new JdbcTemplate(dataSource);
-    	String sql = "SELECT * FROM categories";
+    	String sql = "SELECT * FROM categories WHERE valid = 1";
     	List<Category> caregoryList = jdbcTemplate.query(sql,new CategoryRowMapper());
         
         return caregoryList;

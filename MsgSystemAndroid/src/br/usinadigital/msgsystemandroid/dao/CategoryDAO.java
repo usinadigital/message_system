@@ -8,6 +8,10 @@ public interface CategoryDAO {
 	
 	public void deleteAllCategories();
 	
+	public void deleteAllChecks();
+	
+	public void refreshCheckIds();
+	
 	public int categoriesCount();
 	
 	public void saveCategories(Map<String,String> categoriesMap);

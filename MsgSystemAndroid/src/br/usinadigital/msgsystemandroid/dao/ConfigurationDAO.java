@@ -14,7 +14,7 @@ public interface ConfigurationDAO {
 	
 	public Date getMessagesLastUpdate();
 	
-	public void setMessagessLastUpdate(Date date);
+	public void setMessagesLastUpdate(Date date);
 	
 	public int getHistoryLength(); 
 	

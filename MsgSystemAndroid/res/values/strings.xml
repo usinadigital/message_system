@@ -4,20 +4,33 @@
     
     <string name="welcome">welcome</string>
     
-    <string name="menu.optionMenu">Menu</string>
-    <string name="menu.configurations">Configurations</string>
-    <string name="menu.messages">Messages</string>
+    <string name="messages">Messages</string>
+    <string name="configurations">Configurations</string>
     
-    <string name="categories.update">Udpate Categories</string>
-    <string name="messages.update">Udpate Messages</string>
+    <string name="categories_update">Udpate Categories</string>
+    <string name="messages_update">Udpate Messages</string>
     
-    <string name="configurations.categories">Categories List</string>
-    <string name="configurations.history">Hystory</string>
-    <string name="configurations.frequency">Which frequency</string>
+    <string name="configurations_categories">Categories List</string>
+    <string name="configurations_history">History</string>
+    <string name="configurations_history_selection">Select a value</string>
+    <string name="configurations_frequency">Which frequency</string>
+    <string name="configurations_frequency_selection">Select a value</string>
     
     <string name="alertTitleDialog">Alert</string>
     <string name="serviceNotAvailable">Service not available</string>
     
+    <string name="day1">1 day</string>
+    <string name="week1">1 week</string>
+    <string name="week2">2 weeks</string>
+    <string name="week4">1 month</string>
+    
+    <string name="minute15">15 minutes</string>
+    <string name="minute30">30 minutes</string>
+    <string name="hour1">1 hour</string>
+    <string name="hour12">12 hours</string>
+    <string name="hour24">24 hours</string>
+        
+    <string name="lastUpdate">Last Update</string>
     <string name="loading">Loading...</string>
     
 </resources>

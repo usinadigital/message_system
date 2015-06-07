@@ -32,18 +32,19 @@ import br.usinadigital.msgsystemandroid.service.WSMessage;
 import br.usinadigital.msgsystemandroid.service.WSMessageImpl;
 import br.usinadigital.msgsystemandroid.util.Constants;
 import br.usinadigital.msgsystemandroid.util.JsonUtils;
+import br.usinadigital.msgsystemandroid.util.UIUtils;
 import br.usinadigital.msgsystemandroid.util.Utils;
 
 public class MessagesActivity extends Activity{
 	
-	LinearLayout linearMessages;
+	LinearLayout linearLayout;
 	MessageDAO messageDAO;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.messages);
-		linearMessages = (LinearLayout) findViewById(R.id.linearMessages);
+		linearLayout = (LinearLayout) findViewById(R.id.linearLayoutMessages);
 
 		SharedPreferences messages = getSharedPreferences(Constants.FILE_MESSAGES, Context.MODE_PRIVATE);
 		SharedPreferences configurations = getSharedPreferences(Constants.FILE_CONFIGURATIONS, Context.MODE_PRIVATE);
@@ -69,7 +70,7 @@ public class MessagesActivity extends Activity{
 				Log.d(Constants.TAG, "Stop Response HTTP");
 				if (response == null) {
 					Log.d(Constants.TAG, getString(R.string.serviceNotAvailable));
-					//showDialog(getString(R.string.serviceNotAvailable), getString(R.string.alertTitleDialog));
+					UIUtils.showDialog(MessagesActivity.this,getString(R.string.alertTitleDialog),getString(R.string.serviceNotAvailable));
 				} else {
 					Message[] messages = JsonUtils.fromJsonToMessages(response);
 					if (messages == null) {
@@ -108,7 +109,7 @@ public class MessagesActivity extends Activity{
 				checked = check.containsKey(id) ? true : false;
 			}
 			setCheckBox(checkBox, id, text, checked);
-			linearMessages.addView(checkBox);
+			linearLayout.addView(checkBox);
 		}
 	}
 
@@ -117,7 +118,7 @@ public class MessagesActivity extends Activity{
 			public void onClick(View v) {
 				CheckBox checkBox = (CheckBox) v;
 				String id = String.valueOf(button.getId());
-				showToast(id);
+				UIUtils.showToast(MessagesActivity.this,id);
 			}
 		};
 	}
@@ -129,22 +130,5 @@ public class MessagesActivity extends Activity{
 		checkBox.setOnClickListener(getOnClickDoSomething(checkBox));
 	}
 
-	private void showDialog(String message, String title) {
-		AlertDialog alertDialog = new AlertDialog.Builder(MessagesActivity.this).create();
-		alertDialog.setTitle(title);
-		alertDialog.setMessage(message);
-		alertDialog.setIcon(R.drawable.ic_launcher);
-
-		alertDialog.setButton(1,"OK", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-			}
-		});
-
-		alertDialog.show();
-	}
-
-	private void showToast(String message) {
-		Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
-		toast.show();
-	}
+	
 }

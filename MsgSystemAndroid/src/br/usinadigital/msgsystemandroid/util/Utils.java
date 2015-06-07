@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -32,6 +33,14 @@ public class Utils {
 		return list.toArray(new Integer[list.size()]);
 	}
 	
+	public static List<Integer> getSortedkeys(Map map){
+		List<Integer> res = new ArrayList<Integer>();
+		for (Object val : map.keySet()){
+        	res.add(Integer.valueOf( (String)val ));
+        }
+		Collections.sort(res);
+		return res;
+	}
 	
 	public static String dateToString(Date date) {
 		DateFormat df = new SimpleDateFormat(Constants.DATE_FORMAT);
@@ -51,4 +60,5 @@ public class Utils {
 		return date;
 	}
 
+	
 }

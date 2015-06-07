@@ -1,0 +1,44 @@
+package br.usinadigital.msgsystemandroid.util;
+
+import java.text.DateFormat;
+import java.util.Date;
+
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.text.Html;
+import android.widget.Toast;
+import br.usinadigital.msgsystemandroid.R;
+
+public class UIUtils {
+
+	public static CharSequence printOn2lineWithDate(String first, String txt, Date data){
+		String dateLine =  txt + " " + DateFormat.getDateTimeInstance(DateFormat.SHORT,DateFormat.SHORT).format(data);
+		return printOn2line(first, dateLine);
+	}
+	
+	public static CharSequence printOn2line(String first, String second){
+		final String btnInnerHTML = "%s<br/><small><small>%s</small></small>";
+		return Html.fromHtml(String.format(btnInnerHTML, first, second));
+	}
+	
+	
+	public static void showDialog(Context context, String title, String message){
+		AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+		alertDialog.setTitle(title);
+		alertDialog.setMessage(message);
+		alertDialog.setIcon(R.drawable.ic_launcher);
+		
+		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+			}
+		});
+		alertDialog.show();
+	}
+	
+	public static void showToast(Context context, String message) {
+		Toast toast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
+		toast.show();
+	}
+}

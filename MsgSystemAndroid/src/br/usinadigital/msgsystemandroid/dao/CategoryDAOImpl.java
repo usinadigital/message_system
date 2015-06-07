@@ -35,6 +35,28 @@ public class CategoryDAOImpl implements CategoryDAO{
 		editor.commit();
 	}
 	
+	public void deleteAllChecks(){
+		Editor editor =  categoriesCheck.edit();
+		editor.clear();
+		editor.commit();
+	}
+	
+	/*
+	 * Remove all check that are not present in the catgories list.
+	 * It happend when I get a new categories list.
+	 * */
+	public void refreshCheckIds(){
+		Editor editor =  categoriesCheck.edit();
+		Map<String, ?> allEntries = categoriesCheck.getAll();
+		for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
+			String key = String.valueOf(entry.getKey());
+			if (!categories.contains(key)){
+				editor.remove(key);
+			} 
+		}
+		editor.commit();
+	}
+	
 	public int categoriesCount(){
 		return categories.getAll().size();
 	}

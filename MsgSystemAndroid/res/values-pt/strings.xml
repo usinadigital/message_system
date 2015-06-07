@@ -4,19 +4,31 @@
     
     <string name="welcome">Bem-vindo</string>
     
-    <string name="menu.optionMenu">PTMenu</string>
-    <string name="menu.configurations">PTConfigurations</string>
-    <string name="menu.messages">PTMessages</string>
+    <string name="messages">PTMessages</string>
+    <string name="configurations">PTConfigurations</string>
     
-    <string name="categories.update">PTUdpate Categories</string>
-    <string name="messages.update">PTUdpate Messages</string>
+    <string name="categories_update">PTUdpate Categories</string>
+    <string name="messages_update">PTUdpate Messages</string>
     
-    <string name="configurations.categories">PTCategories List</string>
-    <string name="configurations.history">PTHystory</string>
-    <string name="configurations.frequency">PTWhich frequency</string>
+    <string name="configurations_categories">PTCategories List</string>
+    <string name="configurations_history">PTHystory</string>
+    <string name="configurations_history_selection">PTSelect a value</string>
+    <string name="configurations_frequency">PTWhich frequency</string>
+    <string name="configurations_frequency_selection">PTSelect a value</string>
     
     <string name="alertTitleDialog">PTAlert</string>
     <string name="serviceNotAvailable">PTService not available</string>
+    
+    <string name="day1">1 day</string>
+    <string name="week1">1 week</string>
+    <string name="week2">2 weeks</string>
+    <string name="week4">1 month</string>
+    
+    <string name="minute15">15 minute</string>
+    <string name="minute30">30 minutes</string>
+    <string name="hour1">1 hour</string>
+    <string name="hour12">12 hours</string>
+    <string name="hour24">24 hours</string>
     
     <string name="loading">PTLoading...</string>
     

@@ -6,24 +6,26 @@
  
    <Button
         android:paddingTop="10px"
-        android:id="@+id/menu_messages"
-        android:text="ciao"
+        android:id="@+id/btMessages"
+        android:text="@string/messages"
         android:cursorVisible="true"
         android:clickable="true"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" 
         android:layout_gravity="center_horizontal"
+        android:onClick="clickMessages"
     /> 
     
    <Button
         android:paddingTop="10px"
-        android:id="@+id/menu_configurations"
-        android:text="ciao"
+        android:id="@+id/btConfigurations"
+        android:text="@string/configurations"
         android:cursorVisible="true"
         android:clickable="true"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" 
         android:layout_gravity="center_horizontal"
+        android:onClick="clickConfigurations"
     /> 
     
 </LinearLayout>

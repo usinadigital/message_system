@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="getAllCategoriesURL">http://192.168.25.82:8080/MsgSystemWS-0.0.1/rest/category/all</string>
-	<string name="getMessageURL">http://192.168.25.82:8080/MsgSystemWS-0.0.1/rest/message/getFromDateByCategories</string>
+
+    <string name="getAllCategoriesURL">http://192.168.0.3:8080/MsgSystemWS-0.0.1/rest/category/all</string>
+    <string name="getMessageURL">http://192.168.0.3:8080/MsgSystemWS-0.0.1/rest/message/getFromDateByCategories</string>
+
+    <string-array name="array_history_names">
+        <item>@string/day1</item>
+        <item>@string/week1</item>
+        <item>@string/week2</item>
+        <item>@string/week4</item>
+    </string-array>
+
+    <integer-array name="array_history_values">
+        <item>1</item>
+        <item>7</item>
+        <item>14</item>
+        <item>28</item>
+    </integer-array>
+
+    <string-array name="array_frequency_names">
+        <item>@string/minute15</item>
+        <item>@string/minute30</item>
+        <item>@string/hour1</item>
+        <item>@string/hour12</item>
+        <item>@string/hour24</item>
+    </string-array>
+
+    <integer-array name="array_frequency_values">
+        <item>900000</item>
+        <item>100</item>
+        <item>200</item>
+        <item>86400000</item>
+    </integer-array>
+
 </resources>

@@ -6,35 +6,38 @@
  
     <Button
         android:paddingTop="10px"
-        android:id="@+id/cat"
-        android:text="@string/configurations.categories"
+        android:id="@+id/btCategories"
+        android:text="@string/configurations_categories"
         android:cursorVisible="true"
         android:clickable="true"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" 
         android:layout_gravity="center_horizontal"
+        android:onClick="clickCategories"
     />
     
     <Button
         android:paddingTop="10px"
-        android:id="@+id/cat"
-        android:text="@string/configurations.history"
+        android:id="@+id/btHistory"
+        android:text="@string/configurations_history"
         android:cursorVisible="true"
         android:clickable="true"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" 
         android:layout_gravity="center_horizontal"
+        android:onClick="clickHistory"
     />
    
    <Button
         android:paddingTop="10px"
-        android:id="@+id/cat"
-        android:text="@string/configurations.frequency"
+        android:id="@+id/btFrequency"
+        android:text="@string/configurations_frequency"
         android:cursorVisible="true"
         android:clickable="true"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" 
         android:layout_gravity="center_horizontal"
+        android:onClick="clickFrequency"
     /> 
     
 </LinearLayout>

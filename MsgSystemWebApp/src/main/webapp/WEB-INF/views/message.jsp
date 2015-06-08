@@ -15,7 +15,7 @@
 				<form:form method="POST" action="message" commandName="message">
 				<div class="myForm">
 				<p>
-					<label class="myLabel"><spring:message code="view.message.label.message" /></label>
+					<label class="myLabel"><spring:message code="view.message.label.title" /></label>
 				</p>
 				<p>
 					<form:input path="title" autocomplete="off"/>

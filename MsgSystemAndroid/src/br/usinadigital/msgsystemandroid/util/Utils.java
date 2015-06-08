@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TimeZone;
 
 public class Utils {
 
@@ -43,12 +44,14 @@ public class Utils {
 	}
 	
 	public static String dateToString(Date date) {
-		DateFormat df = new SimpleDateFormat(Constants.DATE_FORMAT);
-		return df.format(date);
+		DateFormat formatter = new SimpleDateFormat(Constants.DATE_FORMAT);
+		formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+		return formatter.format(date);
 	}
 
 	public static Date stringToDate(String strDate) {
 		DateFormat formatter = new SimpleDateFormat(Constants.DATE_FORMAT);
+		formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 		Date date = null;
 		try {
 			date = formatter.parse(strDate);

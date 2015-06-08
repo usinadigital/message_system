@@ -3,7 +3,6 @@ package br.usinadigital.msgsystemandroid;
 import java.util.Arrays;
 
 import android.app.Activity;
-import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,7 +11,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 import br.usinadigital.msgsystemandroid.dao.ConfigurationDAO;
 import br.usinadigital.msgsystemandroid.dao.ConfigurationDAOImpl;
 import br.usinadigital.msgsystemandroid.util.Constants;

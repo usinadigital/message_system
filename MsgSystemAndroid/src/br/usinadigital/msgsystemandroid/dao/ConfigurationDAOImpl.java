@@ -24,6 +24,11 @@ public class ConfigurationDAOImpl implements ConfigurationDAO {
 		return Utils.stringToDate(value);
 	}
 
+	public String getCategoriesLastUpdateToString() {
+		String value = configuration.getString(Constants.CONFIGURATION_LAST_UPDATE_CATEGORIES, null);
+		return value;
+	}
+	
 	public void setCategoriesLastUpdate(Date date) {
 		Editor editor = configuration.edit();
 		String value = Utils.dateToString(date);
@@ -36,6 +41,11 @@ public class ConfigurationDAOImpl implements ConfigurationDAO {
 		return Utils.stringToDate(value);
 	}
 
+	public String getMessagesLastUpdateToString() {
+		String value = configuration.getString(Constants.CONFIGURATION_LAST_UPDATE_MESSAGES, null);
+		return value;
+	}
+	
 	public void setMessagesLastUpdate(Date date) {
 		Editor editor = configuration.edit();
 		String value = Utils.dateToString(date);

@@ -40,6 +40,12 @@
             android:label="Messages List"
             android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
+         <activity
+            android:name=".SimpleListViewActivity"
+            android:label="Messages List"
+            android:configChanges="orientation|keyboardHidden|screenSize">
+        </activity>
+        
     </application>
 
 </manifest>

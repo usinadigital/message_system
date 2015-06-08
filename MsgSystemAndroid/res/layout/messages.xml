@@ -11,19 +11,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:clickable="true"
+        android:onClick="clickUpdateMessages"
         android:cursorVisible="true"
         android:paddingTop="10px"
         android:text="@string/messages_update" />
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
-        <LinearLayout
-            android:id="@+id/linearLayoutMessages"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
-        </LinearLayout>
-    </ScrollView>
-
+    <ListView android:layout_width="fill_parent"   
+      android:layout_height="fill_parent"   
+      android:id="@+id/mainListView">  
+    </ListView> 
+    
 </LinearLayout>

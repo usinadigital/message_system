@@ -1956,9 +1956,9 @@ containing a value of this type.
         public static final int ifRoom=0x7f09001b;
         public static final int image=0x7f090028;
         public static final int linearLayoutCategories=0x7f090051;
-        public static final int linearLayoutMessages=0x7f090058;
         public static final int listMode=0x7f09000a;
         public static final int list_item=0x7f09002a;
+        public static final int mainListView=0x7f090058;
         public static final int middle=0x7f090022;
         public static final int multiply=0x7f090014;
         public static final int never=0x7f09001c;
@@ -1968,6 +1968,7 @@ containing a value of this type.
         public static final int progress_circular=0x7f090007;
         public static final int progress_horizontal=0x7f090008;
         public static final int radio=0x7f09003a;
+        public static final int rowTextView=0x7f090059;
         public static final int screen=0x7f090015;
         public static final int scrollView=0x7f090032;
         public static final int search_badge=0x7f090044;
@@ -1996,7 +1997,7 @@ containing a value of this type.
         public static final int title_template=0x7f09002f;
         public static final int topPanel=0x7f09002e;
         public static final int up=0x7f090001;
-        public static final int updates=0x7f090059;
+        public static final int updates=0x7f09005a;
         public static final int useLogo=0x7f090013;
         public static final int withText=0x7f09001d;
         public static final int wrap_content=0x7f090009;
@@ -2063,7 +2064,8 @@ containing a value of this type.
         public static final int select_dialog_item_material=0x7f03001d;
         public static final int select_dialog_multichoice_material=0x7f03001e;
         public static final int select_dialog_singlechoice_material=0x7f03001f;
-        public static final int support_simple_spinner_dropdown_item=0x7f030020;
+        public static final int simplerow=0x7f030020;
+        public static final int support_simple_spinner_dropdown_item=0x7f030021;
     }
     public static final class menu {
         public static final int mymenu=0x7f0d0000;

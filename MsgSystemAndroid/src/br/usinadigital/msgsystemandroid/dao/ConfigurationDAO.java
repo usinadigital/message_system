@@ -10,9 +10,13 @@ public interface ConfigurationDAO {
 	
 	public Date getCategoriesLastUpdate();
 	
+	public String getCategoriesLastUpdateToString();
+	
 	public void setCategoriesLastUpdate(Date date);
 	
 	public Date getMessagesLastUpdate();
+	
+	public String getMessagesLastUpdateToString();
 	
 	public void setMessagesLastUpdate(Date date);
 	

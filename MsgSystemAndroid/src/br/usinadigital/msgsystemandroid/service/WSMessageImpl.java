@@ -27,7 +27,7 @@ public abstract class WSMessageImpl extends AsyncTask<String, Void, Void> implem
 
 	private String serviceURL;
 	
-	private Date fromDate;
+	private String fromDate;
 	
 	Integer[] categoriesId;
 	
@@ -43,7 +43,7 @@ public abstract class WSMessageImpl extends AsyncTask<String, Void, Void> implem
 		this.serviceURL = uri;
 	}
 
-	public void getMessagesFromDateByCategories(Date fromDate, Integer[] categoriesId) {
+	public void getMessagesFromDateByCategories(String fromDate, Integer[] categoriesId) {
 		this.fromDate = fromDate;
 		this.categoriesId = categoriesId;
 		execute(serviceURL);

@@ -10,6 +10,9 @@ public class Message {
 	
 	private String creationdate;
 	
+	public Message() {
+	}
+	
 	public Message(String id, String title, String text, String creationdate) {
 		super();
 		this.id = id;

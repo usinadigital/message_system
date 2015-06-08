@@ -35,10 +35,8 @@ public class CategoriesActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
 		setContentView(R.layout.categories);
 		btUpdate = (Button)findViewById(R.id.btUpdateCategories);
-		
 		linearLayout = (LinearLayout) findViewById(R.id.linearLayoutCategories);
 		
 		SharedPreferences prefName = getSharedPreferences(Constants.FILE_CATEGORY_NAME, Context.MODE_PRIVATE);
@@ -46,7 +44,7 @@ public class CategoriesActivity extends Activity {
 		SharedPreferences configurations = getSharedPreferences(Constants.FILE_CONFIGURATIONS, Context.MODE_PRIVATE);
 		daoCategory = new CategoryDAOImpl(prefName,prefCheck);
 		configDAO = new ConfigurationDAOImpl(configurations);
-		updateButtonDate(configDAO.getCategoriesLastUpdate());
+		setButtonText(configDAO.getCategoriesLastUpdate());
 		Log.d(Constants.TAG, "Stored values:\n" + daoCategory.toString());
 		
 		if (daoCategory.categoriesCount() != 0) {
@@ -89,7 +87,7 @@ public class CategoriesActivity extends Activity {
 					daoCategory.refreshCheckIds();
 					Date date = new Date();
 					configDAO.setCategoriesLastUpdate(date);
-					updateButtonDate(date);
+					setButtonText(date);
 					Map<String, String> storedCheck = daoCategory.loadAllCheck();
 					Log.d(Constants.TAG, "Stored Check: " + storedCheck);
 					addCheckboxesList(Utils.getSortedkeys(newCategories), newCategories, storedCheck);					
@@ -99,11 +97,12 @@ public class CategoriesActivity extends Activity {
 		return wsCategory;
 	}
 	
-	private void updateButtonDate(Date date) {
+	private void setButtonText(Date date) {
 		Date data = configDAO.getCategoriesLastUpdate();
 		btUpdate.setText(UIUtils.printOn2lineWithDate(getString(R.string.categories_update),getString(R.string.lastUpdate),data));
 		
 	}
+	
 	private void addCheckboxesList(List<Integer> sortedKeys, Map<String, String> cat, Map<String, String> check) {
 		CheckBox checkBox;
 		if(((LinearLayout) linearLayout).getChildCount() > 0) 

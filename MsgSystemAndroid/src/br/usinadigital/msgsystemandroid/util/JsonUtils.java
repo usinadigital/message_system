@@ -66,11 +66,11 @@ public class JsonUtils {
 		return (Message[])messages.toArray(new Message[messages.size()]);
 	}
 	
-	public static String createJsonWSRequest(Date fromDate, Integer[] categoriesId) throws JSONException{
+	public static String createJsonWSRequest(String fromDate, Integer[] categoriesId) throws JSONException{
 		JSONObject json = new JSONObject();
 		JSONArray jsonarray = new JSONArray();
 		for (int i = 0; i < categoriesId.length; i++) jsonarray.put(categoriesId[i]);
-	    json.put("fromDate", Utils.dateToString(fromDate));
+	    json.put("fromDate", fromDate);
         json.put("categoriesId", jsonarray);
         
 		return json.toString();

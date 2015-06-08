@@ -7,7 +7,7 @@ import br.usinadigital.msgsystemandroid.model.Message;
 
 public interface MessageDAO {
 
-	public Map<String,Set<String>> getAll();
+	public Message[] getAll();
 	
 	public void save(Message[] msgs);
 	

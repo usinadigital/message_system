@@ -1,1 +1,9 @@
-support V7 app compact: add the compatibility with android version under  v2.2. I can use the 
+Date con UTC:
+La data é sempre UTC, quando la stampo però me la mette con il fuso orario.
+Il problema é quando converto in stringa o da stringa. 
+Devo dire di considerare il valore UTC della data e non quello con il fuso orario.
+
+Quindi s ho qusta stringa: 
+"04-06-2015 23:56:00 e la converto senza specificare il formatter: 
+formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+il date non sará 23:56:00, ma avrá il valore UTC

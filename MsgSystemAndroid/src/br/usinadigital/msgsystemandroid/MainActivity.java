@@ -43,7 +43,21 @@ public class MainActivity extends Activity {
 		Intent intent = new Intent(context, ConfigurationsActivity.class);
 		startActivity(intent);
 	}
-
+	
+	private void initializeConfiguration(){
+		configDAO = new ConfigurationDAOImpl(getSharedPreferences(Constants.FILE_CONFIGURATIONS, Context.MODE_PRIVATE));
+		if (configDAO.isFirstApplicationExecution()){
+			Log.d(Constants.TAG,"First Application Execution");
+			configDAO.unsetFirstApplicationExecution();
+			configDAO.setHistoryLength(Constants.DEFAULT_CONFIGURATION_HISTORY);
+			configDAO.setUpdateFrequency(Constants.DEFAULT_CONFIGURATION_FREQUENCY);
+			configDAO.setMessagesLastUpdate(new Date());
+			configDAO.setCategoriesLastUpdate(new Date());
+		}else{
+			Log.d(Constants.TAG,"NOT First Application Execution");
+		}
+	}
+	
 //	@Override
 //	public boolean onCreateOptionsMenu(Menu menu) {
 //
@@ -79,17 +93,4 @@ public class MainActivity extends Activity {
 //		}
 //	}
 	
-	private void initializeConfiguration(){
-		configDAO = new ConfigurationDAOImpl(getSharedPreferences(Constants.FILE_CONFIGURATIONS, Context.MODE_PRIVATE));
-		if (configDAO.isFirstApplicationExecution()){
-			Log.d(Constants.TAG,"First Application Execution");
-			configDAO.unsetFirstApplicationExecution();
-			configDAO.setHistoryLength(Constants.DEFAULT_CONFIGURATION_HISTORY);
-			configDAO.setUpdateFrequency(Constants.DEFAULT_CONFIGURATION_FREQUENCY);
-			configDAO.setMessagesLastUpdate(new Date());
-			configDAO.setCategoriesLastUpdate(new Date());
-		}else{
-			Log.d(Constants.TAG,"NOT First Application Execution");
-		}
-	}
 }

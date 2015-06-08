@@ -1,4 +1,4 @@
 TODO:
 --- implement webservice autentication. Basterebbe hhtps con autentic semplice
 xxx in caso di eccezione, devo agganciarle tutte, loggarle e se é un servizio ritornare un JSON di errore
---- il mapper dovrebbe convertire le date in modo indip dalla localizzazione
+xxx il mapper dovrebbe convertire le date in modo indip dalla localizzazione

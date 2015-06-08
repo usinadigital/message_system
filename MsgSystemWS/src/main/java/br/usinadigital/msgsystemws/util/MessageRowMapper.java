@@ -17,6 +17,7 @@ public class MessageRowMapper implements RowMapper<Message>
 		message.setCreationdate(rs.getTimestamp("creationdate"));
 		message.setLastupdate(rs.getTimestamp("lastupdate"));
 		message.setCategories(null);
+		
 		return message;
 	}
 }

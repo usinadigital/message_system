@@ -84,7 +84,7 @@ public class MessageDAOImpl implements MessageDAO {
 		sql.append("INNER JOIN (" ).append(sql0).append( ") AS categories ON category_id = categories.id ");
 		sql.append("WHERE messages.creationdate >= ? ");
 		sql.append("GROUP BY message_id ORDER BY creationdate ");
-		
+		logger.debug("Execute query: " + sql);
 		List<Message> messageList = jdbcTemplate.query(sql.toString(), new Object[] { fromDate }, new MessageRowMapper());
 
 		return messageList;

@@ -12,7 +12,20 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TimeZone;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import br.usinadigital.msgsystemandroid.MessageService;
+
 public class Utils {
+
+	public static void initializeMessageService(Context context) {
+		Intent notificationIntent = new Intent(context, MessageService.class);
+		PendingIntent pendingIntent = PendingIntent.getService(context, 0, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+		AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+		am.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 5000, pendingIntent);
+	}
 
 	/*
 	 * * Put the checked categories saved in android to the new categories list

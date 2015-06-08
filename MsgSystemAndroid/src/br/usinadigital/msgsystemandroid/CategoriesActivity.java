@@ -59,7 +59,6 @@ public class CategoriesActivity extends Activity {
 
 	
 	public void clickUpdateCategories(View v) {
-		daoCategory.deleteAllCategories();
 		WSCategory wsCategory = getInstanceWSCategory();
 		wsCategory.getAllCategories();
 	}
@@ -83,6 +82,7 @@ public class CategoriesActivity extends Activity {
 				} else {
 					Map<String, String> newCategories = JsonUtils.fromJsonToCategoryMap(response);
 					Log.d(Constants.TAG, "Response Mapped: " + newCategories);
+					daoCategory.deleteAllCategories();
 					daoCategory.saveCategories(newCategories);
 					daoCategory.refreshCheckIds();
 					Date date = new Date();

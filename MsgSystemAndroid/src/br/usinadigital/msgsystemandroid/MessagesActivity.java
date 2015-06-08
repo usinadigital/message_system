@@ -33,17 +33,20 @@ import br.usinadigital.msgsystemandroid.service.WSMessage;
 import br.usinadigital.msgsystemandroid.service.WSMessageImpl;
 import br.usinadigital.msgsystemandroid.util.Constants;
 import br.usinadigital.msgsystemandroid.util.JsonUtils;
+import br.usinadigital.msgsystemandroid.util.MessageUtils;
 import br.usinadigital.msgsystemandroid.util.UIUtils;
 import br.usinadigital.msgsystemandroid.util.Utils;
 
 public class MessagesActivity extends Activity {
 
-	ListView mainListView;
+	final private Context context = this;
+	
+	private ListView mainListView;
 	private SimpleAdapter sa;
-	MessageDAO messageDAO;
-	ConfigurationDAO configDAO;
-	CategoryDAO categoryDAO;
-	Button btUpdate;
+	private MessageDAO messageDAO;
+	private ConfigurationDAO configDAO;
+	private CategoryDAO categoryDAO;
+	private Button btUpdate;
 
 	ArrayList<HashMap<String, String>> listMessages = new ArrayList<HashMap<String, String>>();
 
@@ -66,14 +69,14 @@ public class MessagesActivity extends Activity {
 		categoryDAO = new CategoryDAOImpl(prefName, prefCheck);
 		setButtonText(configDAO.getMessagesLastUpdate());
 		Log.d(Constants.TAG, "Stored values:\n" + messageDAO.toString());
-		Message[] messages = deleteOldMessagesFromHistory(messageDAO.getAll());
+		Message[] messages = MessageUtils.deleteOldMessagesFromHistory(messageDAO.getAll(),this,configDAO);
 		populateList(messages);
 	}
 
 	public void clickUpdateMessages(View v) {
 		WSMessage wsMessage = getInstanceWSMessage();
 		String fromDate = configDAO.getMessagesLastUpdateToString();
-		Integer[] categoriesIds = getSelectedCategories();
+		Integer[] categoriesIds = MessageUtils.getSelectedCategories(categoryDAO);
 		wsMessage.getMessagesFromDateByCategories(fromDate, categoriesIds);
 	}
 
@@ -99,7 +102,7 @@ public class MessagesActivity extends Activity {
 						Date date = new Date();
 						configDAO.setMessagesLastUpdate(date);
 						setButtonText(date);
-						Message[] updatedMessages = deleteOldMessagesFromHistory(newMessages);
+						Message[] updatedMessages = MessageUtils.deleteOldMessagesFromHistory(newMessages,context,configDAO);
 						messageDAO.save(updatedMessages);
 						populateList(updatedMessages);
 					}
@@ -113,33 +116,6 @@ public class MessagesActivity extends Activity {
 		Date data = configDAO.getMessagesLastUpdate();
 		btUpdate.setText(UIUtils.printOn2lineWithDate(getString(R.string.messages_update), getString(R.string.lastUpdate), data));
 
-	}
-
-	private Date getHistoryDate() {
-		int[] historyValues = getResources().getIntArray(R.array.array_history_values);
-		int historyLength = historyValues[configDAO.getHistoryLength()];
-		Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-		cal.add(Calendar.DATE, - historyLength);
-		return cal.getTime();
-	}
-
-	private Message[] deleteOldMessagesFromHistory(Message[] messages) {
-		Date lowerLimit = getHistoryDate();
-		Log.d(Constants.TAG, "Lower History Limit: " + Utils.dateToString(lowerLimit));
-		List<Message> list = new ArrayList<Message>();
-		for (Message msg : messages) {
-			Log.d(Constants.TAG,"Msg Date: " + msg.getCreationdate());
-			if (Utils.stringToDate(msg.getCreationdate()).after(lowerLimit)) {
-				Log.d(Constants.TAG,"Added"); 
-				list.add(msg);
-			}
-		}
-		return list.toArray(new Message[list.size()]);
-	}
-
-	private Integer[] getSelectedCategories() {
-		Map<String, String> checks = categoryDAO.loadAllCheck();
-		return Utils.toStringArray(checks.keySet());
 	}
 
 	private void orderArray(Message[] messages) {

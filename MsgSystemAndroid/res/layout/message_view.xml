@@ -3,22 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MessagesActivity" >
+    tools:context=".MessageViewActivity" >
 
     <TextView
-        android:id="@+id/txtUpdateMessages"
+        android:id="@+id/txtTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:clickable="true"
-        android:onClick="clickUpdateMessages"
         android:cursorVisible="true"
-        android:paddingTop="10px"
-        android:text="@string/messages_update" />
+        android:paddingTop="10px" />
 
-    <ListView android:layout_width="fill_parent"   
-      android:layout_height="fill_parent"   
-      android:id="@+id/mainListView">  
-    </ListView> 
-    
+    <TextView
+        android:id="@+id/txtBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:cursorVisible="true"
+        android:paddingTop="10px" />
+        
 </LinearLayout>

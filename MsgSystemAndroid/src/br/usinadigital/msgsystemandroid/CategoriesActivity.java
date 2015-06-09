@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import br.usinadigital.msgsystemandroid.dao.CategoryDAO;
 import br.usinadigital.msgsystemandroid.dao.CategoryDAOImpl;
 import br.usinadigital.msgsystemandroid.dao.ConfigurationDAO;
@@ -30,13 +31,13 @@ public class CategoriesActivity extends Activity {
 	LinearLayout linearLayout;
 	CategoryDAO daoCategory;
 	ConfigurationDAO configDAO;
-	Button btUpdate;
+	private TextView txtUpdate;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.categories);
-		btUpdate = (Button)findViewById(R.id.btUpdateCategories);
+		txtUpdate = (TextView)findViewById(R.id.txtUpdateCategories);
 		linearLayout = (LinearLayout) findViewById(R.id.linearLayoutCategories);
 		
 		SharedPreferences prefName = getSharedPreferences(Constants.FILE_CATEGORY_NAME, Context.MODE_PRIVATE);
@@ -44,23 +45,18 @@ public class CategoriesActivity extends Activity {
 		SharedPreferences configurations = getSharedPreferences(Constants.FILE_CONFIGURATIONS, Context.MODE_PRIVATE);
 		daoCategory = new CategoryDAOImpl(prefName,prefCheck);
 		configDAO = new ConfigurationDAOImpl(configurations);
-		setButtonText(configDAO.getCategoriesLastUpdate());
+		setTextView(configDAO.getCategoriesLastUpdate());
 		Log.d(Constants.TAG, "Stored values:\n" + daoCategory.toString());
 		
 		if (daoCategory.categoriesCount() != 0) {
 			Map<String, String> storedCategories = daoCategory.loadAllCategories();
 			Map<String, String> storedCheck = daoCategory.loadAllCheck();
 			addCheckboxesList(Utils.getSortedkeys(storedCategories),storedCategories,storedCheck);
+		// appnd in th first xcution and thr is no connction
 		} else {	
 			WSCategory wsCategory = getInstanceWSCategory();
 			wsCategory.getAllCategories();
 		}	
-	}
-
-	
-	public void clickUpdateCategories(View v) {
-		WSCategory wsCategory = getInstanceWSCategory();
-		wsCategory.getAllCategories();
 	}
 	
 	private WSCategory getInstanceWSCategory(){
@@ -87,7 +83,7 @@ public class CategoriesActivity extends Activity {
 					daoCategory.refreshCheckIds();
 					Date date = new Date();
 					configDAO.setCategoriesLastUpdate(date);
-					setButtonText(date);
+					setTextView(date);
 					Map<String, String> storedCheck = daoCategory.loadAllCheck();
 					Log.d(Constants.TAG, "Stored Check: " + storedCheck);
 					addCheckboxesList(Utils.getSortedkeys(newCategories), newCategories, storedCheck);					
@@ -97,10 +93,9 @@ public class CategoriesActivity extends Activity {
 		return wsCategory;
 	}
 	
-	private void setButtonText(Date date) {
-		Date data = configDAO.getCategoriesLastUpdate();
-		btUpdate.setText(UIUtils.printOn2lineWithDate(getString(R.string.categories_update),getString(R.string.lastUpdate),data));
-		
+	private void setTextView(Date date) {
+		Date data = configDAO.getMessagesLastUpdate();
+		txtUpdate.setText(UIUtils.printWithDate(getString(R.string.lastUpdate), data));
 	}
 	
 	private void addCheckboxesList(List<Integer> sortedKeys, Map<String, String> cat, Map<String, String> check) {

@@ -14,7 +14,7 @@ import br.usinadigital.msgsystemandroid.util.Utils;
 public class DeviceBootReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-    	Utils.initializeMessageService(context);
+    	Utils.initializeMessageService(context,Constants.FREQUENCY_TEST);
     	Log.d(Constants.TAG, "Message Service Scheduled after rebooting");
     }
 }

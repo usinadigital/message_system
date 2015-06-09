@@ -6,8 +6,8 @@
     android:orientation="vertical"
     tools:context=".CategoriesActivity" >
 
-    <Button
-        android:id="@+id/btUpdateCategories"
+    <TextView
+        android:id="@+id/txtUpdateCategories"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

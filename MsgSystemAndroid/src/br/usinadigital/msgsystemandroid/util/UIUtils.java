@@ -1,6 +1,5 @@
 package br.usinadigital.msgsystemandroid.util;
 
-import java.text.DateFormat;
 import java.util.Date;
 
 import android.app.AlertDialog;
@@ -12,6 +11,11 @@ import br.usinadigital.msgsystemandroid.R;
 
 public class UIUtils {
 
+	public static CharSequence printWithDate(String txt, Date data){
+		String dateLine =  txt + " " + Utils.dateToStringLocale(data);
+		return dateLine;
+	}
+	
 	public static CharSequence printOn2lineWithDate(String first, String txt, Date data){
 		String dateLine =  txt + " " + Utils.dateToStringLocale(data);
 		return printOn2line(first, dateLine);

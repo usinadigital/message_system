@@ -96,7 +96,7 @@ public class MessageService extends Service {
 					if (newMessages == null) {
 						Log.d(Constants.TAG, "Error parsing Json");
 					} else {
-						Log.d(Constants.TAG, "Response: " + Arrays.toString(newMessages));
+						Log.d(Constants.TAG, "----------------------------------------- Response: " + Arrays.toString(newMessages));
 //						Message[] newMessagesFiltered = MessageUtils.deleteOldMessagesFromHistory(newMessages,context,configDAO);
 //						messageDAO.save(newMessagesFiltered);
 						messageDAO.save(newMessages);

@@ -20,11 +20,11 @@ import br.usinadigital.msgsystemandroid.MessageService;
 
 public class Utils {
 
-	public static void initializeMessageService(Context context) {
+	public static void initializeMessageService(Context context, long interval) {
 		Intent notificationIntent = new Intent(context, MessageService.class);
 		PendingIntent pendingIntent = PendingIntent.getService(context, 0, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 		AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-		am.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 5000, pendingIntent);
+		am.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), interval, pendingIntent);
 	}
 
 	/*

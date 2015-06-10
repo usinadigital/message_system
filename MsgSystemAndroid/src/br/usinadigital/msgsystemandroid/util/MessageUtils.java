@@ -34,7 +34,7 @@ public class MessageUtils {
 		Log.d(Constants.TAG, "Lower History Limit: " + Utils.dateToString(lowerLimit));
 		List<Message> list = new ArrayList<Message>();
 		for (Message msg : messages) {
-			Log.d(Constants.TAG, "Msg Date: " + msg.getCreationdate());
+			Log.d(Constants.TAG, "Msg: " + msg.toString());
 			if (Utils.stringToDate(msg.getCreationdate()).after(lowerLimit)) {
 				Log.d(Constants.TAG, "Added");
 				list.add(msg);

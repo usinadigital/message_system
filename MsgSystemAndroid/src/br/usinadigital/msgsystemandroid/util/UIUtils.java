@@ -13,7 +13,7 @@ import br.usinadigital.msgsystemandroid.R;
 public class UIUtils {
 
 	public static CharSequence printOn2lineWithDate(String first, String txt, Date data){
-		String dateLine =  txt + " " + DateFormat.getDateTimeInstance(DateFormat.SHORT,DateFormat.SHORT).format(data);
+		String dateLine =  txt + " " + Utils.dateToStringLocale(data);
 		return printOn2line(first, dateLine);
 	}
 	

@@ -11,7 +11,6 @@ import android.view.View;
 import br.usinadigital.msgsystemandroid.dao.ConfigurationDAO;
 import br.usinadigital.msgsystemandroid.dao.ConfigurationDAOImpl;
 import br.usinadigital.msgsystemandroid.util.Constants;
-import br.usinadigital.msgsystemandroid.util.Utils;
 
 public class MainActivity extends Activity {
 
@@ -23,7 +22,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		initializeConfiguration();
-		Utils.initializeMessageService(this);
+		//Utils.initializeMessageService(this);
 	}
 
 	public void clickMessages(View v) {

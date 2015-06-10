@@ -62,6 +62,10 @@ public class Utils {
 		return formatter.format(date);
 	}
 
+	public static String dateToStringLocale(Date date) {
+		return DateFormat.getDateTimeInstance(DateFormat.SHORT,DateFormat.SHORT).format(date);
+	}
+	
 	public static Date stringToDate(String strDate) {
 		DateFormat formatter = new SimpleDateFormat(Constants.DATE_FORMAT);
 		formatter.setTimeZone(TimeZone.getTimeZone("UTC"));

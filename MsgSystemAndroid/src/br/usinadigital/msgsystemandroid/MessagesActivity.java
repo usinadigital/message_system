@@ -2,15 +2,13 @@ package br.usinadigital.msgsystemandroid;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.TimeZone;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -68,9 +66,12 @@ public class MessagesActivity extends Activity {
 		configDAO = new ConfigurationDAOImpl(configurations);
 		categoryDAO = new CategoryDAOImpl(prefName, prefCheck);
 		setButtonText(configDAO.getMessagesLastUpdate());
-		Log.d(Constants.TAG, "Stored values:\n" + messageDAO.toString());
-		Message[] messages = MessageUtils.deleteOldMessagesFromHistory(messageDAO.getAll(),this,configDAO);
-		populateList(messages);
+		Log.d(Constants.TAG, "Stored values:\n" + Arrays.toString(messageDAO.getAll()));
+		Message[] storedfilteredMessages = MessageUtils.deleteOldMessagesFromHistory(messageDAO.getAll(),this,configDAO);
+		messageDAO.deleteAll();
+		clearList();
+		messageDAO.save(storedfilteredMessages);
+		populateList(storedfilteredMessages);
 	}
 
 	public void clickUpdateMessages(View v) {
@@ -82,11 +83,17 @@ public class MessagesActivity extends Activity {
 
 	private WSMessage getInstanceWSMessage() {
 		WSMessage wsMessage = new WSMessageImpl(getString(R.string.getMessageURL)) {
+			
+			ProgressDialog dialog = new ProgressDialog(MessagesActivity.this);
+			
 			public void onPreWSRequest() {
 				Log.d(Constants.TAG, "Start Request HTTP" + getString(R.string.getMessageURL));
+				dialog.setMessage(getString(R.string.loading));
+	            dialog.show();
 			}
 
 			public void onPostWSRequest() {
+				dialog.dismiss();
 				String response = getResponse();
 				Log.d(Constants.TAG, "Stop Response HTTP");
 				if (response == null) {
@@ -102,9 +109,9 @@ public class MessagesActivity extends Activity {
 						Date date = new Date();
 						configDAO.setMessagesLastUpdate(date);
 						setButtonText(date);
-						Message[] updatedMessages = MessageUtils.deleteOldMessagesFromHistory(newMessages,context,configDAO);
-						messageDAO.save(updatedMessages);
-						populateList(updatedMessages);
+						Message[] filteredMessages = MessageUtils.deleteOldMessagesFromHistory(newMessages,context,configDAO);
+						messageDAO.save(filteredMessages);
+						populateList(filteredMessages);
 					}
 				}
 			}
@@ -128,6 +135,11 @@ public class MessagesActivity extends Activity {
 		});
 	}
 
+	private void clearList(){
+		listMessages.clear();
+		sa.notifyDataSetChanged();
+	}
+	
 	private void populateList(Message[] messages) {
 		//orderArray(messages);
 		for (int i = 0; i < messages.length; i++) {
@@ -152,8 +164,9 @@ public class MessagesActivity extends Activity {
 
 	private HashMap<String, String> convertMessagesToMap(Message message) {
 		Map<String, String> map = new HashMap<String, String>();
+		Date data = Utils.stringToDate(message.getCreationdate());
 		map.put(Constants.FIRST_LINE, message.getTitle());
-		map.put(Constants.SECOND_LINE, message.getCreationdate());
+		map.put(Constants.SECOND_LINE, Utils.dateToStringLocale(data));
 
 		return (HashMap<String, String>) map;
 	}

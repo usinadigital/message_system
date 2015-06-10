@@ -4,7 +4,10 @@ import java.util.Map;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.util.Log;
 import br.usinadigital.msgsystemandroid.model.Message;
+import br.usinadigital.msgsystemandroid.util.Constants;
+import br.usinadigital.msgsystemandroid.util.Utils;
 
 public class MessageDAOImpl implements MessageDAO{
 
@@ -18,6 +21,15 @@ public class MessageDAOImpl implements MessageDAO{
 		this.msgDate = mesDate;
 	}
 
+	public void deleteAll(){
+		Editor edTitle =  msgTitle.edit();
+		Editor edTxt =  msgTxt.edit();
+		Editor edDate =  msgDate.edit();
+		edTitle.clear().commit();
+		edTxt.clear().commit();
+		edDate.clear().commit();
+	}
+	
 	public Message[] getAll(){
 		Map mapTitle = msgTitle.getAll();
 		Map mapTxt = msgTxt.getAll();
@@ -29,7 +41,9 @@ public class MessageDAOImpl implements MessageDAO{
 			String title = (String)mapTitle.get(key);
 			String text = (String)mapTxt.get(key);
 			String date = (String)mapDate.get(key);
+			Log.d(Constants.TAG, "id="+id+" title="+title+" text="+text+" date="+date);
 			msgs[i] = new Message(id,title,text,date);
+			i++;
 		}
 		return msgs;
 	}

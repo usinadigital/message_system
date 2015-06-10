@@ -6,9 +6,9 @@
 
     <string-array name="array_history_names">
         <item>@string/day1</item>
-        <item>@string/week1</item>
-        <item>@string/week2</item>
-        <item>@string/week4</item>
+        <item>@string/day7</item>
+        <item>@string/day14</item>
+        <item>@string/day30</item>
     </string-array>
 
     <integer-array name="array_history_values">
@@ -19,18 +19,17 @@
     </integer-array>
 
     <string-array name="array_frequency_names">
-        <item>@string/minute15</item>
-        <item>@string/minute30</item>
-        <item>@string/hour1</item>
+        <item>@string/hour4</item>
+        <item>@string/hour6</item>
         <item>@string/hour12</item>
         <item>@string/hour24</item>
     </string-array>
 
     <integer-array name="array_frequency_values">
-        <item>900000</item>
-        <item>100</item>
-        <item>200</item>
-        <item>86400000</item>
+        <item>5000</item> 	<!-- ogni 4 ore 14400000 -->
+        <item>10000</item>	<!-- ogni 6 ore 21600000 -->
+        <item>15000</item> 	<!-- ogni 12 ore 43200000-->
+        <item>86400000</item> 	<!-- ogni 24 ore -->
     </integer-array>
 
 </resources>

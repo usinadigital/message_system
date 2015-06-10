@@ -15,15 +15,15 @@ import br.usinadigital.msgsystemandroid.util.Utils;
 
 public class MainActivity extends Activity {
 
-	final Context context = this;
+	Context context;
 	ConfigurationDAO configDAO;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		context = this;
 		initializeConfiguration();
-		Utils.initializeMessageService(this,Constants.FREQUENCY_TEST);
 	}
 
 	public void clickMessages(View v) {
@@ -37,6 +37,7 @@ public class MainActivity extends Activity {
 	}
 
 	private void initializeConfiguration() {
+		int[] frequencyValues = getResources().getIntArray(R.array.array_frequency_values);
 		configDAO = new ConfigurationDAOImpl(getSharedPreferences(Constants.FILE_CONFIGURATIONS, Context.MODE_PRIVATE));
 		if (configDAO.isFirstApplicationExecution()) {
 			Log.d(Constants.TAG, "First Application Execution");
@@ -48,6 +49,7 @@ public class MainActivity extends Activity {
 		} else {
 			Log.d(Constants.TAG, "NOT First Application Execution");
 		}
+		Utils.initializeMessageService(this, frequencyValues[configDAO.getUpdateFrequency()]);
 	}
 
 }

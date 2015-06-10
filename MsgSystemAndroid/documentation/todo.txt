@@ -1,7 +1,10 @@
 xxx NB: occhio al fuso orario. Sul server e android possono avere fusi orari diversi, quindi le request dei messaggi non vanno bene
---- NB: se il WS non risponde, ciedo le categorie, vado in un altra app, mi arriva un mess di errore che la mia app é finita male. 
+xxx NB: se il WS non risponde, ciedo le categorie, vado in un altra app, mi arriva un mess di errore che la mia app é finita male. 
 	Soluzione? tolgo la progrss bar
 xxx NB l catgorie non fanno lo scroll
 --- La lista dgli ultimi enne messaggi????? Da fare?
 --- nlla list viw tagliar i titoli
---- s ripart l app ripart un nuovo srvizio?
+xxx s ripart l app ripart un nuovo srvizio? No, s killo l app  la riapro il srvizio non lo ricra
+xxx nl srvizio controllar s cé connssion di rete: da tstare
+--- la lista di msg dv ssr ordinata sia pr lnco mss sia pr l notifich
+--- sul tablt la dim di caré piccola

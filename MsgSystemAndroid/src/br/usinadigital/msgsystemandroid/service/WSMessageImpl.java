@@ -83,7 +83,6 @@ public abstract class WSMessageImpl extends AsyncTask<String, Void, Void> implem
 			if (entity != null) {
 				InputStream is = httpresponse.getEntity().getContent();
 				try {
-					Log.e(Constants.TAG, "dopo inputstream");
 					StringBuilder sb = new StringBuilder();
 					BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 	                String line = null;
@@ -92,13 +91,11 @@ public abstract class WSMessageImpl extends AsyncTask<String, Void, Void> implem
 	                }	
 	                response = sb.toString();
 				} catch (Exception e) {
-					Log.e(Constants.TAG, "ex1");
 					Log.e(Constants.TAG, e.toString());
 					e.printStackTrace();
 					error = e.getMessage();
 				} finally {
 					try {
-						Log.e(Constants.TAG, "fin1");
 						is.close();
 					} catch (Exception ignore) {
 
@@ -106,17 +103,13 @@ public abstract class WSMessageImpl extends AsyncTask<String, Void, Void> implem
 				}
 			}
 		} catch (Exception e) {
-			Log.e(Constants.TAG, "ex2");
 			Log.e(Constants.TAG, e.toString());
 			e.printStackTrace();
 			error = e.getMessage();
 		} finally {
-			Log.e(Constants.TAG, "fin2");
 			httpclient.getConnectionManager().shutdown();
-			Log.e(Constants.TAG, "fin22");
 		}
 		
-		Log.e(Constants.TAG, "return");
 		return null;
 	}
 

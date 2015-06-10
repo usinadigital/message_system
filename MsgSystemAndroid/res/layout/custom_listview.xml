@@ -5,13 +5,14 @@
   android:orientation="vertical">
   <TextView android:id="@+id/firstline"
     android:textSize="14dp"
-    android:textColor="#FFFFFF"
     android:textStyle="italic"
     android:layout_width="fill_parent"
+    android:ellipsize="end" 
     android:layout_height="wrap_content"/>
+  
   <TextView android:id="@+id/secondline"
-    android:textSize="12dp"
-    android:textColor="#BFFF00"
+    android:textSize="10dp"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"/>
+  
 </LinearLayout>

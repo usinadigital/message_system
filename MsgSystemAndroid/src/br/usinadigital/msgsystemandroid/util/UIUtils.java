@@ -26,7 +26,6 @@ public class UIUtils {
 		return Html.fromHtml(String.format(btnInnerHTML, first, second));
 	}
 	
-	
 	public static void showDialog(Context context, String title, String message){
 		AlertDialog alertDialog = new AlertDialog.Builder(context).create();
 		alertDialog.setTitle(title);
@@ -45,4 +44,5 @@ public class UIUtils {
 		Toast toast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
 		toast.show();
 	}
+	
 }

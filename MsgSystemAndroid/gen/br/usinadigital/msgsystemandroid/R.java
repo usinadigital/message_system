@@ -22,6 +22,8 @@ public final class R {
     }
     public static final class array {
         public static final int array_frequency_names=0x7f0c0002;
+        /**  ogni 24 ore 
+         */
         public static final int array_frequency_values=0x7f0c0003;
         public static final int array_history_names=0x7f0c0000;
         public static final int array_history_values=0x7f0c0001;
@@ -2066,10 +2068,11 @@ containing a value of this type.
         public static final int main=0x7f03001c;
         public static final int message_view=0x7f03001d;
         public static final int messages=0x7f03001e;
-        public static final int select_dialog_item_material=0x7f03001f;
-        public static final int select_dialog_multichoice_material=0x7f030020;
-        public static final int select_dialog_singlechoice_material=0x7f030021;
-        public static final int support_simple_spinner_dropdown_item=0x7f030022;
+        public static final int notifications=0x7f03001f;
+        public static final int select_dialog_item_material=0x7f030020;
+        public static final int select_dialog_multichoice_material=0x7f030021;
+        public static final int select_dialog_singlechoice_material=0x7f030022;
+        public static final int support_simple_spinner_dropdown_item=0x7f030023;
     }
     public static final class menu {
         public static final int mymenu=0x7f0d0000;
@@ -2144,21 +2147,20 @@ containing a value of this type.
         public static final int configurations_history=0x7f0a001a;
         public static final int configurations_history_selection=0x7f0a001b;
         public static final int day1=0x7f0a0020;
+        public static final int day14=0x7f0a0022;
+        public static final int day30=0x7f0a0023;
+        public static final int day7=0x7f0a0021;
         public static final int getAllCategoriesURL=0x7f0a0011;
         public static final int getMessageURL=0x7f0a0012;
-        public static final int hour1=0x7f0a0026;
-        public static final int hour12=0x7f0a0027;
-        public static final int hour24=0x7f0a0028;
-        public static final int lastUpdate=0x7f0a0029;
-        public static final int loading=0x7f0a002a;
+        public static final int hour12=0x7f0a0026;
+        public static final int hour24=0x7f0a0027;
+        public static final int hour4=0x7f0a0024;
+        public static final int hour6=0x7f0a0025;
+        public static final int lastUpdate=0x7f0a0028;
+        public static final int loading=0x7f0a0029;
         public static final int messages=0x7f0a0015;
         public static final int messages_update=0x7f0a0018;
-        public static final int minute15=0x7f0a0024;
-        public static final int minute30=0x7f0a0025;
         public static final int serviceNotAvailable=0x7f0a001f;
-        public static final int week1=0x7f0a0021;
-        public static final int week2=0x7f0a0022;
-        public static final int week4=0x7f0a0023;
         public static final int welcome=0x7f0a0014;
     }
     public static final class style {

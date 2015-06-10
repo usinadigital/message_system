@@ -27,5 +27,5 @@
         android:layout_gravity="center_horizontal"
         android:onClick="clickConfigurations"
     /> 
-    
+   
 </LinearLayout>

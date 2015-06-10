@@ -20,16 +20,16 @@
     <string name="serviceNotAvailable">PTService not available</string>
     
     <string name="day1">1 day</string>
-    <string name="week1">1 week</string>
-    <string name="week2">2 weeks</string>
-    <string name="week4">1 month</string>
+    <string name="day7">7 days</string>
+    <string name="day14">14 days</string>
+    <string name="day30">30 days</string>
     
-    <string name="minute15">15 minute</string>
-    <string name="minute30">30 minutes</string>
-    <string name="hour1">1 hour</string>
+    <string name="hour4">4 hours</string>
+    <string name="hour6">6 hours</string>
     <string name="hour12">12 hours</string>
     <string name="hour24">24 hours</string>
-    
+        
+    <string name="lastUpdate">Last Update</string>
     <string name="loading">PTLoading...</string>
     
 </resources>

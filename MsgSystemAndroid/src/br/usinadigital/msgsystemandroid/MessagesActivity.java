@@ -44,6 +44,7 @@ public class MessagesActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.messages);
+		context = this.getBaseContext();
 		txtUpdate = (TextView) findViewById(R.id.txtUpdateMessages);
 		mainListView = (ListView) findViewById(R.id.mainListView);
 		initialiseList();
@@ -97,6 +98,7 @@ public class MessagesActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				Map<String,String> itemValue = (Map<String,String>) mainListView.getItemAtPosition(position);
+				Log.d(Constants.TAG,"context="+context.toString());
 				Intent intent = new Intent(context, MessageViewActivity.class);
 	            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 	            intent.putExtra(Constants.MESSAGE_TITLE, itemValue.get(Constants.MESSAGE_TITLE));

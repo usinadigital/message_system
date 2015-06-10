@@ -41,7 +41,7 @@ public class MessageDAOImpl implements MessageDAO{
 			String title = (String)mapTitle.get(key);
 			String text = (String)mapTxt.get(key);
 			String date = (String)mapDate.get(key);
-			Log.d(Constants.TAG, "id="+id+" title="+title+" text="+text+" date="+date);
+//			Log.d(Constants.TAG, "id="+id+" title="+title+" text="+text+" date="+date);
 			msgs[i] = new Message(id,title,text,date);
 			i++;
 		}

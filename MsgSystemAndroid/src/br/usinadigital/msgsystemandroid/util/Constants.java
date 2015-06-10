@@ -4,8 +4,6 @@ public interface Constants {
 	
 	public static final int HTTP_TIMEOUT_MILLISEC = 5000;
 	
-	public static final int FREQUENCY_TEST = 15000;
-	
 	public static final String TAG = "br.usinadigital.msgsystemandroid";
 	public static final String FILE_CATEGORY_NAME = "CategoryName";
 	public static final String FILE_CATEGORY_CHECK = "CategoryCheck";
@@ -20,7 +18,7 @@ public interface Constants {
 	public static final String CONFIGURATION_FIRST_EXECUTION = "firstExecution";
 	
 	public static final int DEFAULT_CONFIGURATION_HISTORY = 0;
-	public static final int DEFAULT_CONFIGURATION_FREQUENCY = 4;
+	public static final int DEFAULT_CONFIGURATION_FREQUENCY = 3;
 	
 	public static final String FIRST_LINE = "firstline";
 	public static final String SECOND_LINE = "secondline";

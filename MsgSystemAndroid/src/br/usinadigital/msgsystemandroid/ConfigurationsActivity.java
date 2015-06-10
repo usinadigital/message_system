@@ -14,24 +14,27 @@ import android.view.View;
 import br.usinadigital.msgsystemandroid.dao.ConfigurationDAO;
 import br.usinadigital.msgsystemandroid.dao.ConfigurationDAOImpl;
 import br.usinadigital.msgsystemandroid.util.Constants;
+import br.usinadigital.msgsystemandroid.util.Utils;
 
 public class ConfigurationsActivity extends Activity {
 
-	final Context context = this;
-	AlertDialog radioDialog;
-	ConfigurationDAO configDAO;
-	String[] historyNames;
-	String[] frequencyNames;
+	private Context context;
+	private AlertDialog radioDialog;
+	private ConfigurationDAO configDAO;
+	private String[] historyNames;
+	private String[] frequencyNames;
+	private int[] frequencyValues;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.configurations);
+		context = this.getBaseContext();
 		SharedPreferences configurations = getSharedPreferences(Constants.FILE_CONFIGURATIONS, Context.MODE_PRIVATE);
 		configDAO = new ConfigurationDAOImpl(configurations);
 		historyNames = getResources().getStringArray(R.array.array_history_names);
 		frequencyNames = getResources().getStringArray(R.array.array_frequency_names);
+		frequencyValues = getResources().getIntArray(R.array.array_frequency_values);
 	}
 
 	public void clickCategories(View v) {
@@ -67,7 +70,9 @@ public class ConfigurationsActivity extends Activity {
 			public void onClick(DialogInterface dialog, int item) {
 				configDAO.setUpdateFrequency(item);
 				radioDialog.dismiss();
-				Log.d(Constants.TAG, "Frequency selected:" + item); 
+				int freq = frequencyValues[item];
+				Utils.reInitializeMessageService(context,freq);
+				Log.d(Constants.TAG, "Set new frequency:" + freq);
 			}
 		});
 		radioDialog = builder.create();

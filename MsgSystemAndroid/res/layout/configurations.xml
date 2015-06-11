@@ -1,43 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="match_parent">
  
     <Button
-        android:paddingTop="10px"
         android:id="@+id/btCategories"
         android:text="@string/configurations_categories"
-        android:cursorVisible="true"
+        android:textSize="20sp"
         android:clickable="true"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" 
-        android:layout_gravity="center_horizontal"
         android:onClick="clickCategories"
+        android:drawableTop="@drawable/lists"
     />
     
     <Button
-        android:paddingTop="10px"
         android:id="@+id/btHistory"
         android:text="@string/configurations_history"
-        android:cursorVisible="true"
+        android:textSize="20sp"
         android:clickable="true"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" 
-        android:layout_gravity="center_horizontal"
         android:onClick="clickHistory"
+        android:layout_toRightOf="@+id/btCategories"
+        android:drawableTop="@drawable/time_machine_disk"
     />
    
    <Button
-        android:paddingTop="10px"
         android:id="@+id/btFrequency"
         android:text="@string/configurations_frequency"
-        android:cursorVisible="true"
+        android:textSize="20sp"
         android:clickable="true"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" 
-        android:layout_gravity="center_horizontal"
         android:onClick="clickFrequency"
+        android:layout_toRightOf="@+id/btHistory"
+        android:drawableTop="@drawable/clock"
     /> 
     
-</LinearLayout>
+</RelativeLayout>

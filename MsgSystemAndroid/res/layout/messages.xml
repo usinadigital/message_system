@@ -3,21 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginLeft="20sp"
+    android:layout_marginRight="20sp"
     tools:context=".MessagesActivity" >
 
-    <TextView
-        android:id="@+id/txtUpdateMessages"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:clickable="true"
-        android:onClick="clickUpdateMessages"
-        android:cursorVisible="true"
-        android:paddingTop="10px"
-        android:text="@string/messages_update" />
-
     <ListView android:layout_width="fill_parent"   
-      android:layout_height="fill_parent"  
+      android:layout_height="fill_parent"
+      android:dividerHeight="1sp"
       android:id="@+id/mainListView">  
     </ListView> 
     

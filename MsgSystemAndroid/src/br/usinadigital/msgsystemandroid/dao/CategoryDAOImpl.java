@@ -1,6 +1,7 @@
 package br.usinadigital.msgsystemandroid.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import android.content.SharedPreferences;
@@ -39,6 +40,14 @@ public class CategoryDAOImpl implements CategoryDAO{
 		Editor editor =  categoriesCheck.edit();
 		editor.clear();
 		editor.commit();
+	}
+	
+	public void saveChecks(List<Integer> list){
+		Editor edCheck = categoriesCheck.edit();
+		for (Integer val : list) {
+			edCheck.putString(val.toString(), Constants.CHECKED_STATE);
+		}
+		edCheck.commit();
 	}
 	
 	/*

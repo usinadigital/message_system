@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">MsgSystemAndroid</string>
-    
+<resources>    
     <string name="welcome">Bem-vindo</string>
     
     <string name="messages">PTMessages</string>
@@ -29,7 +27,8 @@
     <string name="hour12">12 hours</string>
     <string name="hour24">24 hours</string>
         
-    <string name="lastUpdate">Last Update</string>
+    <string name="newMessageNotification">PTUsina Cultural Message</string>
+    <string name="lastUpdate">PTLast Update</string>
     <string name="loading">PTLoading...</string>
     
 </resources>

@@ -20,7 +20,7 @@ public class NotificationHelper{
 		PendingIntent resultPendingIntent = PendingIntent.getActivity(context, 0, new Intent(), PendingIntent.FLAG_UPDATE_CURRENT);
 
 		NotificationManager notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
-		Notification notification = new Notification(R.drawable.ic_launcher, "New Message", System.currentTimeMillis());
+		Notification notification = new Notification(R.drawable.ic_launcher, context.getString(R.string.newMessageNotification), System.currentTimeMillis());
 		notification.flags = Notification.FLAG_AUTO_CANCEL;
 		
 		notification.setLatestEventInfo(context, notificationTitle, notificationMessage, resultPendingIntent);

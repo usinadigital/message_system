@@ -7,18 +7,20 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import br.usinadigital.msgsystemandroid.R;
 import br.usinadigital.msgsystemandroid.dao.ConfigurationDAO;
 import br.usinadigital.msgsystemandroid.dao.ConfigurationDAOImpl;
 import br.usinadigital.msgsystemandroid.dao.MessageDAO;
@@ -29,23 +31,28 @@ import br.usinadigital.msgsystemandroid.util.MessageUtils;
 import br.usinadigital.msgsystemandroid.util.UIUtils;
 import br.usinadigital.msgsystemandroid.util.Utils;
 
-public class MessagesActivity extends Activity {
+public class MessagesActivity extends ActionBarActivity {
 
 	private Context context;
 	private ListView mainListView;
 	private SimpleAdapter sa;
 	private MessageDAO messageDAO;
 	private ConfigurationDAO configDAO;
-	private TextView txtUpdate;
-
+	
 	ArrayList<HashMap<String, String>> listMessages = new ArrayList<HashMap<String, String>>();
 
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.messages);
+		UIUtils.setActionBarIcon(getSupportActionBar()); 
 		context = this.getBaseContext();
-		txtUpdate = (TextView) findViewById(R.id.txtUpdateMessages);
 		mainListView = (ListView) findViewById(R.id.mainListView);
 		initialiseList();
 
@@ -55,28 +62,21 @@ public class MessagesActivity extends Activity {
 		SharedPreferences configurations = getSharedPreferences(Constants.FILE_CONFIGURATIONS, Context.MODE_PRIVATE);
 		messageDAO = new MessageDAOImpl(msgTitle, msgText, msgDate);
 		configDAO = new ConfigurationDAOImpl(configurations);
-		setTextView(configDAO.getMessagesLastUpdate());
-		Log.d(Constants.TAG, "Stored values:\n" + Arrays.toString(messageDAO.getAll()));
+		this.setTitle(this.getTitle() + " (" + getUpdateMessage() + ")");
+		Log.d(Constants.TAG, "Stored messages:\n" + Arrays.toString(messageDAO.getAll()));
 		Message[] storedfilteredMessages = MessageUtils.deleteOldMessagesFromHistory(messageDAO.getAll(), this, configDAO);
+		Log.d(Constants.TAG, "Filtered messages:\n" + Arrays.toString(storedfilteredMessages));
 		messageDAO.deleteAll();
 		clearList();
+		MessageUtils.orderArray(storedfilteredMessages);
+		Log.d(Constants.TAG, "Ordered messages:\n" + Arrays.toString(storedfilteredMessages));
 		messageDAO.save(storedfilteredMessages);
 		populateList(storedfilteredMessages);
 	}
 
-	private void setTextView(Date date) {
+	private String getUpdateMessage() {
 		Date data = configDAO.getMessagesLastUpdate();
-		txtUpdate.setText(UIUtils.printWithDate(getString(R.string.lastUpdate), data));
-	}
-
-	private void orderArray(Message[] messages) {
-		Arrays.sort(messages, new Comparator<Message>() {
-			public int compare(Message m1, Message m2) {
-				Date d1 = Utils.stringToDate(m1.getCreationdate());
-				Date d2 = Utils.stringToDate(m2.getCreationdate());
-				return d1.compareTo(d2);
-			}
-		});
+		return UIUtils.printWithDate(getString(R.string.lastUpdate), data).toString();
 	}
 
 	private void clearList() {

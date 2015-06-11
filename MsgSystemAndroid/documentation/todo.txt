@@ -6,5 +6,6 @@ xxx NB l catgorie non fanno lo scroll
 --- nlla list viw tagliar i titoli
 xxx s ripart l app ripart un nuovo srvizio? No, s killo l app  la riapro il srvizio non lo ricra
 xxx nl srvizio controllar s cé connssion di rete: da tstare
---- la lista di msg dv ssr ordinata sia pr lnco mss sia pr l notifich
+xxx la lista di msg dv ssr ordinata sia pr lnco mss sia pr l notifich
 --- sul tablt la dim di caré piccola
+--- icona di usina é spostata a dx

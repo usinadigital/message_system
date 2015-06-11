@@ -5,6 +5,7 @@ import java.util.Date;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.support.v7.app.ActionBar;
 import android.text.Html;
 import android.widget.Toast;
 import br.usinadigital.msgsystemandroid.R;
@@ -24,6 +25,11 @@ public class UIUtils {
 	public static CharSequence printOn2line(String first, String second){
 		final String btnInnerHTML = "%s<br/><small><small>%s</small></small>";
 		return Html.fromHtml(String.format(btnInnerHTML, first, second));
+	}
+	
+	public static void setActionBarIcon(ActionBar ab){
+	    ab.setDisplayShowHomeEnabled(true);
+	    ab.setIcon(R.drawable.usina_cultural);
 	}
 	
 	public static void showDialog(Context context, String title, String message){

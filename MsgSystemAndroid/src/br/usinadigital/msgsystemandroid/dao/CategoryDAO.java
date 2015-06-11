@@ -1,5 +1,6 @@
 package br.usinadigital.msgsystemandroid.dao;
 
+import java.util.List;
 import java.util.Map;
 
 public interface CategoryDAO {
@@ -9,6 +10,8 @@ public interface CategoryDAO {
 	public void deleteAllCategories();
 	
 	public void deleteAllChecks();
+	
+	public void saveChecks(List<Integer> list);
 	
 	public void refreshCheckIds();
 	

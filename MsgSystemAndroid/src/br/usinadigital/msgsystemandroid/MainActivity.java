@@ -2,18 +2,23 @@ package br.usinadigital.msgsystemandroid;
 
 import java.util.Date;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
+import android.view.ViewConfiguration;
+import br.usinadigital.msgsystemandroid.R;
 import br.usinadigital.msgsystemandroid.dao.ConfigurationDAO;
 import br.usinadigital.msgsystemandroid.dao.ConfigurationDAOImpl;
 import br.usinadigital.msgsystemandroid.util.Constants;
+import br.usinadigital.msgsystemandroid.util.UIUtils;
 import br.usinadigital.msgsystemandroid.util.Utils;
 
-public class MainActivity extends Activity {
+@SuppressWarnings("deprecation")
+public class MainActivity extends ActionBarActivity  {
 
 	Context context;
 	ConfigurationDAO configDAO;
@@ -22,10 +27,18 @@ public class MainActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		UIUtils.setActionBarIcon(getSupportActionBar()); 
+		//getOverflowMenu();
 		context = this;
 		initializeConfiguration();
 	}
 
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+	
 	public void clickMessages(View v) {
 		Intent intent = new Intent(context, MessagesActivity.class);
 		startActivity(intent);
@@ -51,5 +64,20 @@ public class MainActivity extends Activity {
 		}
 		Utils.initializeMessageService(this, frequencyValues[configDAO.getUpdateFrequency()]);
 	}
+
+//	private void getOverflowMenu() {
+//    try {
+// 
+//       ViewConfiguration config = ViewConfiguration.get(this);
+//       java.lang.reflect.Field menuKeyField = ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");
+//       if(menuKeyField != null) {
+//           menuKeyField.setAccessible(true);
+//           menuKeyField.setBoolean(config, false);
+//       }
+//   } catch (Exception e) {
+//       e.printStackTrace();
+//   }
+// 
+//}
 
 }

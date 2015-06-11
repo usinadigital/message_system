@@ -1,7 +1,9 @@
 package br.usinadigital.msgsystemandroid.util;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -42,4 +44,25 @@ public class MessageUtils {
 		}
 		return list.toArray(new Message[list.size()]);
 	}
+	
+	public static void orderArray(Message[] messages) {
+		Arrays.sort(messages, new Comparator<Message>() {
+			public int compare(Message m1, Message m2) {
+				Date d1 = Utils.stringToDate(m1.getCreationdate());
+				Date d2 = Utils.stringToDate(m2.getCreationdate());
+				return d1.compareTo(d2);
+			}
+		});
+	}
+	
+	public static void inversOrderArray(Message[] messages) {
+		Arrays.sort(messages, new Comparator<Message>() {
+			public int compare(Message m1, Message m2) {
+				Date d1 = Utils.stringToDate(m1.getCreationdate());
+				Date d2 = Utils.stringToDate(m2.getCreationdate());
+				return -d1.compareTo(d2);
+			}
+		});
+	}
+
 }

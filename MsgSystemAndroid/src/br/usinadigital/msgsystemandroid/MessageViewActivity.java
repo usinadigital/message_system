@@ -1,21 +1,30 @@
 package br.usinadigital.msgsystemandroid;
 
-import br.usinadigital.msgsystemandroid.util.Constants;
-import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
 import android.widget.TextView;
+import br.usinadigital.msgsystemandroid.R;
+import br.usinadigital.msgsystemandroid.util.Constants;
+import br.usinadigital.msgsystemandroid.util.UIUtils;
 
-public class MessageViewActivity extends Activity {
+public class MessageViewActivity extends ActionBarActivity {
 
 	private TextView txtTitle;
 	private TextView txtBody;
 	String title, text;
 	
 	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+	
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.message_view);
+		setContentView(R.layout.message);
+		UIUtils.setActionBarIcon(getSupportActionBar()); 
 		txtTitle = (TextView)findViewById(R.id.txtTitle);
 		txtBody = (TextView)findViewById(R.id.txtBody);
 		Bundle b = getIntent().getExtras();

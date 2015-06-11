@@ -66,13 +66,13 @@ public class Utils {
 		return list.toArray(new Integer[list.size()]);
 	}
 
-	public static List<Integer> getSortedkeys(Map map) {
+	public static Integer[] getSortedkeys(Map mapCategories) {
 		List<Integer> res = new ArrayList<Integer>();
-		for (Object val : map.keySet()) {
+		for (Object val : mapCategories.keySet()) {
 			res.add(Integer.valueOf((String) val));
 		}
 		Collections.sort(res);
-		return res;
+		return res.toArray(new Integer[res.size()]);
 	}
 
 	public static String dateToString(Date date) {

@@ -14,6 +14,7 @@ import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
+import br.usinadigital.msgsystemandroid.R;
 import br.usinadigital.msgsystemandroid.dao.CategoryDAO;
 import br.usinadigital.msgsystemandroid.dao.CategoryDAOImpl;
 import br.usinadigital.msgsystemandroid.dao.ConfigurationDAO;
@@ -63,7 +64,7 @@ public class MessageService extends Service {
 			Log.d(Constants.TAG, "No network connection");
 		} else {
 			Message[] messages = messageDAO.getAll();
-			Log.d(Constants.TAG, "Stored values:\n" + Arrays.toString(messages));
+			Log.d(Constants.TAG, "Stored messages:\n" + Arrays.toString(messages));
 
 			// update the categories from the WS
 			WSCategory wsCategory = getInstanceWSCategory();
@@ -90,7 +91,6 @@ public class MessageService extends Service {
 			public void onPreWSRequest() {
 				Log.d(Constants.TAG, "Start Request HTTP " + getString(R.string.getMessageURL));
 			}
-
 			public void onPostWSRequest() {
 				String response = getResponse();
 				Log.d(Constants.TAG, "Stop Response HTTP");
@@ -101,15 +101,11 @@ public class MessageService extends Service {
 					if (newMessages == null) {
 						Log.d(Constants.TAG, "Error parsing Json");
 					} else {
-						Log.d(Constants.TAG, "----------------------------------------- Response: " + Arrays.toString(newMessages));
+						Log.d(Constants.TAG, "------------------------------ Response:\n" + Arrays.toString(newMessages));
+						MessageUtils.orderArray(newMessages);
 						sendNotifications(newMessages);
-						// Message[] newMessagesFiltered =
-						// MessageUtils.deleteOldMessagesFromHistory(newMessages,context,configDAO);
-						// messageDAO.save(newMessagesFiltered);
 						messageDAO.save(newMessages);
-						Date date = new Date();
-						configDAO.setMessagesLastUpdate(date);
-						
+						configDAO.setMessagesLastUpdate(new Date());
 					}
 				}
 			}
@@ -119,13 +115,14 @@ public class MessageService extends Service {
 
 	private void sendNotifications(Message[] messages){
 		for (Message msg : messages){
-			Log.d(Constants.TAG, "Notification");
+			Log.d(Constants.TAG, "Start notification");
 			int id = Integer.valueOf(msg.getId());
 			String title = msg.getTitle();
 			String text = msg.getText();
 			Date data = Utils.stringToDate(msg.getCreationdate());
 			Utils.dateToStringLocale(data);
 			NotificationHelper.notify(context, id, title, text);
+			Log.d(Constants.TAG, "Stop notification");
 		}
 	}
 	

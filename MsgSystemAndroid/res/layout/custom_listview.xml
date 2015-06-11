@@ -8,7 +8,6 @@
         android:id="@+id/firstline"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        
         android:ellipsize="end"
         android:textSize="22sp"
         android:textStyle="bold" />

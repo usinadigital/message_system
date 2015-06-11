@@ -55,8 +55,8 @@ public class MainActivity extends ActionBarActivity  {
 		if (configDAO.isFirstApplicationExecution()) {
 			Log.d(Constants.TAG, "First Application Execution");
 			configDAO.unsetFirstApplicationExecution();
-			configDAO.setHistoryLength(Constants.DEFAULT_CONFIGURATION_HISTORY);
-			configDAO.setUpdateFrequency(Constants.DEFAULT_CONFIGURATION_FREQUENCY);
+			configDAO.setHistoryLength(getResources().getInteger(R.integer.default_history_index));
+			configDAO.setUpdateFrequency(getResources().getInteger(R.integer.default_frequency_index));
 			configDAO.setMessagesLastUpdate(new Date());
 			configDAO.setCategoriesLastUpdate(new Date());
 		} else {

@@ -1948,7 +1948,7 @@ containing a value of this type.
         public static final int btHistory=0x7f090050;
         public static final int btMessages=0x7f090054;
         public static final int buttonPanel=0x7f090036;
-        public static final int categories=0x7f090059;
+        public static final int categories=0x7f09005a;
         public static final int checkbox=0x7f090038;
         public static final int collapseActionView=0x7f09001a;
         public static final int contentPanel=0x7f090031;
@@ -1971,7 +1971,7 @@ containing a value of this type.
         public static final int image=0x7f090028;
         public static final int listMode=0x7f09000a;
         public static final int list_item=0x7f09002a;
-        public static final int mainListView=0x7f090058;
+        public static final int mainListView=0x7f090059;
         public static final int middle=0x7f090022;
         public static final int multiply=0x7f090014;
         public static final int never=0x7f09001c;
@@ -2009,10 +2009,11 @@ containing a value of this type.
         public static final int title=0x7f09002c;
         public static final int title_template=0x7f09002f;
         public static final int topPanel=0x7f09002e;
-        public static final int txtBody=0x7f090057;
-        public static final int txtTitle=0x7f090056;
+        public static final int txtBody=0x7f090058;
+        public static final int txtDate=0x7f090056;
+        public static final int txtTitle=0x7f090057;
         public static final int up=0x7f090001;
-        public static final int updates=0x7f09005a;
+        public static final int updates=0x7f09005b;
         public static final int useLogo=0x7f090013;
         public static final int withText=0x7f09001d;
         public static final int wrap_content=0x7f090009;
@@ -2045,6 +2046,9 @@ containing a value of this type.
          showAsAction="ifRoom" items can fit. "always" items can override this. 
          */
         public static final int abc_max_action_buttons=0x7f080002;
+        public static final int boo=0x7f080003;
+        public static final int default_frequency_index=0x7f080005;
+        public static final int default_history_index=0x7f080004;
     }
     public static final class layout {
         public static final int abc_action_bar_title_item=0x7f030000;
@@ -2146,36 +2150,39 @@ containing a value of this type.
         /**  Content description for the Toolbar icon used to collapse an expanded action mode. [CHAR LIMIT=NONE] 
          */
         public static final int abc_toolbar_collapse_description=0x7f0a0004;
-        public static final int alertTitleDialog=0x7f0a0020;
-        public static final int app_name=0x7f0a0011;
-        public static final int categories_update=0x7f0a0018;
-        public static final int configurations=0x7f0a0017;
-        public static final int configurations_categories=0x7f0a001a;
-        public static final int configurations_categories_dialog_title=0x7f0a001b;
-        public static final int configurations_frequency=0x7f0a001e;
-        public static final int configurations_frequency_dialog_title=0x7f0a001f;
-        public static final int configurations_frequency_selection=0x7f0a002e;
-        public static final int configurations_history=0x7f0a001c;
-        public static final int configurations_history_dialog_title=0x7f0a001d;
-        public static final int configurations_history_selection=0x7f0a002d;
-        public static final int day1=0x7f0a0022;
-        public static final int day14=0x7f0a0024;
-        public static final int day30=0x7f0a0025;
-        public static final int day7=0x7f0a0023;
-        public static final int getAllCategoriesURL=0x7f0a0012;
-        public static final int getMessageURL=0x7f0a0013;
-        public static final int hour12=0x7f0a0028;
-        public static final int hour24=0x7f0a0029;
-        public static final int hour4=0x7f0a0026;
-        public static final int hour6=0x7f0a0027;
-        public static final int lastUpdate=0x7f0a002b;
-        public static final int loading=0x7f0a002c;
-        public static final int message=0x7f0a0016;
-        public static final int messages=0x7f0a0015;
-        public static final int messages_update=0x7f0a0019;
-        public static final int newMessageNotification=0x7f0a002a;
-        public static final int serviceNotAvailable=0x7f0a0021;
-        public static final int welcome=0x7f0a0014;
+        public static final int alertTitleDialog=0x7f0a0021;
+        public static final int app_name=0x7f0a0012;
+        public static final int categories_update=0x7f0a0019;
+        public static final int configurations=0x7f0a0018;
+        public static final int configurations_categories=0x7f0a001b;
+        public static final int configurations_categories_dialog_title=0x7f0a001c;
+        public static final int configurations_frequency=0x7f0a001f;
+        public static final int configurations_frequency_dialog_title=0x7f0a0020;
+        public static final int configurations_frequency_selection=0x7f0a0031;
+        public static final int configurations_history=0x7f0a001d;
+        public static final int configurations_history_dialog_title=0x7f0a001e;
+        public static final int configurations_history_selection=0x7f0a0030;
+        public static final int day1=0x7f0a0023;
+        public static final int day14=0x7f0a0025;
+        public static final int day30=0x7f0a0026;
+        public static final int day7=0x7f0a0024;
+        public static final int getAllCategoriesURL=0x7f0a0013;
+        public static final int getMessageURL=0x7f0a0014;
+        public static final int hour12=0x7f0a002a;
+        public static final int hour2=0x7f0a0027;
+        public static final int hour24=0x7f0a002b;
+        public static final int hour4=0x7f0a0028;
+        public static final int hour6=0x7f0a0029;
+        public static final int lastUpdate=0x7f0a002e;
+        public static final int loading=0x7f0a002f;
+        public static final int message=0x7f0a0017;
+        public static final int messages=0x7f0a0016;
+        public static final int messages_update=0x7f0a001a;
+        public static final int newMessageNotification=0x7f0a002d;
+        public static final int serviceNotAvailable=0x7f0a0022;
+        public static final int serviceToast=0x7f0a0011;
+        public static final int test=0x7f0a002c;
+        public static final int welcome=0x7f0a0015;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f0b0040;

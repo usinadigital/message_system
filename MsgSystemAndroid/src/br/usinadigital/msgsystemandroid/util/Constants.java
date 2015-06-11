@@ -17,14 +17,14 @@ public interface Constants {
 	public static final String CONFIGURATION_FREQUENCY = "frequency";
 	public static final String CONFIGURATION_FIRST_EXECUTION = "firstExecution";
 	
-	public static final int DEFAULT_CONFIGURATION_HISTORY = 0;
-	public static final int DEFAULT_CONFIGURATION_FREQUENCY = 3;
-	
+	public static final String ENABLED = "enabled";
+		
 	public static final String FIRST_LINE = "firstline";
 	public static final String SECOND_LINE = "secondline";
 	public static final String CHECKED_STATE = "1";
 	public static final String UNCHECKED_STATE = "0";
 	
+	public static final String MESSAGE_DATE = "date";
 	public static final String MESSAGE_TITLE = "title";
 	public static final String MESSAGE_TEXT = "text";
 	

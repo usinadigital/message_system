@@ -24,10 +24,12 @@
     <string name="day14">14 days</string>
     <string name="day30">30 days</string>
     
+    <string name="hour2">2 hours</string>
     <string name="hour4">4 hours</string>
     <string name="hour6">6 hours</string>
     <string name="hour12">12 hours</string>
     <string name="hour24">24 hours</string>
+    <string name="test">5 seconds</string>
     
     <string name="newMessageNotification">Usina Cultural Message</string>
     <string name="lastUpdate">Last Update</string>

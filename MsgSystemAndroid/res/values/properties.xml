@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<string name="serviceToast">enabled</string>
 	<string name="app_name">Usina Cultural</string>
     <string name="getAllCategoriesURL">http://192.168.0.3:8080/MsgSystemWS-0.0.1/rest/category/all</string>
     <string name="getMessageURL">http://192.168.0.3:8080/MsgSystemWS-0.0.1/rest/message/getFromDateByCategories</string>
 
+    <integer name="default_history_index">1</integer>
     <string-array name="array_history_names">
         <item>@string/day1</item>
         <item>@string/day7</item>
         <item>@string/day14</item>
         <item>@string/day30</item>
     </string-array>
-
     <integer-array name="array_history_values">
         <item>1</item>
         <item>7</item>
@@ -18,18 +19,22 @@
         <item>30</item>
     </integer-array>
 
+    <integer name="default_frequency_index">4</integer>
     <string-array name="array_frequency_names">
+        <item>@string/hour2</item>
         <item>@string/hour4</item>
         <item>@string/hour6</item>
         <item>@string/hour12</item>
         <item>@string/hour24</item>
+        <item>@string/test</item>
     </string-array>
-
     <integer-array name="array_frequency_values">
-        <item>5000</item> 	<!-- ogni 4 ore 14400000 -->
-        <item>10000</item>	<!-- ogni 6 ore 21600000 -->
-        <item>15000</item> 	<!-- ogni 12 ore 43200000-->
+        <item>7200000</item> 	<!-- ogni 2 ore 14400000 -->
+        <item>14400000</item> 	<!-- ogni 4 ore 14400000 -->
+        <item>21600000</item>	<!-- ogni 6 ore 21600000 -->
+        <item>43200000</item> 	<!-- ogni 12 ore 43200000-->
         <item>86400000</item> 	<!-- ogni 24 ore -->
+        <item>5000</item> 	<!-- ogni 24 ore -->
     </integer-array>
 
 </resources>

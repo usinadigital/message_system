@@ -10,9 +10,10 @@ import br.usinadigital.msgsystemandroid.util.UIUtils;
 
 public class MessageViewActivity extends ActionBarActivity {
 
+	private TextView txtDate;
 	private TextView txtTitle;
 	private TextView txtBody;
-	String title, text;
+	String date, title, text;
 	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -24,15 +25,17 @@ public class MessageViewActivity extends ActionBarActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.message);
-		UIUtils.setActionBarIcon(getSupportActionBar()); 
+		UIUtils.setActionBarIcon(getSupportActionBar());
+		txtDate = (TextView)findViewById(R.id.txtDate);
 		txtTitle = (TextView)findViewById(R.id.txtTitle);
 		txtBody = (TextView)findViewById(R.id.txtBody);
 		Bundle b = getIntent().getExtras();
 		if (b != null){
+			date = b.getString(Constants.MESSAGE_DATE);
 			title = b.getString(Constants.MESSAGE_TITLE);
 			text = b.getString(Constants.MESSAGE_TEXT);
 		}
-		
+		txtDate.setText(date);
 		txtTitle.setText(title);
 		txtBody.setText(text);
 	}

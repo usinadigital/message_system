@@ -62,7 +62,6 @@ public class MessagesActivity extends ActionBarActivity {
 		SharedPreferences configurations = getSharedPreferences(Constants.FILE_CONFIGURATIONS, Context.MODE_PRIVATE);
 		messageDAO = new MessageDAOImpl(msgTitle, msgText, msgDate);
 		configDAO = new ConfigurationDAOImpl(configurations);
-		this.setTitle(this.getTitle() + " (" + getUpdateMessage() + ")");
 		Log.d(Constants.TAG, "Stored messages:\n" + Arrays.toString(messageDAO.getAll()));
 		Message[] storedfilteredMessages = MessageUtils.deleteOldMessagesFromHistory(messageDAO.getAll(), this, configDAO);
 		Log.d(Constants.TAG, "Filtered messages:\n" + Arrays.toString(storedfilteredMessages));
@@ -72,11 +71,6 @@ public class MessagesActivity extends ActionBarActivity {
 		Log.d(Constants.TAG, "Ordered messages:\n" + Arrays.toString(storedfilteredMessages));
 		messageDAO.save(storedfilteredMessages);
 		populateList(storedfilteredMessages);
-	}
-
-	private String getUpdateMessage() {
-		Date data = configDAO.getMessagesLastUpdate();
-		return UIUtils.printWithDate(getString(R.string.lastUpdate), data).toString();
 	}
 
 	private void clearList() {
@@ -101,6 +95,7 @@ public class MessagesActivity extends ActionBarActivity {
 				Log.d(Constants.TAG,"context="+context.toString());
 				Intent intent = new Intent(context, MessageViewActivity.class);
 	            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+	            intent.putExtra(Constants.MESSAGE_DATE, itemValue.get(Constants.MESSAGE_DATE));
 	            intent.putExtra(Constants.MESSAGE_TITLE, itemValue.get(Constants.MESSAGE_TITLE));
 	            intent.putExtra(Constants.MESSAGE_TEXT, itemValue.get(Constants.MESSAGE_TEXT));
 	            context.startActivity(intent);
@@ -111,8 +106,10 @@ public class MessagesActivity extends ActionBarActivity {
 	private HashMap<String, String> convertMessagesToMap(Message message) {
 		Map<String, String> map = new HashMap<String, String>();
 		Date data = Utils.stringToDate(message.getCreationdate());
+		String localeFormattedDate = Utils.dateToStringLocale(data);
 		map.put(Constants.FIRST_LINE, message.getTitle());
-		map.put(Constants.SECOND_LINE, Utils.dateToStringLocale(data));
+		map.put(Constants.SECOND_LINE, localeFormattedDate);
+		map.put(Constants.MESSAGE_DATE, localeFormattedDate);
 		map.put(Constants.MESSAGE_TITLE,  message.getTitle());
 		map.put(Constants.MESSAGE_TEXT,  message.getText());
 

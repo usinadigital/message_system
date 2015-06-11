@@ -9,3 +9,5 @@ xxx nl srvizio controllar s cé connssion di rete: da tstare
 xxx la lista di msg dv ssr ordinata sia pr lnco mss sia pr l notifich
 --- sul tablt la dim di caré piccola
 --- icona di usina é spostata a dx
+--- qunado apre la prima volta compare le catgorie
+--- sarbbe meglio che il mnu foss piu grandsul tablt

@@ -59,7 +59,9 @@ public class MessageService extends Service {
 	public int onStartCommand(Intent intent, int flags, int startId) {
 
 		Log.d(Constants.TAG, "Start MessageService");
-		Toast.makeText(this, "Start MessageService", Toast.LENGTH_SHORT).show();
+		if (getResources().getString(R.string.serviceToast).equalsIgnoreCase(Constants.ENABLED)){
+			Toast.makeText(this, "Start MessageService", Toast.LENGTH_SHORT).show();
+		}
 		if (!Utils.isNetworkConnected(context)) {
 			Log.d(Constants.TAG, "No network connection");
 		} else {

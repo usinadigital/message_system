@@ -75,4 +75,14 @@ public class MessageController {
 		return list;
 	}
 	
+	@RequestMapping(value = Constants.GET_LAST_INSERTED_MESSAGE, method = RequestMethod.GET)
+	public @ResponseBody Message getLastInsertedMessage() {
+		
+		logger.info("Start request: " + Constants.GET_LAST_INSERTED_MESSAGE);
+		Message message = messageDAO.getLastInsertedMessage();
+		logger.info("Messages Requested: " + message);
+		logger.info("Stop request: " + Constants.GET_LAST_INSERTED_MESSAGE);
+		
+		return message;
+	}
 }

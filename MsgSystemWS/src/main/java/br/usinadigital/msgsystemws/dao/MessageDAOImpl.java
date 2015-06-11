@@ -58,7 +58,7 @@ public class MessageDAOImpl implements MessageDAO {
 				return categories.size();
 			}
 		});
-		
+
 		return Utils.sumIntArray(updateCnt);
 	}
 
@@ -72,17 +72,18 @@ public class MessageDAOImpl implements MessageDAO {
 
 	public List<Message> getMessagesFromDateByCategories(Date fromDate, int[] categoriesId) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
-		
+
 		String arrayStr = "-1";
-		if (categoriesId.length != 0) arrayStr = Utils.intArrayToString(categoriesId);
-		
+		if (categoriesId.length != 0)
+			arrayStr = Utils.intArrayToString(categoriesId);
+
 		String sql0 = String.format("select id FROM categories WHERE categories.id IN (%s)", arrayStr);
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT messages.id AS id, title, text, creationdate, lastupdate ");
 		sql.append("FROM messages_categories ");
 		sql.append("INNER JOIN messages ON message_id = messages.id ");
-		sql.append("INNER JOIN (" ).append(sql0).append( ") AS categories ON category_id = categories.id ");
-		sql.append("WHERE messages.creationdate >= ? ");
+		sql.append("INNER JOIN (").append(sql0).append(") AS categories ON category_id = categories.id ");
+		sql.append("WHERE messages.creationdate > ? ");
 		sql.append("GROUP BY message_id ORDER BY creationdate ");
 		logger.debug("Execute query: " + sql);
 		List<Message> messageList = jdbcTemplate.query(sql.toString(), new Object[] { fromDate }, new MessageRowMapper());
@@ -90,4 +91,12 @@ public class MessageDAOImpl implements MessageDAO {
 		return messageList;
 	}
 
+	public Message getLastInsertedMessage() {
+		jdbcTemplate = new JdbcTemplate(dataSource);
+		String sql = "SELECT * FROM messages WHERE id = (SELECT MAX(id) FROM messages)";
+		logger.debug("Execute query: " + sql);
+		Message message = (Message)jdbcTemplate.queryForObject(sql, new MessageRowMapper());
+
+		return message;
+	}
 }

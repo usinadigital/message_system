@@ -6,6 +6,7 @@ public class Constants {
 	public static final String GET_ALL_CATEGORY = "/rest/category/all";
 	
 	public static final String GET_TEST_MESSAGE = "/rest/message/test";
+	public static final String GET_LAST_INSERTED_MESSAGE = "/rest/message/getLastInsertedMessage";
 	public static final String GET_ALL_MESSAGE = "/rest/message/all";
 	public static final String GET_MESSAGE_FROM_DATE_BY_CATEGORIES = "/rest/message/getFromDateByCategories";
 	public static final String SAVE_MESSAGE = "/rest/message/save";

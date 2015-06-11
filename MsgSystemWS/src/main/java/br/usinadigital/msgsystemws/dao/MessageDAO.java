@@ -13,4 +13,6 @@ public interface MessageDAO {
     public List<Message> getAll();
     
     public List<Message> getMessagesFromDateByCategories(Date fromDate, int[] categoriesId);
+    
+    public Message getLastInsertedMessage();
 }

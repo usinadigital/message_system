@@ -21,8 +21,8 @@ import br.usinadigital.msgsystemandroid.dao.CategoryDAO;
 import br.usinadigital.msgsystemandroid.dao.CategoryDAOImpl;
 import br.usinadigital.msgsystemandroid.dao.ConfigurationDAO;
 import br.usinadigital.msgsystemandroid.dao.ConfigurationDAOImpl;
-import br.usinadigital.msgsystemandroid.service.WSCategory;
-import br.usinadigital.msgsystemandroid.service.WSCategoryImpl;
+import br.usinadigital.msgsystemandroid.service.GetAllCategoryWS;
+import br.usinadigital.msgsystemandroid.service.GetAllCategoryWSImpl;
 import br.usinadigital.msgsystemandroid.util.Constants;
 import br.usinadigital.msgsystemandroid.util.JsonUtils;
 import br.usinadigital.msgsystemandroid.util.UIUtils;
@@ -67,7 +67,7 @@ public class ConfigurationsActivity extends ActionBarActivity {
 			Map<String, String> storedCheck = daoCategory.loadAllCheck();
 			visualizeCatgoryDialog(Utils.getSortedkeys(storedCategories), storedCategories, storedCheck);
 		} else {
-			WSCategory wsCategory = getInstanceWSCategory();
+			GetAllCategoryWS wsCategory = getInstanceWSCategory();
 			wsCategory.getAllCategories();
 		}
 
@@ -153,8 +153,8 @@ public class ConfigurationsActivity extends ActionBarActivity {
 		radioDialog.show();
 	}
 
-	private WSCategory getInstanceWSCategory() {
-		WSCategory wsCategory = new WSCategoryImpl(getString(R.string.getAllCategoriesURL)) {
+	private GetAllCategoryWS getInstanceWSCategory() {
+		GetAllCategoryWS wsCategory = new GetAllCategoryWSImpl(getString(R.string.getAllCategoriesURL)) {
 
 			ProgressDialog dialog = new ProgressDialog(ConfigurationsActivity.this);
 

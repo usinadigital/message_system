@@ -13,27 +13,27 @@ import android.os.AsyncTask;
 import android.util.Log;
 import br.usinadigital.msgsystemandroid.util.Constants;
 
-@SuppressWarnings( "deprecation" )
-public abstract class WSCategoryImpl extends AsyncTask<String, Void, Void> implements WSCategory{
+@SuppressWarnings("deprecation")
+public abstract class GetLastMessageWSImpl extends AsyncTask<String, Void, Void> implements GetLastMessageWS {
 
 	private String serviceURL;
-	
+
 	private String response;
-	
+
 	private String error = null;
-	
+
 	public abstract void onPreWSRequest();
-	
+
 	public abstract void onPostWSRequest();
-	
-	public WSCategoryImpl(String uri){
+
+	public GetLastMessageWSImpl(String uri) {
 		this.serviceURL = uri;
 	}
-	
-	public void getAllCategories(){
+
+	public void getLastMessage() {
 		execute(serviceURL);
 	}
-	
+
 	protected void onPreExecute() {
 		onPreWSRequest();
 	}
@@ -41,12 +41,12 @@ public abstract class WSCategoryImpl extends AsyncTask<String, Void, Void> imple
 	protected void onPostExecute(Void unused) {
 		onPostWSRequest();
 	}
-	
+
 	protected Void doInBackground(String... urls) {
 
 		HttpClient httpClient = new DefaultHttpClient();
 		try {
-			
+
 			HttpGet httpGetRequest = new HttpGet(urls[0]);
 			HttpResponse httpResponse = httpClient.execute(httpGetRequest);
 			HttpEntity entity = httpResponse.getEntity();
@@ -56,25 +56,24 @@ public abstract class WSCategoryImpl extends AsyncTask<String, Void, Void> imple
 				InputStream inputStream = entity.getContent();
 				try {
 					int bytesRead = 0;
-					BufferedInputStream bis = new BufferedInputStream(
-							inputStream);
+					BufferedInputStream bis = new BufferedInputStream(inputStream);
 					while ((bytesRead = bis.read(buffer)) != -1) {
 						response = new String(buffer, 0, bytesRead);
 					}
 				} catch (Exception e) {
-					Log.e(Constants.TAG,e.toString());
+					Log.e(Constants.TAG, e.toString());
 					e.printStackTrace();
 					error = e.getMessage();
 				} finally {
 					try {
 						inputStream.close();
 					} catch (Exception ignore) {
-						
+
 					}
 				}
 			}
 		} catch (Exception e) {
-			Log.e(Constants.TAG,e.toString());
+			Log.e(Constants.TAG, e.toString());
 			e.printStackTrace();
 			error = e.getMessage();
 		} finally {
@@ -82,7 +81,7 @@ public abstract class WSCategoryImpl extends AsyncTask<String, Void, Void> imple
 		}
 		return null;
 	}
-	
+
 	public String getResponse() {
 		return response;
 	}

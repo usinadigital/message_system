@@ -23,7 +23,7 @@ import br.usinadigital.msgsystemandroid.util.Constants;
 import br.usinadigital.msgsystemandroid.util.JsonUtils;
 
 @SuppressWarnings("deprecation")
-public abstract class WSMessageImpl extends AsyncTask<String, Void, Void> implements WSMessage {
+public abstract class GetMessagesFromDateByCategoriesWSImpl extends AsyncTask<String, Void, Void> implements GetMessagesFromDateByCategoriesWS {
 
 	private String serviceURL;
 	
@@ -39,7 +39,7 @@ public abstract class WSMessageImpl extends AsyncTask<String, Void, Void> implem
 
 	public abstract void onPostWSRequest();
 
-	public WSMessageImpl(String uri) {
+	public GetMessagesFromDateByCategoriesWSImpl(String uri) {
 		this.serviceURL = uri;
 	}
 

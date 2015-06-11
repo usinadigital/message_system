@@ -1,12 +1,9 @@
 package br.usinadigital.msgsystemandroid.dao;
 
-import java.text.ParseException;
 import java.util.Date;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.util.Log;
-import br.usinadigital.msgsystemandroid.R;
 import br.usinadigital.msgsystemandroid.util.Constants;
 import br.usinadigital.msgsystemandroid.util.Utils;
 
@@ -38,7 +35,7 @@ public class ConfigurationDAOImpl implements ConfigurationDAO {
 
 	public Date getMessagesLastUpdate() {
 		String value = configuration.getString(Constants.CONFIGURATION_LAST_UPDATE_MESSAGES, null);
-		return Utils.stringToDate(value);
+		return value != null ? Utils.stringToDate(value) : null;
 	}
 
 	public String getMessagesLastUpdateToString() {

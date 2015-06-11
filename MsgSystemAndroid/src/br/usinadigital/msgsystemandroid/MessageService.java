@@ -4,9 +4,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Map;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +11,6 @@ import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
-import br.usinadigital.msgsystemandroid.R;
 import br.usinadigital.msgsystemandroid.dao.CategoryDAO;
 import br.usinadigital.msgsystemandroid.dao.CategoryDAOImpl;
 import br.usinadigital.msgsystemandroid.dao.ConfigurationDAO;
@@ -22,10 +18,12 @@ import br.usinadigital.msgsystemandroid.dao.ConfigurationDAOImpl;
 import br.usinadigital.msgsystemandroid.dao.MessageDAO;
 import br.usinadigital.msgsystemandroid.dao.MessageDAOImpl;
 import br.usinadigital.msgsystemandroid.model.Message;
-import br.usinadigital.msgsystemandroid.service.WSCategory;
-import br.usinadigital.msgsystemandroid.service.WSCategoryImpl;
-import br.usinadigital.msgsystemandroid.service.WSMessage;
-import br.usinadigital.msgsystemandroid.service.WSMessageImpl;
+import br.usinadigital.msgsystemandroid.service.GetLastMessageWS;
+import br.usinadigital.msgsystemandroid.service.GetLastMessageWSImpl;
+import br.usinadigital.msgsystemandroid.service.GetAllCategoryWS;
+import br.usinadigital.msgsystemandroid.service.GetAllCategoryWSImpl;
+import br.usinadigital.msgsystemandroid.service.GetMessagesFromDateByCategoriesWS;
+import br.usinadigital.msgsystemandroid.service.GetMessagesFromDateByCategoriesWSImpl;
 import br.usinadigital.msgsystemandroid.util.Constants;
 import br.usinadigital.msgsystemandroid.util.JsonUtils;
 import br.usinadigital.msgsystemandroid.util.MessageUtils;
@@ -59,7 +57,7 @@ public class MessageService extends Service {
 	public int onStartCommand(Intent intent, int flags, int startId) {
 
 		Log.d(Constants.TAG, "Start MessageService");
-		if (getResources().getString(R.string.serviceToast).equalsIgnoreCase(Constants.ENABLED)){
+		if (getResources().getString(R.string.serviceToast).equalsIgnoreCase(Constants.ENABLED)) {
 			Toast.makeText(this, "Start MessageService", Toast.LENGTH_SHORT).show();
 		}
 		if (!Utils.isNetworkConnected(context)) {
@@ -69,17 +67,26 @@ public class MessageService extends Service {
 			Log.d(Constants.TAG, "Stored messages:\n" + Arrays.toString(messages));
 
 			// update the categories from the WS
-			WSCategory wsCategory = getInstanceWSCategory();
+			GetAllCategoryWS wsCategory = instanceGetAllCategoryWS();
 			wsCategory.getAllCategories();
 
+			// if is the first execution set the lastUpdateDate from the last
+			// message in the DB
+			if (configDAO.getMessagesLastUpdate() == null) {
+				GetLastMessageWS ws = instanceGetLastMessageWS();
+				ws.getLastMessage();
+			}
+
 			// update the messages from the WS
-			WSMessage wsMessage = getInstanceWSMessage();
+			GetMessagesFromDateByCategoriesWS wsMessage = instanceGetMessagesFromDateByCategoriesWS();
 			String fromDate = configDAO.getMessagesLastUpdateToString();
-			Integer[] categoriesIds = MessageUtils.getSelectedCategories(categoryDAO);
-			wsMessage.getMessagesFromDateByCategories(fromDate, categoriesIds);
+			if (fromDate != null) {
+				Integer[] categoriesIds = MessageUtils.getSelectedCategories(categoryDAO);
+				wsMessage.getMessagesFromDateByCategories(fromDate, categoriesIds);
+			}
 		}
 		Log.d(Constants.TAG, "Stop MessageService");
-		
+
 		return START_STICKY;
 	}
 
@@ -88,11 +95,12 @@ public class MessageService extends Service {
 		return null;
 	}
 
-	private WSMessage getInstanceWSMessage() {
-		WSMessage wsMessage = new WSMessageImpl(getString(R.string.getMessageURL)) {
+	private GetMessagesFromDateByCategoriesWS instanceGetMessagesFromDateByCategoriesWS() {
+		GetMessagesFromDateByCategoriesWS wsMessage = new GetMessagesFromDateByCategoriesWSImpl(getString(R.string.getFromDateByCategoriesURL)) {
 			public void onPreWSRequest() {
-				Log.d(Constants.TAG, "Start Request HTTP " + getString(R.string.getMessageURL));
+				Log.d(Constants.TAG, "Start Request HTTP " + getString(R.string.getFromDateByCategoriesURL));
 			}
+
 			public void onPostWSRequest() {
 				String response = getResponse();
 				Log.d(Constants.TAG, "Stop Response HTTP");
@@ -103,11 +111,14 @@ public class MessageService extends Service {
 					if (newMessages == null) {
 						Log.d(Constants.TAG, "Error parsing Json");
 					} else {
-						Log.d(Constants.TAG, "------------------------------ Response:\n" + Arrays.toString(newMessages));
-						MessageUtils.orderArray(newMessages);
-						sendNotifications(newMessages);
-						messageDAO.save(newMessages);
-						configDAO.setMessagesLastUpdate(new Date());
+						Log.d(Constants.TAG, "------------------------------ Response: " + Arrays.toString(newMessages));
+						if (newMessages.length != 0) {
+							MessageUtils.invertedOrderArray(newMessages);
+							sendNotifications(newMessages);
+							messageDAO.save(newMessages);
+							String lastMessageDate = newMessages[0].getCreationdate();
+							configDAO.setMessagesLastUpdate(Utils.stringToDate(lastMessageDate));
+						}
 					}
 				}
 			}
@@ -115,21 +126,35 @@ public class MessageService extends Service {
 		return wsMessage;
 	}
 
-	private void sendNotifications(Message[] messages){
-		for (Message msg : messages){
-			Log.d(Constants.TAG, "Start notification");
-			int id = Integer.valueOf(msg.getId());
-			String title = msg.getTitle();
-			String text = msg.getText();
-			Date data = Utils.stringToDate(msg.getCreationdate());
-			Utils.dateToStringLocale(data);
-			NotificationHelper.notify(context, id, title, text);
-			Log.d(Constants.TAG, "Stop notification");
-		}
+	private GetLastMessageWS instanceGetLastMessageWS() {
+		GetLastMessageWS wsMessage = new GetLastMessageWSImpl(getString(R.string.getLastInsertedMessageURL)) {
+			public void onPreWSRequest() {
+				Log.d(Constants.TAG, "Start Request HTTP " + getString(R.string.getLastInsertedMessageURL));
+			}
+
+			public void onPostWSRequest() {
+				String response = getResponse();
+				Log.d(Constants.TAG, "Stop Response HTTP");
+				if (response == null) {
+					Log.d(Constants.TAG, getString(R.string.serviceNotAvailable));
+				} else {
+					Message lastMessage = JsonUtils.fromJsonToMessage(response);
+					if (lastMessage == null) {
+						Log.d(Constants.TAG, "Error parsing Json");
+					} else {
+						Log.d(Constants.TAG, "Response:\n" + lastMessage.toString());
+						Date date = Utils.stringToDate(lastMessage.getCreationdate());
+						configDAO.setMessagesLastUpdate(date);
+						Log.d(Constants.TAG, "Inserted the first sync message date: " + lastMessage.getCreationdate());
+					}
+				}
+			}
+		};
+		return wsMessage;
 	}
-	
-	private WSCategory getInstanceWSCategory() {
-		WSCategory wsCategory = new WSCategoryImpl(getString(R.string.getAllCategoriesURL)) {
+
+	private GetAllCategoryWS instanceGetAllCategoryWS() {
+		GetAllCategoryWS wsCategory = new GetAllCategoryWSImpl(getString(R.string.getAllCategoriesURL)) {
 
 			public void onPreWSRequest() {
 				Log.d(Constants.TAG, "Start HTTP Request" + getString(R.string.getAllCategoriesURL));
@@ -153,5 +178,18 @@ public class MessageService extends Service {
 		};
 		return wsCategory;
 	}
-	
+
+	private void sendNotifications(Message[] messages) {
+		for (int i = messages.length - 1; i != 0; i--) {
+			Log.d(Constants.TAG, "Start notification");
+			int id = Integer.valueOf(messages[i].getId());
+			String title = messages[i].getTitle();
+			String text = messages[i].getText();
+			Date data = Utils.stringToDate(messages[i].getCreationdate());
+			Utils.dateToStringLocale(data);
+			NotificationHelper.notify(context, id, title, text);
+			Log.d(Constants.TAG, "Stop notification");
+		}
+	}
+
 }

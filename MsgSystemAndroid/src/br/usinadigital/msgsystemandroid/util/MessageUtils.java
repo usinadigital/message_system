@@ -55,7 +55,7 @@ public class MessageUtils {
 		});
 	}
 	
-	public static void inversOrderArray(Message[] messages) {
+	public static void invertedOrderArray(Message[] messages) {
 		Arrays.sort(messages, new Comparator<Message>() {
 			public int compare(Message m1, Message m2) {
 				Date d1 = Utils.stringToDate(m1.getCreationdate());

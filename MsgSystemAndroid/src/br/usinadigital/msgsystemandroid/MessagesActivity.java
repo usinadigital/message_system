@@ -67,7 +67,7 @@ public class MessagesActivity extends ActionBarActivity {
 		Log.d(Constants.TAG, "Filtered messages:\n" + Arrays.toString(storedfilteredMessages));
 		messageDAO.deleteAll();
 		clearList();
-		MessageUtils.orderArray(storedfilteredMessages);
+		MessageUtils.invertedOrderArray(storedfilteredMessages);
 		Log.d(Constants.TAG, "Ordered messages:\n" + Arrays.toString(storedfilteredMessages));
 		messageDAO.save(storedfilteredMessages);
 		populateList(storedfilteredMessages);

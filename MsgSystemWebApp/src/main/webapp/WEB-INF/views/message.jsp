@@ -25,12 +25,14 @@
 					<label class="myLabel"><spring:message code="view.message.label.message" /></label>
 				</p>
 				<p>
-					<form:textarea path="text" rows="5" cols="30" />
+					<form:textarea path="text" rows="5" cols="40" />
 				</p>
 				<br>
-				<p>
-					<form:checkboxes element="div class='myCheckboxes' " path="categories" items="${categories}" itemLabel="name" itemValue="id" />
-				</p>	
+				<div style="width:300px; height:150px; overflow: auto;">
+					<p>
+						<form:checkboxes element="div class='myCheckboxes' " path="categories" items="${categories}" itemLabel="name" itemValue="id" />
+					</p>
+				</div>				
 				<br>
 				<input type="submit" class="button" value="<spring:message code="view.message.button.submit" />" />
 				</div>

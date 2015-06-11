@@ -2,4 +2,5 @@
 <resources>
     <color name="usina">#f8931d</color>
     <color name="cultural">#812991</color>
+    <color name="menu_button">#00000000</color>
 </resources>

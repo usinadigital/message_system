@@ -1,30 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
- 
-   <Button
-       android:id="@+id/btMessages"
-        android:textSize="20sp"
-        android:text="@string/messages"
-        android:clickable="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:onClick="clickMessages"
+    android:layout_height="match_parent" 
+    >
+
+    <Button
+        android:id="@+id/btMessages"
+        style="@style/menu.button"
         android:drawableTop="@drawable/e_mail"
-    /> 
-    
-   <Button
-       android:id="@+id/btConfigurations"
-        android:text="@string/configurations"
-        android:textSize="20sp"
-        android:clickable="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
+        android:onClick="clickMessages"
+        android:text="@string/messages" />
+
+    <Button
+        android:id="@+id/btConfigurations"
+        style="@style/menu.button"
+        android:layout_toRightOf="@+id/btMessages"
         android:drawableTop="@drawable/advancedsettings"
         android:onClick="clickConfigurations"
-        android:layout_toRightOf="@+id/btMessages"
-    />
-   
-</RelativeLayout>
+        android:text="@string/configurations" />
 
+</RelativeLayout>

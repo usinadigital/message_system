@@ -1,14 +1,26 @@
 <resources>
 
+    <style name="menu.button" parent="android:Widget">
+        <item name="android:background">@color/menu_button</item>
+        <item name="android:textSize">@dimen/menu_fontsize</item>
+        <item name="android:clickable">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginLeft">4dp</item> 
+        <item name="android:layout_marginRight">4dp</item> 
+     </style>
+    
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here.
         -->
         <item name="android:actionBarStyle">@style/MyActionBarTheme</item>
     </style>
@@ -16,12 +28,13 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-    	
-<!--     	<item name="android:windowBackground">@color/digital</item> -->
+        <!-- <item name="android:background">@color/usina</item> -->
+        <!-- <item name="android:windowBackground">@color/usina</item> -->
+        <!-- <item name="android:colorBackground">@color/usina</item> -->
     </style>
-    
+
     <style name="MyActionBarTheme" parent="@android:style/Widget.Holo.Light.ActionBar">
         <item name="android:background">#aaaaaa</item>
     </style>
-    
+
 </resources>

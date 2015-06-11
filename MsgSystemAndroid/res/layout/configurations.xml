@@ -1,41 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
- 
+    android:layout_height="match_parent" >
+
     <Button
         android:id="@+id/btCategories"
-        android:text="@string/configurations_categories"
-        android:textSize="20sp"
-        android:clickable="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:onClick="clickCategories"
+        style="@style/menu.button"
         android:drawableTop="@drawable/lists"
-    />
-    
+        android:onClick="clickCategories"
+        android:text="@string/configurations_categories" />
+
     <Button
         android:id="@+id/btHistory"
-        android:text="@string/configurations_history"
-        android:textSize="20sp"
-        android:clickable="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:onClick="clickHistory"
+        style="@style/menu.button"
         android:layout_toRightOf="@+id/btCategories"
         android:drawableTop="@drawable/time_machine_disk"
-    />
-   
-   <Button
+        android:onClick="clickHistory"
+        android:text="@string/configurations_history" />
+
+    <Button
         android:id="@+id/btFrequency"
-        android:text="@string/configurations_frequency"
-        android:textSize="20sp"
-        android:clickable="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:onClick="clickFrequency"
+        style="@style/menu.button"
         android:layout_toRightOf="@+id/btHistory"
         android:drawableTop="@drawable/clock"
-    /> 
-    
+        android:onClick="clickFrequency"
+        android:text="@string/configurations_frequency" />
+
 </RelativeLayout>

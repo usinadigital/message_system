@@ -18,14 +18,14 @@
 					<label class="myLabel"><spring:message code="view.message.label.title" /></label>
 				</p>
 				<p>
-					<form:input path="title" autocomplete="off"/>
+					<form:input class="myInput" path="title" autocomplete="off"/>
 				</p>
 				<br>
 				<p>
 					<label class="myLabel"><spring:message code="view.message.label.message" /></label>
 				</p>
 				<p>
-					<form:textarea path="text" rows="5" cols="40" />
+					<form:textarea class="myInput" path="text" rows="5" cols="40" />
 				</p>
 				<br>
 				<div style="width:300px; height:150px; overflow: auto;">

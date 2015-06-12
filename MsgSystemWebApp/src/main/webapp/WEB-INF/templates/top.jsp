@@ -3,9 +3,9 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <div id="top">
-	<h1>
-		<a href="#"><spring:message code="webapp.title"/></a>
-	</h1>
+	<div class="picture1">
+		<img src="css/images/usina_cultural.jpg" width="150" height="45">
+	</div>
 	<sec:authorize access="isAuthenticated()">
 	<div id="top-navigation">
 		

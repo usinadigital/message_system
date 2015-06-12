@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>   
-    <string name="welcome">welcome</string>
-    
     <string name="messages">Messages</string>
     <string name="message">Message</string>
     <string name="configurations">Configurations</string>
-    
-    <string name="categories_update">Udpate Categories</string>
-    <string name="messages_update">Udpate Messages</string>
     
     <string name="configurations_categories">Categories List</string>
     <string name="configurations_categories_dialog_title">Select a value</string>

@@ -1,34 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>    
-    <string name="welcome">Bem-vindo</string>
+<resources>   
+    <string name="messages">Mensagem</string>
+    <string name="message">Mensagem</string>
+    <string name="configurations">Configuração</string>
     
-    <string name="messages">PTMessages</string>
-    <string name="configurations">PTConfigurations</string>
+    <string name="configurations_categories">Lista Categoria</string>
+    <string name="configurations_categories_dialog_title">Selecione um valor</string>
+    <string name="configurations_history">História</string>
+    <string name="configurations_history_dialog_title">Selecione um valor</string>
+    <string name="configurations_frequency">Com quanta frequéncia</string>
+    <string name="configurations_frequency_dialog_title">Selecione um valor</string>
     
-    <string name="categories_update">PTUdpate Categories</string>
-    <string name="messages_update">PTUdpate Messages</string>
-    
-    <string name="configurations_categories">PTCategories List</string>
-    <string name="configurations_history">PTHystory</string>
-    <string name="configurations_history_selection">PTSelect a value</string>
-    <string name="configurations_frequency">PTWhich frequency</string>
-    <string name="configurations_frequency_selection">PTSelect a value</string>
-    
-    <string name="alertTitleDialog">PTAlert</string>
-    <string name="serviceNotAvailable">PTService not available</string>
+    <string name="alertTitleDialog">Alerta</string>
+    <string name="serviceNotAvailable">Serviço não disponivel</string>
     
     <string name="day1">1 dia</string>
     <string name="day7">7 dias</string>
     <string name="day14">14 dias</string>
     <string name="day30">30 dias</string>
     
+    <string name="hour2">2 horas</string>
     <string name="hour4">4 horas</string>
     <string name="hour6">6 horas</string>
     <string name="hour12">12 horas</string>
     <string name="hour24">24 horas</string>
-        
-    <string name="newMessageNotification">PTUsina Cultural Message</string>
-    <string name="lastUpdate">PTLast Update</string>
-    <string name="loading">PTLoading...</string>
+    <string name="test">5 segundos</string>
+    
+    <string name="newMessageNotification">Usina Cultural Mensagem</string>
+    <string name="lastUpdate">Atualizando</string>
+    <string name="loading">Carregamento...</string>
     
 </resources>

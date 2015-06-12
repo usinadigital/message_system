@@ -17,15 +17,15 @@
     <string name="alertTitleDialog">PTAlert</string>
     <string name="serviceNotAvailable">PTService not available</string>
     
-    <string name="day1">1 day</string>
-    <string name="day7">7 days</string>
-    <string name="day14">14 days</string>
-    <string name="day30">30 days</string>
+    <string name="day1">1 dia</string>
+    <string name="day7">7 dias</string>
+    <string name="day14">14 dias</string>
+    <string name="day30">30 dias</string>
     
-    <string name="hour4">4 hours</string>
-    <string name="hour6">6 hours</string>
-    <string name="hour12">12 hours</string>
-    <string name="hour24">24 hours</string>
+    <string name="hour4">4 horas</string>
+    <string name="hour6">6 horas</string>
+    <string name="hour12">12 horas</string>
+    <string name="hour24">24 horas</string>
         
     <string name="newMessageNotification">PTUsina Cultural Message</string>
     <string name="lastUpdate">PTLast Update</string>

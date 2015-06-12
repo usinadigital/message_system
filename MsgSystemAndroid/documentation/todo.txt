@@ -11,3 +11,7 @@ xxx la lista di msg dv ssr ordinata sia pr lnco mss sia pr l notifich
 --- icona di usina é spostata a dx
 --- qunado apre la prima volta compare le catgorie
 --- sarbbe meglio che il mnu foss piu grandsul tablt
+
+
+
+--- service not avaible va in eccez. se non ho il focus sull app

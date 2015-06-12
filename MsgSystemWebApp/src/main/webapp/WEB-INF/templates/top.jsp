@@ -4,7 +4,7 @@
 
 <div id="top">
 	<h1>
-		<a href="#">Message System</a>
+		<a href="#"><spring:message code="webapp.title"/></a>
 	</h1>
 	<sec:authorize access="isAuthenticated()">
 	<div id="top-navigation">

@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link type="text/css" rel="stylesheet" href="<tiles:getAsString name="mystyle"/>"/>
-	<title>Default tiles template</title>
+	<title><spring:message code="webapp.name"/></title>
 </head>
 
 <body>

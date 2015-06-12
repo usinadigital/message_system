@@ -18,7 +18,10 @@ xxx quando clicco sul menu non mi fa l�active in automatico
 --- tutte le scritte dell´interfaccia in portoghese
 xxx manca il bilingue
 xxx non mi mette in default il pt
---- Il footer é molto in baaso
+xxx Il footer é molto in baaso
 --- da fare layout pagina di accesso non consentito: 403page.jsp
 --- autenticazione con chiave criptata e/o https
 xxx controllo lunghezza campi della form messages
+--- se mi slogga perche non uso la pag mi da un rrore strano
+--- ICON
+--- UI

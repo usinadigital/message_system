@@ -180,16 +180,16 @@ public class MessageService extends Service {
 	}
 
 	private void sendNotifications(Message[] messages) {
-		for (int i = messages.length - 1; i != 0; i--) {
-			Log.d(Constants.TAG, "Start notification");
+		Log.d(Constants.TAG, "Start notification");
+		for (int i = messages.length - 1; i >= 0; i--) {
 			int id = Integer.valueOf(messages[i].getId());
 			String title = messages[i].getTitle();
 			String text = messages[i].getText();
 			Date data = Utils.stringToDate(messages[i].getCreationdate());
 			Utils.dateToStringLocale(data);
 			NotificationHelper.notify(context, id, title, text);
-			Log.d(Constants.TAG, "Stop notification");
 		}
+		Log.d(Constants.TAG, "Stop notification");
 	}
 
 }

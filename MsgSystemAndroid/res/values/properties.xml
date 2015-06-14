@@ -3,9 +3,9 @@
 	<string name="serviceToast">enabled</string>
 	<string name="app_name">Usina Cultural</string>
 	
-    <string name="getAllCategoriesURL">http://192.168.0.3:80/MsgSystemWS-0.0.1/rest/category/all</string>
-    <string name="getFromDateByCategoriesURL">http://192.168.0.3:80/MsgSystemWS-0.0.1/rest/message/getFromDateByCategories</string>
-	<string name="getLastInsertedMessageURL">http://192.168.0.3:80/MsgSystemWS-0.0.1/rest/message/getLastInsertedMessage</string>
+    <string name="getAllCategoriesURL">http://200.223.215.170:80/MsgSystemWS-0.0.1/rest/category/all</string>
+    <string name="getFromDateByCategoriesURL">http://200.223.215.170:80/MsgSystemWS-0.0.1/rest/message/getFromDateByCategories</string>
+	<string name="getLastInsertedMessageURL">http://200.223.215.170:80/MsgSystemWS-0.0.1/rest/message/getLastInsertedMessage</string>
     
     <integer name="default_history_index">1</integer>
     <string-array name="array_history_names">

@@ -105,7 +105,8 @@ public class MessageService extends Service {
 				String response = getResponse();
 				Log.d(Constants.TAG, "Stop Response HTTP");
 				if (response == null) {
-					Log.d(Constants.TAG, getString(R.string.serviceNotAvailable));
+					Log.d(Constants.TAG, "instanceGetMessagesFromDateByCategoriesWS: " + getString(R.string.serviceNotAvailable));
+					NotificationHelper.notify(context, 1, getString(R.string.serviceNotAvailable), getString(R.string.noUpdate));
 				} else {
 					Message[] newMessages = JsonUtils.fromJsonToMessages(response);
 					if (newMessages == null) {
@@ -136,7 +137,7 @@ public class MessageService extends Service {
 				String response = getResponse();
 				Log.d(Constants.TAG, "Stop Response HTTP");
 				if (response == null) {
-					Log.d(Constants.TAG, getString(R.string.serviceNotAvailable));
+					Log.d(Constants.TAG, "instanceGetLastMessageWS:" + getString(R.string.serviceNotAvailable));
 				} else {
 					Message lastMessage = JsonUtils.fromJsonToMessage(response);
 					if (lastMessage == null) {
@@ -164,6 +165,8 @@ public class MessageService extends Service {
 				String response = getResponse();
 				Log.d(Constants.TAG, "Stop Http Request");
 				if (response == null) {
+					Log.d(Constants.TAG, "instanceGetAllCategoryWS: " + getString(R.string.serviceNotAvailable));
+					NotificationHelper.notify(context, 1, getString(R.string.serviceNotAvailable), getString(R.string.noUpdate));
 				} else {
 					Map<String, String> newCategories = JsonUtils.fromJsonToCategoryMap(response);
 					Log.d(Constants.TAG, "New Categories: " + newCategories);

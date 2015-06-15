@@ -18,5 +18,13 @@
         android:drawableTop="@drawable/advancedsettings"
         android:onClick="clickConfigurations"
         android:text="@string/configurations" />
+    
+    <Button
+        android:id="@+id/btHelp"
+        style="@style/menu.button"
+        android:layout_toRightOf="@+id/btConfigurations"
+        android:drawableTop="@drawable/help"
+        android:onClick="clickHelp"
+        android:text="@string/help" />
 
 </RelativeLayout>

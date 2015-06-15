@@ -43,7 +43,9 @@
             android:label="@string/message" >
         </activity>
         <activity
-            android:name="br.usinadigital.msgsystemandroid.NotificationAction">
+            android:name="br.usinadigital.msgsystemandroid.HelpActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/help" >
         </activity>
 
         <receiver

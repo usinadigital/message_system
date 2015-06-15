@@ -25,6 +25,7 @@ import br.usinadigital.msgsystemandroid.service.GetAllCategoryWS;
 import br.usinadigital.msgsystemandroid.service.GetAllCategoryWSImpl;
 import br.usinadigital.msgsystemandroid.util.Constants;
 import br.usinadigital.msgsystemandroid.util.JsonUtils;
+import br.usinadigital.msgsystemandroid.util.NotificationHelper;
 import br.usinadigital.msgsystemandroid.util.UIUtils;
 import br.usinadigital.msgsystemandroid.util.Utils;
 
@@ -67,8 +68,13 @@ public class ConfigurationsActivity extends ActionBarActivity {
 			Map<String, String> storedCheck = daoCategory.loadAllCheck();
 			visualizeCatgoryDialog(Utils.getSortedkeys(storedCategories), storedCategories, storedCheck);
 		} else {
-			GetAllCategoryWS wsCategory = getInstanceWSCategory();
-			wsCategory.getAllCategories();
+			if (!Utils.isNetworkConnected(context)) {
+				Log.d(Constants.TAG, "No network connection");
+				UIUtils.showDialog(context,getString(R.string.alertTitleDialog),getString(R.string.noNetworkConnection));
+			} else {
+				GetAllCategoryWS wsCategory = getInstanceWSCategory();
+				wsCategory.getAllCategories();
+			}
 		}
 
 	}
@@ -169,7 +175,8 @@ public class ConfigurationsActivity extends ActionBarActivity {
 				String response = getResponse();
 				Log.d(Constants.TAG, "Stop Http Request");
 				if (response == null) {
-					UIUtils.showDialog(ConfigurationsActivity.this, getString(R.string.alertTitleDialog), getString(R.string.serviceNotAvailable));
+					//UIUtils.showDialog(ConfigurationsActivity.this, getString(R.string.alertTitleDialog), getString(R.string.serviceNotAvailable));
+					NotificationHelper.notify(context, 1, getString(R.string.serviceNotAvailable), getString(R.string.noCategories));
 				} else {
 					Map<String, String> newCategories = JsonUtils.fromJsonToCategoryMap(response);
 					Log.d(Constants.TAG, "Response Mapped: " + newCategories);

@@ -48,6 +48,11 @@ public class MainActivity extends ActionBarActivity  {
 		Intent intent = new Intent(context, ConfigurationsActivity.class);
 		startActivity(intent);
 	}
+	
+	public void clickHelp(View v) {
+		Intent intent = new Intent(context, HelpActivity.class);
+		startActivity(intent);
+	}
 
 	private void initializeConfiguration() {
 		int[] frequencyValues = getResources().getIntArray(R.array.array_frequency_values);
@@ -58,6 +63,9 @@ public class MainActivity extends ActionBarActivity  {
 			configDAO.setHistoryLength(getResources().getInteger(R.integer.default_history_index));
 			configDAO.setUpdateFrequency(getResources().getInteger(R.integer.default_frequency_index));
 			configDAO.setCategoriesLastUpdate(new Date());
+			String firstTimeHelp = getResources().getString(R.string.firstTimeHelp);
+			String firstTimeHelpTitle = getResources().getString(R.string.firstTimeHelpTitle);
+			UIUtils.showDialog(context,firstTimeHelpTitle,firstTimeHelp);
 		} else {
 			Log.d(Constants.TAG, "NOT First Application Execution");
 		}

@@ -5,13 +5,13 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import br.usinadigital.msgsystemandroid.R;
 
 public class NotificationHelper{
 	
 	@SuppressWarnings("deprecation")
-	public static void notify(Context context, int id, String notificationTitle, String notificationMessage) {
-			
+	public static void notify(Context context, int id, String notificationTitle, String notificationMessage) {	
 //		Intent notificationIntent = new Intent(this, NotificationActivity.class);
 //		PendingIntent resultPendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_ONE_SHOT);
 		

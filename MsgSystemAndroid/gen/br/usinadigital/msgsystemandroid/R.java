@@ -1664,11 +1664,12 @@ containing a value of this type.
         public static final int clock=0x7f020039;
         public static final int e_mail=0x7f02003a;
         public static final int filter_list=0x7f02003b;
-        public static final int ic_launcher=0x7f02003c;
-        public static final int lists=0x7f02003d;
-        public static final int scheduled_tasks=0x7f02003e;
-        public static final int time_machine_disk=0x7f02003f;
-        public static final int usina_cultural=0x7f020040;
+        public static final int help=0x7f02003c;
+        public static final int ic_launcher=0x7f02003d;
+        public static final int lists=0x7f02003e;
+        public static final int scheduled_tasks=0x7f02003f;
+        public static final int time_machine_disk=0x7f020040;
+        public static final int usina_cultural=0x7f020041;
     }
     public static final class id {
         public static final int action_bar=0x7f090031;
@@ -1688,10 +1689,11 @@ containing a value of this type.
         public static final int always=0x7f090014;
         public static final int beginning=0x7f09001b;
         public static final int btCategories=0x7f09003f;
-        public static final int btConfigurations=0x7f090045;
+        public static final int btConfigurations=0x7f090046;
         public static final int btFrequency=0x7f090041;
+        public static final int btHelp=0x7f090047;
         public static final int btHistory=0x7f090040;
-        public static final int btMessages=0x7f090044;
+        public static final int btMessages=0x7f090045;
         public static final int checkbox=0x7f090029;
         public static final int collapseActionView=0x7f090015;
         public static final int decor_content_parent=0x7f09002f;
@@ -1711,7 +1713,7 @@ containing a value of this type.
         public static final int image=0x7f090023;
         public static final int listMode=0x7f09000a;
         public static final int list_item=0x7f090025;
-        public static final int mainListView=0x7f090049;
+        public static final int mainListView=0x7f09004b;
         public static final int middle=0x7f09001d;
         public static final int never=0x7f090017;
         public static final int none=0x7f09000f;
@@ -1738,9 +1740,10 @@ containing a value of this type.
         public static final int submit_area=0x7f09003c;
         public static final int tabMode=0x7f09000c;
         public static final int title=0x7f090027;
-        public static final int txtBody=0x7f090048;
-        public static final int txtDate=0x7f090046;
-        public static final int txtTitle=0x7f090047;
+        public static final int txtBody=0x7f09004a;
+        public static final int txtDate=0x7f090048;
+        public static final int txtHelpBody=0x7f090044;
+        public static final int txtTitle=0x7f090049;
         public static final int up=0x7f090001;
         public static final int useLogo=0x7f090013;
         public static final int withText=0x7f090018;
@@ -1803,11 +1806,12 @@ containing a value of this type.
         public static final int abc_simple_dropdown_hint=0x7f030015;
         public static final int configurations=0x7f030016;
         public static final int custom_listview=0x7f030017;
-        public static final int main=0x7f030018;
-        public static final int message=0x7f030019;
-        public static final int messages=0x7f03001a;
-        public static final int notifications=0x7f03001b;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001c;
+        public static final int help=0x7f030018;
+        public static final int main=0x7f030019;
+        public static final int message=0x7f03001a;
+        public static final int messages=0x7f03001b;
+        public static final int notifications=0x7f03001c;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001d;
     }
     public static final class menu {
         public static final int main=0x7f0d0000;
@@ -1869,35 +1873,42 @@ containing a value of this type.
         /**  Content description for the Toolbar icon used to collapse an expanded action mode. [CHAR LIMIT=NONE] 
          */
         public static final int abc_toolbar_collapse_description=0x7f0a0004;
-        public static final int alertTitleDialog=0x7f0a001e;
+        public static final int alertTitleDialog=0x7f0a001f;
         public static final int app_name=0x7f0a0011;
         public static final int configurations=0x7f0a0017;
-        public static final int configurations_categories=0x7f0a0018;
-        public static final int configurations_categories_dialog_title=0x7f0a0019;
-        public static final int configurations_frequency=0x7f0a001c;
-        public static final int configurations_frequency_dialog_title=0x7f0a001d;
-        public static final int configurations_history=0x7f0a001a;
-        public static final int configurations_history_dialog_title=0x7f0a001b;
-        public static final int day1=0x7f0a0020;
-        public static final int day14=0x7f0a0022;
-        public static final int day30=0x7f0a0023;
-        public static final int day7=0x7f0a0021;
+        public static final int configurations_categories=0x7f0a0019;
+        public static final int configurations_categories_dialog_title=0x7f0a001a;
+        public static final int configurations_frequency=0x7f0a001d;
+        public static final int configurations_frequency_dialog_title=0x7f0a001e;
+        public static final int configurations_history=0x7f0a001b;
+        public static final int configurations_history_dialog_title=0x7f0a001c;
+        public static final int day1=0x7f0a0024;
+        public static final int day14=0x7f0a0026;
+        public static final int day30=0x7f0a0027;
+        public static final int day7=0x7f0a0025;
+        public static final int firstTimeHelp=0x7f0a0032;
+        public static final int firstTimeHelpTitle=0x7f0a0031;
         public static final int getAllCategoriesURL=0x7f0a0012;
         public static final int getFromDateByCategoriesURL=0x7f0a0013;
         public static final int getLastInsertedMessageURL=0x7f0a0014;
-        public static final int hour12=0x7f0a0027;
-        public static final int hour2=0x7f0a0024;
-        public static final int hour24=0x7f0a0028;
-        public static final int hour4=0x7f0a0025;
-        public static final int hour6=0x7f0a0026;
-        public static final int lastUpdate=0x7f0a002b;
-        public static final int loading=0x7f0a002c;
+        public static final int help=0x7f0a0018;
+        public static final int helpContent=0x7f0a0033;
+        public static final int hour12=0x7f0a002b;
+        public static final int hour2=0x7f0a0028;
+        public static final int hour24=0x7f0a002c;
+        public static final int hour4=0x7f0a0029;
+        public static final int hour6=0x7f0a002a;
+        public static final int lastUpdate=0x7f0a002f;
+        public static final int loading=0x7f0a0030;
         public static final int message=0x7f0a0016;
         public static final int messages=0x7f0a0015;
-        public static final int newMessageNotification=0x7f0a002a;
-        public static final int serviceNotAvailable=0x7f0a001f;
+        public static final int newMessageNotification=0x7f0a002e;
+        public static final int noCategories=0x7f0a0022;
+        public static final int noNetworkConnection=0x7f0a0023;
+        public static final int noUpdate=0x7f0a0021;
+        public static final int serviceNotAvailable=0x7f0a0020;
         public static final int serviceToast=0x7f0a0010;
-        public static final int test=0x7f0a0029;
+        public static final int test=0x7f0a002d;
     }
     public static final class style {
         public static final int Animation_AppCompat_DropDownUp=0x7f0b00cf;

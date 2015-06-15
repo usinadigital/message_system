@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>   
-    <string name="messages">News</string>
-    <string name="message">News</string>
+    <string name="messages">Noticias</string>
+    <string name="message">Noticias</string>
     <string name="configurations">Configuração</string>
     <string name="help">Aiuda</string>
     
@@ -14,9 +14,9 @@
     
     <string name="alertTitleDialog">Alerta</string>
     <string name="serviceNotAvailable">Serviço não disponivel</string>
-    <string name="noUpdate">Não foi possivel baixar as comunicação</string>
-    <string name="noCategories">It´s impossible to get the categories from the service</string>
-    <string name="noNetworkConnection">The device have to be connected to the network</string>
+    <string name="noUpdate">Não é possível receber as atualizações do serviço de noticias</string>
+    <string name="noCategories">Não é possível receber as categorias do serviço de noticias</string>
+    <string name="noNetworkConnection">O dispositivo tem que estar conectado à rede.</string>
     
     <string name="day1">1 dia</string>
     <string name="day7">7 dias</string>
@@ -30,23 +30,24 @@
     <string name="hour24">24 horas</string>
     <string name="test">5 segundos</string>
     
-    <string name="newMessageNotification">Usina Cultural News</string>
+    <string name="newMessageNotification">Usina Cultural</string>
     <string name="lastUpdate">Atualizando</string>
     <string name="loading">Carregamento...</string>
     
-    <string name="firstTimeHelpTitle">Welcome</string>
+    <string name="firstTimeHelpTitle">Bem-vindo</string>
     <string name="firstTimeHelp">
-    	This is the first time that you execute me. I want help you.\n
-    	You are going to receive news from Usina Cultural, and to get them you should
-    	go in Configuration and then Categories to set the news you are interested in.
-    	Thank you and enjoy the app! 
+    	Esta é a primeira vez que você me executa. Eu quero te ajudar.\nVocê 
+    	vai receber as noticias da Usina Cultural, e para poder obtê-las você tem que ir em Configuração 
+    	e depois em Categorias para decidir as quais tipologias de noticias 
+    	você está interessado. Obrigado e desfruta do app! 
     </string>
     
     <string name="helpContent">
-        You will receive news from the activities in Usina Cultural.\n
-        You have to set in Configuration, Categories the news you are interested in.\n
-        You can choose the frequency that your application check the news, every 2,4,6,12,24 hours.\n
-        You can choose the history length of the news you want to keep in your device.\n
+       Você vai receber informações sobre as atividades na Usina Cultural, 
+       e para alcança-las você tem que marcar Configuração e depois em Categorias as noticias que você gostaria receber.\nVocê 
+       pode escolher, também, a frequência (Configuração e depois Frequência) que seu aplicativo cheque as noticias e você pode escolher 
+       por quantos dias você quer que sejam salvas as noticias no seu dispositivo (Configuração e depois Historia).\nIsso 
+       é tudo, obrigado a todos e todas.
     </string>
     
 </resources>

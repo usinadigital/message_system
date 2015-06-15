@@ -8,6 +8,9 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -44,7 +47,10 @@ public abstract class GetLastMessageWSImpl extends AsyncTask<String, Void, Void>
 
 	protected Void doInBackground(String... urls) {
 
-		HttpClient httpClient = new DefaultHttpClient();
+		HttpParams myParams = new BasicHttpParams();
+		HttpConnectionParams.setConnectionTimeout(myParams, Constants.HTTP_TIMEOUT_MILLISEC);
+        HttpConnectionParams.setSoTimeout(myParams, Constants.HTTP_TIMEOUT_MILLISEC);
+        HttpClient httpClient = new DefaultHttpClient(myParams);
 		try {
 
 			HttpGet httpGetRequest = new HttpGet(urls[0]);

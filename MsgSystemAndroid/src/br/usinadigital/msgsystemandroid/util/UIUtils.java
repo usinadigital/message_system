@@ -36,7 +36,7 @@ public class UIUtils {
 		AlertDialog alertDialog = new AlertDialog.Builder(context).create();
 		alertDialog.setTitle(title);
 		alertDialog.setMessage(message);
-		alertDialog.setIcon(R.drawable.ic_launcher);
+		alertDialog.setIcon(R.drawable.usina_cultural);
 		
 		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {

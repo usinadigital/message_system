@@ -70,7 +70,8 @@ public class ConfigurationsActivity extends ActionBarActivity {
 		} else {
 			if (!Utils.isNetworkConnected(context)) {
 				Log.d(Constants.TAG, "No network connection");
-				UIUtils.showDialog(context,getString(R.string.alertTitleDialog),getString(R.string.noNetworkConnection));
+				//NotificationHelper.notify(context, 1, getString(R.string.serviceNotAvailable), getString(R.string.noNetworkConnection));
+				UIUtils.showDialog(this,getString(R.string.alertTitleDialog),getString(R.string.noNetworkConnection));
 			} else {
 				GetAllCategoryWS wsCategory = getInstanceWSCategory();
 				wsCategory.getAllCategories();

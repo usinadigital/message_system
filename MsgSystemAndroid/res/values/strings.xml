@@ -30,7 +30,7 @@
     <string name="hour24">24 hours</string>
     <string name="test">5 seconds</string>
     
-    <string name="newMessageNotification">Usina Cultural News</string>
+    <string name="newMessageNotification">Usina Cultural</string>
     <string name="lastUpdate">Last Update</string>
     <string name="loading">Loading...</string>
     
@@ -45,7 +45,7 @@
         \nYou will receive news from the activities in Usina Cultural, and to achieve it you 
         have to set in Configuration and then Categories the news you are interested in.\nYou 
         can also choose the frequency (Configuration and then Frequency) that your application check the news and you 
-        can choose the history length (Configuration and then History) of the news you want to keep in your device.\nThat all, thank you.\n
+        can choose (Configuration and then History) how many days of news you want to keep in your device.\nThat all, thank you.\n
     </string>
     
 </resources>

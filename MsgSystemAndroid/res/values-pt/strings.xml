@@ -28,7 +28,7 @@
     <string name="hour6">6 horas</string>
     <string name="hour12">12 horas</string>
     <string name="hour24">24 horas</string>
-    <string name="test">5 segundos</string>
+    <string name="test">1 minuto (test)</string>
     
     <string name="newMessageNotification">Usina Cultural</string>
     <string name="lastUpdate">Atualizando</string>

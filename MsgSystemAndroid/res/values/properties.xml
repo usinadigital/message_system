@@ -21,8 +21,9 @@
         <item>30</item>
     </integer-array>
 
-    <integer name="default_frequency_index">4</integer>
+    <integer name="default_frequency_index">5</integer>
     <string-array name="array_frequency_names">
+        <item>@string/hour1</item>
         <item>@string/hour2</item>
         <item>@string/hour4</item>
         <item>@string/hour6</item>
@@ -31,12 +32,13 @@
         <item>@string/test</item>
     </string-array>
     <integer-array name="array_frequency_values">
-        <item>7200000</item> 	<!-- ogni 2 ore 14400000 -->
+        <item>3600000</item> 	<!-- ogni 1 ore 3600000 -->
+        <item>7200000</item> 	<!-- ogni 2 ore 7200000 -->
         <item>14400000</item> 	<!-- ogni 4 ore 14400000 -->
         <item>21600000</item>	<!-- ogni 6 ore 21600000 -->
         <item>43200000</item> 	<!-- ogni 12 ore 43200000-->
         <item>86400000</item> 	<!-- ogni 24 ore -->
-        <item>5000</item> 	<!-- ogni 24 ore -->
+        <item>60000</item> 
     </integer-array>
 
 </resources>

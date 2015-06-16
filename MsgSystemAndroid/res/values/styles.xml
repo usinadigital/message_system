@@ -20,9 +20,9 @@
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here.
         -->
-        <item name="android:actionBarStyle">@style/MyActionBarTheme</item>
+      
     </style>
 
     <!-- Application theme. -->
@@ -31,10 +31,6 @@
         <!-- <item name="android:background">@color/usina</item> -->
         <!-- <item name="android:windowBackground">@color/usina</item> -->
         <!-- <item name="android:colorBackground">@color/usina</item> -->
-    </style>
-
-    <style name="MyActionBarTheme" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">#aaaaaa</item>
     </style>
 
 </resources>

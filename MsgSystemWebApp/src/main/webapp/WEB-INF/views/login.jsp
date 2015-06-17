@@ -39,13 +39,6 @@
 
 				</form>
 				
-				<c:if test="${not empty error}">
-					<c:set var="messageERROR" value="${error}" scope="request"/>
-				</c:if>
-				<c:if test="${not empty msg}">
-					<c:set var="messageOK" value="${msg}" scope="request"/>
-				</c:if>
-				
 			</div>
 		</tiles:putAttribute>
 	</tiles:insertDefinition>

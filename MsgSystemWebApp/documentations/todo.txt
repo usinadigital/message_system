@@ -1,3 +1,7 @@
+-----------------------------------------------------------
+SERVER ADDRESS: http://200.223.215.170/UsinaCultural-0.0.1/
+-----------------------------------------------------------
+
 TODO:
 xxx handling exception: modifico la CustomDateDeserializer, richiedo le categories aprendo la pagina dei messages. Mi da una pag di errore. Dovrei agganciare l�ex, loggarla, e visualizzare una pag di default mia
 xxx interface

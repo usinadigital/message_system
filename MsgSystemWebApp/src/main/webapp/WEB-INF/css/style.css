@@ -114,7 +114,7 @@ h3 a{ text-decoration: none; }
 .box-login { background:#fbb359; margin-left: auto;
     margin-right: auto; height:40%; width: 23%; padding:1px; margin-bottom:20px; }
 .box-message { background:#fbb359; margin-left: auto;
-    margin-right: auto; height:60%; width: 60%; padding:1px; margin-bottom:20px; min-height: 350px;}
+    margin-right: auto; height:60%; width: 60%; padding:1px; margin-bottom:20px; min-height: 410px; min-width: 360px;}
 
 
 	

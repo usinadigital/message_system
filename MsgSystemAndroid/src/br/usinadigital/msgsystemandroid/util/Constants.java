@@ -2,7 +2,7 @@ package br.usinadigital.msgsystemandroid.util;
 
 public interface Constants {
 	
-	public static final int HTTP_TIMEOUT_MILLISEC = 5000;
+	public static final int HTTP_TIMEOUT_MILLISEC = 7000;
 	
 	public static final String TAG = "br.usinadigital.msgsystemandroid";
 	public static final String FILE_CATEGORY_NAME = "CategoryName";

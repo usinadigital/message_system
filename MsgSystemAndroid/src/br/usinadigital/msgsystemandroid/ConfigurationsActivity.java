@@ -43,7 +43,7 @@ public class ConfigurationsActivity extends ActionBarActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.configurations);
-		UIUtils.setActionBarIcon(getSupportActionBar());
+		UIUtils.styleActionBar(getSupportActionBar(), getResources().getString(R.color.actionBarBg)); 
 		context = this.getBaseContext();
 		SharedPreferences configurations = getSharedPreferences(Constants.FILE_CONFIGURATIONS, Context.MODE_PRIVATE);
 		SharedPreferences prefName = getSharedPreferences(Constants.FILE_CATEGORY_NAME, Context.MODE_PRIVATE);

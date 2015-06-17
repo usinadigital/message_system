@@ -44,9 +44,9 @@
     
     <string name="helpContent">
        Você vai receber informações sobre as atividades na Usina Cultural, 
-       e para alcança-las você tem que marcar Configuração e depois em Categorias as noticias que você gostaria receber.\nVocê 
-       pode escolher, também, a frequência (Configuração e depois Frequência) que seu aplicativo cheque as noticias e você pode escolher 
-       por quantos dias você quer que sejam salvas as noticias no seu dispositivo (Configuração e depois Historia).\nIsso 
+       e para alcança-las você tem que marcar, Configuração e depois em Categorias, as noticias que você gostaria receber.\n\nFrequência (Configuração e depois Frequência): 
+       você pode escolher, também, a frequência que seu aplicativo cheque as noticias.\n\nHistoria (Configuração e depois Historia): 
+       você pode escolher por quantos dias você quer que sejam salvas as noticias no seu dispositivo .\nIsso 
        é tudo, obrigado a todos e todas.
     </string>
     

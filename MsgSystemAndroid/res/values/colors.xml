@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="usina">#fee7cb</color>
-    <color name="cultural">#812991</color>
-    <color name="menu_button">#00000000</color>
+    <color name="actionBarBg">#db7b06</color>
+    <color name="menu_button_bg">#00000000</color>
 </resources>

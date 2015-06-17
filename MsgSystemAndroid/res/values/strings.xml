@@ -44,9 +44,9 @@
     
     <string name="helpContent">
         \nYou will receive news from the activities in Usina Cultural, and to achieve it you 
-        have to set in Configuration and then Categories the news you are interested in.\nYou 
-        can also choose the frequency (Configuration and then Frequency) that your application check the news and you 
-        can choose (Configuration and then History) how many days of news you want to keep in your device.\nThat all, thank you.\n
+        have to set, Configuration and then Categories, the news you are interested in.\n\nFrequency (Configuration and then Frequency): 
+        you can choose the frequency that your application check the news.\n\nHistory (Configuration and then History):
+        you can choose how many days of news you want to keep in your device.\nThat all, thank you.\n
     </string>
     
 </resources>

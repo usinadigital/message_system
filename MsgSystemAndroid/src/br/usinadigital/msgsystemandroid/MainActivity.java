@@ -27,8 +27,7 @@ public class MainActivity extends ActionBarActivity  {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		UIUtils.setActionBarIcon(getSupportActionBar()); 
-		//getOverflowMenu();
+		UIUtils.styleActionBar(getSupportActionBar(), getResources().getString(R.color.actionBarBg)); 
 		context = this;
 		initializeConfiguration();
 	}
@@ -71,20 +70,5 @@ public class MainActivity extends ActionBarActivity  {
 		}
 		Utils.initializeMessageService(this, frequencyValues[configDAO.getUpdateFrequency()]);
 	}
-
-//	private void getOverflowMenu() {
-//    try {
-// 
-//       ViewConfiguration config = ViewConfiguration.get(this);
-//       java.lang.reflect.Field menuKeyField = ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");
-//       if(menuKeyField != null) {
-//           menuKeyField.setAccessible(true);
-//           menuKeyField.setBoolean(config, false);
-//       }
-//   } catch (Exception e) {
-//       e.printStackTrace();
-//   }
-// 
-//}
 
 }

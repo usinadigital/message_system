@@ -25,7 +25,7 @@ public class MessageViewActivity extends ActionBarActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.message);
-		UIUtils.setActionBarIcon(getSupportActionBar());
+		UIUtils.styleActionBar(getSupportActionBar(), getResources().getString(R.color.actionBarBg)); 
 		txtDate = (TextView)findViewById(R.id.txtDate);
 		txtTitle = (TextView)findViewById(R.id.txtTitle);
 		txtBody = (TextView)findViewById(R.id.txtBody);

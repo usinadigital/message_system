@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="serviceToast">enabled</string>
+	<string name="serviceToast">no-enabled</string>
 	<string name="app_name">Usina Cultural</string>
 	
     <string name="getAllCategoriesURL">http://200.223.215.170:80/MsgSystemWS-0.0.1/rest/category/all</string>
@@ -29,7 +29,6 @@
         <item>@string/hour6</item>
         <item>@string/hour12</item>
         <item>@string/hour24</item>
-        <item>@string/test</item>
     </string-array>
     <integer-array name="array_frequency_values">
         <item>3600000</item> 	<!-- ogni 1 ore 3600000 -->
@@ -38,7 +37,6 @@
         <item>21600000</item>	<!-- ogni 6 ore 21600000 -->
         <item>43200000</item> 	<!-- ogni 12 ore 43200000-->
         <item>86400000</item> 	<!-- ogni 24 ore -->
-        <item>60000</item> 
     </integer-array>
 
 </resources>

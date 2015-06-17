@@ -1,7 +1,7 @@
 <resources>
 
     <style name="menu.button" parent="android:Widget">
-        <item name="android:background">@color/menu_button</item>
+        <item name="android:background">@color/menu_button_bg</item>
         <item name="android:textSize">@dimen/menu_fontsize</item>
         <item name="android:clickable">true</item>
         <item name="android:layout_width">wrap_content</item>

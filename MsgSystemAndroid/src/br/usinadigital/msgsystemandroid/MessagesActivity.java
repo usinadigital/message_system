@@ -51,7 +51,7 @@ public class MessagesActivity extends ActionBarActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.messages);
-		UIUtils.setActionBarIcon(getSupportActionBar()); 
+		UIUtils.styleActionBar(getSupportActionBar(), getResources().getString(R.color.actionBarBg)); 
 		context = this.getBaseContext();
 		mainListView = (ListView) findViewById(R.id.mainListView);
 		initialiseList();

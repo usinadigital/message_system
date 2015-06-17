@@ -9,8 +9,8 @@ public class HelpActivity extends ActionBarActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.help);
-		UIUtils.setActionBarIcon(getSupportActionBar());
-			}
+		UIUtils.styleActionBar(getSupportActionBar(), getResources().getString(R.color.actionBarBg));
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

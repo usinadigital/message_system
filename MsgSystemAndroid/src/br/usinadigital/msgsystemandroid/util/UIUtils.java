@@ -5,6 +5,7 @@ import java.util.Date;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBar;
 import android.text.Html;
@@ -28,10 +29,10 @@ public class UIUtils {
 		return Html.fromHtml(String.format(btnInnerHTML, first, second));
 	}
 	 
-	public static void setActionBarIcon(ActionBar ab){
+	public static void styleActionBar(ActionBar ab, String color){
 	    ab.setDisplayShowHomeEnabled(true);
 	    ab.setIcon(R.drawable.usina_cultural);
-	     ab.setBackgroundDrawable(new ColorDrawable(0xff00DDED));
+	    ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor(color)));
 	}
 	
 	public static void showDialog(Context context, String title, String message){
